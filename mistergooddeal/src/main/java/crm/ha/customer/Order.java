@@ -7,10 +7,10 @@ import javax.ws.rs.core.Response.Status;
 @Path("/order")
 public class Order {
 	@GET
-	@Path("/create/{customerID}/{productID}/{date}")
+	@Path("/create/{customerID}/{productID}/{date}/{livraison_type}")
 	@Produces("txt/json")
 	public Response create(@PathParam("customerID") String customerID, @PathParam("productID") String productID,
-			@PathParam("date") String date) { 
+			@PathParam("date") String date, @PathParam("livraison_type") String livraison_type) { 
 		// Validate login
 		if (customerID.equals("unknown"))
 			return Response.status(Status.NOT_FOUND).build();
@@ -20,13 +20,18 @@ public class Order {
 		// Validate date
 		if (date.equals("unknown"))
 			return Response.status(Status.NOT_FOUND).build();
+		// Validate livraison_type
+		if (livraison_type.equals("unknown"))
+			return Response.status(Status.NOT_FOUND).build();
+				
 		// DB req 
 		String id = "{\"ID\": \" orderID\"}\n";
 		String customer = "{\"customerID\": \" "+ customerID + "\"}\n";
 		String product = "{\"productID\": "+ productID +"}\n";
 		String orderdate = "{\"order_date\": " + date + "}\n";
+		String livraisonType = "{\"livraison_type\": " + livraison_type + "}\n";
 		
-		String resp = id + customer + product + orderdate;
+		String resp = id + customer + product + orderdate + livraisonType;
 		return Response.status(Status.OK).entity(resp).build(); 
 	}
 		

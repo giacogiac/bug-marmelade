@@ -1,38 +1,110 @@
 package crm.xingi;
 
-import java.util.ArrayList;
+import javax.jws.*;
 
-import javax.jws.WebParam;
-import javax.jws.WebService;
-
-import crm.xingi.exceptions.CrmFault;
-import crm.xingi.exceptions.LoginFault;
+import crm.xingi.exceptions.*;
 import crm.xingi.messages.*;
 
 @WebService(endpointInterface = "crm.CrmService")
 public class CrmServiceImpl implements CrmService {
-	public String login(@WebParam(name = "login") String username,
-			@WebParam(name = "pwd") String password) throws CrmFault {
-		if (!(username.equals("guo") && (password.equals("archer"))))
-			throw new LoginFault("LoginFault");
-		return "a_secret_token-" + username;
+
+	// Customer Accounts
+	@Override
+	@WebMethod
+	public CreateCustomerResponse createCustomer(
+			@WebParam(name = "message") CreateCustomerRequest request)
+			throws CrmExceptions {
+		CreateCustomerResponse response = new CreateCustomerResponse();
+		response.idCustomer = 0001;
+		return response;
 	}
 
-	public ArrayList<Product> orderProduct(String token, Product productOrdered) throws CrmFault {
-		if (! token.equals("a_secret_token-guo"))
-			throw new LoginFault("LoginFault");
-		ArrayList<Product> OrderList = new ArrayList<Product>();
-		OrderList.add(productOrdered);
-		return OrderList;
+	@Override
+	@WebMethod
+	@WebResult(name = "response")
+	public DeleteResponse deleteCustomer(
+			@WebParam(name = "message") OperateCustomerRequest request)
+			throws CrmExceptions {
+		if (! request.goal.equals("delete"))
+			throw new CrmExceptions();
+		DeleteResponse response = new DeleteResponse();
+		if (request.username == "guo")
+			response.remove = true;
+		else
+			response.remove = false;
+		return response;
+	}
+
+	@Override
+	@WebMethod
+	@WebResult(name = "response")
+	public GetCustomerResponse getCustomer(
+			@WebParam(name = "message") OperateCustomerRequest request)
+			throws CrmExceptions {
+		if (! request.goal.equals("get"))
+			throw new CrmExceptions();
+		GetCustomerResponse response = new GetCustomerResponse();
+		return response;
 	}
 	
-	public int exposeCatalogueOfCompany(ArrayList<Product> catalogueOfCompany) {
-		for (int i = 0; i < catalogueOfCompany.size(); i++) {
-			System.out.println("Product No." + i + " Name: "
-					+ catalogueOfCompany.get(i).productName + " Category: "
-					+ catalogueOfCompany.get(i).productCategory + " Reference: "
-					+ catalogueOfCompany.get(i).reference);
-		}
-		return 0;
+	// Order Processing
+	@Override
+	@WebMethod
+	@WebResult(name = "response")
+	public AddOrderResponse addOrder(
+			@WebParam(name = "message") AddOrderRequest request)
+			throws CrmExceptions {
+		AddOrderResponse response = new AddOrderResponse();
+		response.identifier=request.username+"-"+request.order.identifier;
+		return response;
+	}
+
+	@Override
+	@WebMethod
+	@WebResult(name = "response")
+	public DeleteResponse deleteOrder(
+			@WebParam(name = "message") DeleteOrderRequest request)
+			throws CrmExceptions {
+		DeleteResponse response = new DeleteResponse();
+		if (request.username == "guo"&&request.identifier==0001)
+			response.remove = true;
+		else
+			response.remove = false;
+		return response;
+	}
+
+	@Override
+	@WebMethod
+	@WebResult(name = "response")
+	public GetCustomerOrderResponse getCustomerOrder(
+			@WebParam(name = "message") OperateCustomerRequest request)
+			throws CrmExceptions {	
+		if (! request.goal.equals("getOrder"))
+			throw new CrmExceptions();
+		GetCustomerOrderResponse response = new GetCustomerOrderResponse();
+		return response;
+	}
+	
+	// Extract preferred products
+	@Override
+	@WebMethod
+	@WebResult(name = "response")
+	public GetCustomerPreferredProductsResponse getCustomerPreferredProducts(
+			@WebParam(name = "message") OperateCustomerRequest request)
+			throws CrmExceptions {
+		if (! request.goal.equals("getCustomerPreferredProducts"))
+			throw new CrmExceptions();
+		GetCustomerPreferredProductsResponse response = new GetCustomerPreferredProductsResponse();
+		return response;
+	}
+
+	@Override
+	@WebMethod
+	@WebResult(name = "response")
+	public SearchCatalogResponse searchCatalog(
+			@WebParam(name = "message") SearchCatalogRequest request)
+			throws CrmExceptions {
+		SearchCatalogResponse response = new SearchCatalogResponse();		
+		return response;
 	}
 }

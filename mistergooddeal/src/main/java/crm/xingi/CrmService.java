@@ -1,28 +1,62 @@
 package crm.xingi;
 
-import java.util.ArrayList;
+import javax.jws.*;
 
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.jws.WebResult;
-import javax.jws.WebService;
-
-import crm.xingi.exceptions.CrmFault;
+import crm.xingi.exceptions.*;
 import crm.xingi.messages.*;
 
-@WebService(serviceName = "CrmService")
+@WebService(serviceName = "Crm")
 public interface CrmService {
+
+	// Customer Accounts
 	@WebMethod
-	public String login(@WebParam(name = "login") String username,
-			@WebParam(name = "pwd") String password) throws CrmFault;
+	@WebResult(name = "response")
+	public CreateCustomerResponse createCustomer(
+			@WebParam(name = "message") CreateCustomerRequest request)
+			throws CrmExceptions;
 
 	@WebMethod
 	@WebResult(name = "response")
-	public ArrayList<Product> orderProduct(
-			@WebParam(name = "token", header = true) String token,
-			@WebParam(name = "order") Product productOrdered) throws CrmFault;
+	public DeleteResponse deleteCustomer(
+			@WebParam(name = "message") OperateCustomerRequest request)
+			throws CrmExceptions;
 
-	public int exposeCatalogueOfCompany(
-			@WebParam(name = "catalogue") ArrayList<Product> catalogueOfCompany)
-			throws CrmFault;
+	@WebMethod
+	@WebResult(name = "response")
+	public GetCustomerResponse getCustomer(
+			@WebParam(name = "message") OperateCustomerRequest request)
+			throws CrmExceptions;
+
+	// Order Processing
+	@WebMethod
+	@WebResult(name = "response")
+	public AddOrderResponse addOrder(
+			@WebParam(name = "message") AddOrderRequest request)
+			throws CrmExceptions;
+
+	@WebMethod
+	@WebResult(name = "response")
+	public DeleteResponse deleteOrder(
+			@WebParam(name = "message") DeleteOrderRequest request)
+			throws CrmExceptions;
+	
+	@WebMethod
+	@WebResult(name = "response")
+	public GetCustomerOrderResponse getCustomerOrder(
+			@WebParam(name = "message") OperateCustomerRequest request)
+			throws CrmExceptions;
+	
+	// Extract preferred products
+	@WebMethod
+	@WebResult(name = "response")
+	public GetCustomerPreferredProductsResponse getCustomerPreferredProducts(
+			@WebParam(name = "message") OperateCustomerRequest request)
+			throws CrmExceptions;
+	
+	// Expose Catalog
+	@WebMethod
+	@WebResult(name = "response")
+	public SearchCatalogResponse searchCatalog(
+			@WebParam(name = "message") SearchCatalogRequest request)
+			throws CrmExceptions;
 }

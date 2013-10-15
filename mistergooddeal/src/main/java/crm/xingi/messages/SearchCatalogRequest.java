@@ -2,8 +2,8 @@ package crm.xingi.messages;
 
 import javax.xml.bind.annotation.*;
 
-@XmlType(name = "Product")
-public class Product {
+@XmlType(name = "SearchCatalogRequest")
+public class SearchCatalogRequest {
 	@XmlElement(name = "name")
 	public String name;
 	
@@ -12,7 +12,4 @@ public class Product {
 	
 	@XmlElement(name = "reference")
 	public String reference;
-	
-	@XmlElement(name = "price")
-	public int price;
 }

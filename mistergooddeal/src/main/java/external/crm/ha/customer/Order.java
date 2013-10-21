@@ -1,4 +1,4 @@
-package crm.ha.customer;
+package external.crm.ha.customer;
 
 import javax.ws.rs.*; 
 import javax.ws.rs.core.Response; 

@@ -1,4 +1,4 @@
-package crm.ha.product;
+package external.crm.ha.product;
 
 import javax.ws.rs.*; 
 import javax.ws.rs.core.Response; 

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:jersey="http://www.mulesoft.org/schema/mule/jersey" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core" version="EE-3.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/jersey http://www.mulesoft.org/schema/mule/jersey/current/mule-jersey.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+    <flow name="WH_David" doc:name="WH_David">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/warehouse_david" doc:name="localhost:8090/ext/wh_david"/>
+        <logger message="Calling external service from WHDavid" level="INFO" doc:name="Logger"/>
+        <cxf:jaxws-service serviceClass="warehouse.service.WareHouseService" doc:name="wh_david"/>
+        <component class="warehouse.service.WareHouseServiceImpl" doc:name="wh_david_impl"/>
+    </flow>
+    <flow name="FedPS_Giac" doc:name="FedPS_Giac">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_giac" doc:name="localhost:8090/ext/fedps_giac"/>
+        <logger message="Calling external service from FedPSGiac" level="INFO" doc:name="Logger"/>
+        <cxf:jaxws-service serviceClass="transport.giac.fedps.DeliveryService" doc:name="fedps_giac"/>
+        <component class="transport.giac.fedps.DeliveryServiceImpl" doc:name="fedps_giac_impl"/>
+    </flow>
+    <flow name="FedPS_Andien" doc:name="FedPS_Andien">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_andrien" doc:name="localhost:8090/ext/fedps_andrien"/>
+        <logger message="Calling external service from FedPS_Andrien" level="INFO" doc:name="Logger"/>
+        <cxf:jaxws-service serviceClass="transport.adrien.FedPS.FedpsService" doc:name="fedps_andrien"/>
+        <component class="transport.adrien.FedPS.FedpsServiceImpl" doc:name="fedps_andrien_impl"/>
+    </flow>
+    <flow name="CRM_ben" doc:name="CRM_ben">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_ben" doc:name="localhost:8090/ext/crm_ben"/>
+        <logger message="Calling external service from CRMben" level="INFO" doc:name="Logger"/>
+        <jersey:resources doc:name="crm_ben">
+            <component class="crm.ben.service.ProduitService"/>
+            <component class="crm.ben.service.CustomerService"/>
+            <component class="crm.ben.service.CommandeService"/>
+        </jersey:resources>
+    </flow>
+    <flow name="CRM_Xiny" doc:name="CRM_Xiny">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xiny" doc:name="localhost:8090/ext/crm_xiny"/>
+        <logger message="Calling external service from CRMxiny" level="INFO" doc:name="Logger"/>
+        <cxf:jaxws-service serviceClass="crm.xingi.CrmService" doc:name="crm_xiny"/>
+        <component class="crm.xingi.CrmServiceImpl" doc:name="crm_xiny_impl"/>
+    </flow>
+    <flow name="CRM_ha_flow" doc:name="CRM_ha_flow">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_ha" doc:name="localhost:8090/ext/crm_ha"/>
+        <logger message="Calling external service from CRMha" level="INFO" doc:name="Logger"/>
+        <jersey:resources doc:name="crm_ha">
+            <component class="external.crm.ha.customer.Order"/>
+            <component class="external.crm.ha.product.Product"/>
+            <component class="external.crm.ha.customer.Customer"/>
+        </jersey:resources>
+    </flow>
+</mule>

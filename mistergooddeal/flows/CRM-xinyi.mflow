@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="CRM-xinyi">
-    <flow SubFlow="false" name="CRMFlow1" entity-id="61e12dfd-91b4-4a33-954b-f72062c46348">
+    <flow SubFlow="false" name="CRMFlow1" entity-id="60e920b2-e254-4bfa-9ef6-512434ee276e">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -39,67 +39,25 @@
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
             <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#1">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value=""/>
-                    <property name="wsdlLocation" value=""/>
+                    <property name="port"/>
+                    <property name="wsdlLocation"/>
                     <property name="serviceClass" value="crm.xingi.CrmService"/>
-                    <property name="DATABINDING" value=""/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-service"/>
-                    <property name="class" value=""/>
-                    <property name="configuration-ref" value=""/>
-                    <property name="namespace" value=""/>
-                    <property name="validationEnabled" value="false"/>
-                    <property name="auxiliary;erased;DATABINDING" value="true"/>
-                    <property name="updated"/>
-                    <property name="bindingId" value=""/>
-                    <property name="service" value=""/>
-                    <property name="mtomEnabled" value="false"/>
-                    <property name="soapVersion" value="1.1"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="propertiesLabel" value=""/>
+                    <property name="configuration-ref"/>
+                    <property name="namespace"/>
+                    <property name="validationEnabled"/>
+                    <property name="bindingId"/>
+                    <property name="onException"/>
+                    <property name="service"/>
+                    <property name="mtomEnabled"/>
+                    <property name="enableMuleSoapHeaders"/>
+                    <property name="soapVersion"/>
                     <property name="auxiliary;index" value="3"/>
-                    <property-collection name="">
-                        <property name="auxiliary;erased;DATABINDING" value="true"/>
-                        <property name="DATABINDING" value=""/>
-                        <property name="class" value=""/>
-                        <property name="propertiesLabel" value=""/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/schemaLocations;15631497">
-                        <property name="isProcessed$$$$" value="true"/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-security-full;15645157">
-                        <property name="isProcessed$$$$" value="true"/>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-config;11353443">
-                            <property name="isProcessed$$$$" value="true"/>
-                        </property-collection>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-custom-validator;21087496">
-                            <property name="isProcessed$$$$" value="true"/>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/bst-token-validator;28872001">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/saml1-token-validator;27371028">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/saml2-token-validator;27170551">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/signature-token-validator;10179649">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/timestamp-token-validator;13199174">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/username-token-validator;26822015">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                        </property-collection>
-                    </property-collection>
                 </properties>
-                <description></description>
             </pattern>
             <pattern name="Java" type="http://www.mulesoft.org/schema/mule/core/component" entity-id="Java#1">
                 <graphicalData x="0" y="0" width="0" height="0"/>
@@ -108,7 +66,7 @@
                     <property name="updated"/>
                     <property name="class" value="crm.xingi.CrmServiceImpl"/>
                     <property name="auxiliary;index" value="4"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;833158">
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;6787483">
                         <property name="ref" value=""/>
                         <property name="isProcessed$$$$" value="true"/>
                     </property-collection>

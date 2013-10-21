@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="CMR-ben">
-    <flow SubFlow="false" name="CMRFlow1" entity-id="251657a2-d527-48c9-b107-56d5d5700e3d">
+    <flow SubFlow="false" name="CMRFlow1" entity-id="a48965e7-1ce4-44a5-a44a-3b704732642a">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="1"/>
             <property name="tracking:enable-default-events"/>
@@ -45,21 +46,19 @@
                     <property name="ref" value=""/>
                     <property name="updated"/>
                     <property name="auxiliary;index" value="3"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;0">
-                        <property name="class" value="service.CustomerService"/>
-                        <property name="isProcessed$$$$" value="true"/>
-                        <property name="auxiliary;index" value="4"/>
-                        <property name="auxiliary;wrapIn" value="4"/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;403337897">
-                        <property name="class" value="service.CommandeService"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;9765707">
+                        <property name="class" value="crm.ben.service.CustomerService"/>
                         <property name="isProcessed$$$$" value="true"/>
                     </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;709040870">
-                        <property name="class" value="service.ProduitService"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;15907100">
+                        <property name="class" value="crm.ben.service.CommandeService"/>
                         <property name="isProcessed$$$$" value="true"/>
                     </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;1436186813">
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;28843858">
+                        <property name="class" value="crm.ben.service.ProduitService"/>
+                        <property name="isProcessed$$$$" value="true"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;3476376">
                         <property name="ref" value=""/>
                         <property name="isProcessed$$$$" value="true"/>
                     </property-collection>
@@ -67,7 +66,6 @@
                 <description></description>
             </pattern>
         </lane>
-        <apikit>false</apikit>
     </flow>
     <description></description>
 </mule-configuration>

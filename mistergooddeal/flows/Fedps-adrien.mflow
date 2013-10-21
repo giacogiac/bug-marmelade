@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="Fedps-adrien">
-    <flow SubFlow="false" name="FedPSFlow1" entity-id="facdb40b-1d72-43ab-b789-0dbff32da918">
+    <flow SubFlow="false" name="FedPSFlow1" entity-id="6bfb754a-d44a-4abc-bb2a-94c8df530d21">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="1"/>
             <property name="tracking:enable-default-events"/>
@@ -47,10 +48,11 @@
                     <property name="serviceClass" value="transport.adrien.FedPS.FedpsService"/>
                     <property name="DATABINDING" value=""/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-service"/>
+                    <property name="class" value=""/>
                     <property name="configuration-ref" value=""/>
                     <property name="namespace" value=""/>
-                    <property name="auxiliary;erased;DATABINDING" value="true"/>
                     <property name="validationEnabled" value="false"/>
+                    <property name="auxiliary;erased;DATABINDING" value="true"/>
                     <property name="updated"/>
                     <property name="bindingId" value=""/>
                     <property name="service" value=""/>
@@ -62,34 +64,35 @@
                     <property-collection name="">
                         <property name="auxiliary;erased;DATABINDING" value="true"/>
                         <property name="DATABINDING" value=""/>
+                        <property name="class" value=""/>
                         <property name="propertiesLabel" value=""/>
                     </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/schemaLocations;208022747">
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/schemaLocations;8681390">
                         <property name="isProcessed$$$$" value="true"/>
                     </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-security-full;2138296356">
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-security-full;22135221">
                         <property name="isProcessed$$$$" value="true"/>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-config;2012435260">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-config;27877116">
                             <property name="isProcessed$$$$" value="true"/>
                         </property-collection>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-custom-validator;994713572">
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-custom-validator;10726277">
                             <property name="isProcessed$$$$" value="true"/>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/bst-token-validator;145081731">
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/bst-token-validator;5147501">
 <property name="isProcessed$$$$" value="true"/>
                             </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/saml1-token-validator;1893474286">
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/saml1-token-validator;2582180">
 <property name="isProcessed$$$$" value="true"/>
                             </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/saml2-token-validator;62159909">
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/saml2-token-validator;12821855">
 <property name="isProcessed$$$$" value="true"/>
                             </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/signature-token-validator;2020869069">
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/signature-token-validator;30959345">
 <property name="isProcessed$$$$" value="true"/>
                             </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/timestamp-token-validator;1044538121">
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/timestamp-token-validator;10363447">
 <property name="isProcessed$$$$" value="true"/>
                             </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/username-token-validator;131974570">
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/username-token-validator;10166106">
 <property name="isProcessed$$$$" value="true"/>
                             </property-collection>
                         </property-collection>
@@ -104,7 +107,7 @@
                     <property name="updated"/>
                     <property name="class" value="transport.adrien.FedPS.FedpsServiceImpl"/>
                     <property name="auxiliary;index" value="4"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;22838939">
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;9279301">
                         <property name="ref" value=""/>
                         <property name="isProcessed$$$$" value="true"/>
                     </property-collection>
@@ -112,7 +115,6 @@
                 <description></description>
             </pattern>
         </lane>
-        <apikit>false</apikit>
     </flow>
     <description></description>
 </mule-configuration>

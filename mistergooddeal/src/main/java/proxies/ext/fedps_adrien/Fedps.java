@@ -15,7 +15,7 @@ import javax.xml.ws.Service;
  * 
  */
 @WebServiceClient(name = "Fedps", 
-                  wsdlLocation = "file:/D:/git/bug-marmelade/mistergooddeal/src/main/resources/fedps_adrien.wsdl",
+                  wsdlLocation = "file:./src/main/resources/fedps_adrien.wsdl",
                   targetNamespace = "http://fedps.adrien.transport.external/") 
 public class Fedps extends Service {
 
@@ -26,11 +26,11 @@ public class Fedps extends Service {
     static {
         URL url = null;
         try {
-            url = new URL("file:/D:/git/bug-marmelade/mistergooddeal/src/main/resources/fedps_adrien.wsdl");
+            url = new URL("file:./src/main/resources/fedps_adrien.wsdl");
         } catch (MalformedURLException e) {
             java.util.logging.Logger.getLogger(Fedps.class.getName())
                 .log(java.util.logging.Level.INFO, 
-                     "Can not initialize the default wsdl from {0}", "file:/D:/git/bug-marmelade/mistergooddeal/src/main/resources/fedps_adrien.wsdl");
+                     "Can not initialize the default wsdl from {0}", "file:./src/main/resources/fedps_adrien.wsdl");
         }
         WSDL_LOCATION = url;
     }

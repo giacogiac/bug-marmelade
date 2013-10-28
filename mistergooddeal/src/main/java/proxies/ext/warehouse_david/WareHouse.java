@@ -15,7 +15,7 @@ import javax.xml.ws.Service;
  * 
  */
 @WebServiceClient(name = "WareHouse", 
-                  wsdlLocation = "file:/D:/git/bug-marmelade/mistergooddeal/src/main/resources/warehouse_david.wsdl",
+                  wsdlLocation = "file:./src/main/resources/warehouse_david.wsdl",
                   targetNamespace = "http://service.warehouse.external/") 
 public class WareHouse extends Service {
 
@@ -26,11 +26,11 @@ public class WareHouse extends Service {
     static {
         URL url = null;
         try {
-            url = new URL("file:/D:/git/bug-marmelade/mistergooddeal/src/main/resources/warehouse_david.wsdl");
+            url = new URL("file:./src/main/resources/warehouse_david.wsdl");
         } catch (MalformedURLException e) {
             java.util.logging.Logger.getLogger(WareHouse.class.getName())
                 .log(java.util.logging.Level.INFO, 
-                     "Can not initialize the default wsdl from {0}", "file:/D:/git/bug-marmelade/mistergooddeal/src/main/resources/warehouse_david.wsdl");
+                     "Can not initialize the default wsdl from {0}", "file:./src/main/resources/warehouse_david.wsdl");
         }
         WSDL_LOCATION = url;
     }

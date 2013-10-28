@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="warehouse-internal">
+    <flow SubFlow="false" name="client-makeDelivery" entity-id="0be0319d-9cdd-4270-aaf4-4bc7b4100586">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="9c39adee-42a1-4114-bf64-1b1fce189765">
+            <graphicalData x="14" y="158" width="405" height="85"/>
+            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/makeDelivery" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="c4d52343-3e5c-4908-87af-05a969ff4bb6">
+                <graphicalData x="19" y="163" width="139" height="69"/>
+                <properties>
+                    <property name="auxiliary;erased;mimeType" value="true"/>
+                    <property name="businessEventsLabel" value=""/>
+                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="tracking:enable-default-events" value="false"/>
+                    <property name="ref" value=""/>
+                    <property name="transformer-refs" value=""/>
+                    <property name="updated"/>
+                    <property name="address" value=""/>
+                    <property name="auxiliary;erased;encoding" value="true"/>
+                    <property name="encoding" value=""/>
+                    <property name="path" value="vm/warehouse-internal/client/makeDelivery"/>
+                    <property name="responseTransformer-refs" value=""/>
+                    <property name="responseTimeout" value=""/>
+                    <property name="mimeType" value=""/>
+                    <property name="auxiliary;erased;responseTimeout" value="true"/>
+                    <property name="connector-ref" value=""/>
+                </properties>
+                <description></description>
+            </endpoint>
+            <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="3bdca495-1463-4c0e-b564-2f57a79c0600">
+                <graphicalData x="218" y="163" width="68" height="69"/>
+                <properties>
+                    <property name="wsdlLocation" value=""/>
+                    <property name="port" value=""/>
+                    <property name="auxiliary;erased;DATABINDING" value="true"/>
+                    <property name="operation" value=""/>
+                    <property name="serviceClass" value=""/>
+                    <property name="updated"/>
+                    <property name="DATABINDING" value=""/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
+                    <property name="mtomEnabled" value="false"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="propertiesLabel" value=""/>
+                    <property name="clientClass" value=""/>
+                    <property name="configuration-ref" value=""/>
+                    <property name="decoupledEndpoint" value=""/>
+                    <property-collection name="">
+                        <property name="auxiliary;erased;DATABINDING" value="true"/>
+                        <property name="DATABINDING" value=""/>
+                        <property name="propertiesLabel" value=""/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-security-without-token-validator;1030574584">
+                        <property name="isProcessed$$$$" value="true"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-config;2085319432">
+                            <property name="isProcessed$$$$" value="true"/>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+                <description></description>
+            </pattern>
+            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/int/makeDelivery" type="http://www.mulesoft.org/schema/mule/https/endpoint" entity-id="e1a7664e-c51a-4dfb-b031-c9f496992a9c">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="port" value="8090"/>
+                    <property name="auxiliary;erased;mimeType" value="true"/>
+                    <property name="contentType" value=""/>
+                    <property name="password" value=""/>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="tracking:enable-default-events" value="false"/>
+                    <property name="updated"/>
+                    <property name="auxiliary;erased;encoding" value="true"/>
+                    <property name="encoding" value=""/>
+                    <property name="path" value="int/makeDelivery"/>
+                    <property name="responseTransformer-refs" value=""/>
+                    <property name="responseTimeout" value="10000"/>
+                    <property name="mimeType" value=""/>
+                    <property name="auxiliary;erased;contentType" value="true"/>
+                    <property name="host" value="localhost"/>
+                    <property name="businessEventsLabel" value=""/>
+                    <property name="followRedirects" value="false"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="keep-alive" value="false"/>
+                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="ref" value=""/>
+                    <property name="transformer-refs" value=""/>
+                    <property name="httpLabel" value=""/>
+                    <property name="address" value=""/>
+                    <property name="method" value="POST"/>
+                    <property name="user" value=""/>
+                    <property name="connector-ref" value=""/>
+                </properties>
+                <description></description>
+            </endpoint>
+        </lane>
+        <apikit>false</apikit>
+    </flow>
+    <description></description>
+</mule-configuration>

@@ -1,7 +1,10 @@
 package warehouse.service;
 
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlElement;
+import warehouse.data.*;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -13,7 +16,5 @@ public class OrderRequest {
 	@XmlElement(required=true, name="date")
 	public String dateOfDelivery;
 	@XmlElement(required=true, name="ref")
-	public int refProdct;
-	@XmlElement(required=true, name="quantity")
-	public int quantity;
+	public List<Product> listProduct;
 }

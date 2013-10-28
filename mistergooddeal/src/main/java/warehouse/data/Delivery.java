@@ -4,11 +4,21 @@ import java.util.Date;
 import java.util.List;
 
 public class Delivery {
+	
 	private String transporter;
 	private Date dateOfPickUp;
 	private List<Product> listProduct;
-	private int quantity;
 	
+	public Delivery(String transporter, Date dateOfPickUp,
+			List<Product> listProduct) {
+		super();
+		this.transporter = transporter;
+		this.dateOfPickUp = dateOfPickUp;
+		this.listProduct = listProduct;
+	}
+	public Delivery() {
+		super();
+	}
 	public String getTransporter() {
 		return transporter;
 	}
@@ -20,12 +30,6 @@ public class Delivery {
 	}
 	public void setDateOfPickUp(Date dateOfPickUp) {
 		this.dateOfPickUp = dateOfPickUp;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
 	}
 	public List<Product> getListProduct() {
 		return listProduct;

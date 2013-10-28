@@ -50,7 +50,7 @@ public class WareHouseServiceImpl implements WareHouseService {
 	
 	public OrderResponse makeOrder(OrderRequest request) {
 		OrderResponse response = new OrderResponse();
-		Order order = new Order(request.supplier, request.dateOfDelivery, request.refProdct, request.quantity);
+		Order order = new Order(request.supplier, request.dateOfDelivery, request.listProduct);
 		response.result = wh.addOrder(order);
 		return response;
 	}

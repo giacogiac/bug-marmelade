@@ -16,7 +16,6 @@ public interface WareHouseService {
 	public PlanningResponse getPlanning();
 	*/
 	
-	//Ne renvoi rien
 	@WebMethod
 	@WebResult(name="listNearOutOfStockResponse")
 	public ListNearOutOfStockResponse listNearOutOfStock();

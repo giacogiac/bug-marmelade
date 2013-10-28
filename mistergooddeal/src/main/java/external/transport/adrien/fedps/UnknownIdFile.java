@@ -1,4 +1,4 @@
-package external.transport.adrien.FedPS;
+package external.transport.adrien.fedps;
 
 public class UnknownIdFile extends Exception{
 

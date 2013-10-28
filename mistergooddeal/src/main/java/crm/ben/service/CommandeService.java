@@ -1,5 +1,8 @@
 package crm.ben.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -20,19 +23,29 @@ public class CommandeService {
 	@GET
 	@Path("/{commandeId}")
 	@Produces("text/json")
-	public Response getCustomer(@PathParam("commandeId") String commandeId) {
+	public Response getCommande(@PathParam("commandeId") String commandeId) {
 		Commande c = new Commande();
 		try {
 			c.setId(Long.valueOf(commandeId));
 			if (Server.getInstance().commandes.indexOf(c) != -1) {
 				c = Server.getInstance().commandes
 						.get(Server.getInstance().commandes.indexOf(c));
+				String resp="{\"id\": \"" + String.valueOf(c.getId())
+						+ "\", \"idCustomer\": \"" + c.getIdCustomer()
+						+ "\", " + "\"idProduit\": [";
+				for(Long id:c.getIdProduit()){
+					resp+="\""+Long.toString(id)+"\",";
+				}
+				resp=resp.substring(0, resp.length()-1);
+				resp+="]";
 				return Response
 						.status(Status.OK)
-						.entity("{\"id\": \"" + String.valueOf(c.getId())
-								+ "\", \"idCustomer\": \"" + c.getIdCustomer()
-								+ "\", " + "\"idProduit\": \""
-								+ c.getIdProduit() + "\"}").build();
+						.entity(
+								resp
+								+ "\", " + "\"deliveryAdress\": \""+ c.getDeliveryAdress()
+								+ "\", " + "\"deliveryType\": \""+ c.getDeliveryType()
+								+ "\", " + "\"status\": \""+ c.getStatus() 
+								+ "\"}").build();
 			}
 		} catch (NumberFormatException e) {
 
@@ -44,10 +57,16 @@ public class CommandeService {
 	@Path("/")
 	@Produces("text/json")
 	public Response creatCommande(@QueryParam("idCustomer") String idCustomer,
-			@QueryParam("idProduit") String idProduit) {
+			@QueryParam("idProduit") List<Long> idProduits,
+			@QueryParam("deliveryAdress") String deliveryAdress,
+			@QueryParam("deliveryType") String deliveryType,
+			@QueryParam("status") String status) {
 		Commande c = new Commande();
 		c.setIdCustomer(Long.valueOf(idCustomer));
-		c.setIdProduit(Long.valueOf(idProduit));
+		c.setIdProduit((ArrayList<Long>)idProduits);
+		c.setDeliveryAdress(deliveryAdress);
+		c.setStatus(status);
+		c.setDeliveryType(deliveryType);
 
 		return Response
 				.status(Status.OK)

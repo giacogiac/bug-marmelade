@@ -3,7 +3,7 @@ package external.warehouse.service;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(name="OrderResponse")
+@XmlType(name="OrderResp")
 public class OrderResponse {
 	
 	@XmlElement(required=true, name="result")

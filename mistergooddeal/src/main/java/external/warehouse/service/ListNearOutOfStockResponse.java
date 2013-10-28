@@ -9,7 +9,7 @@ import external.warehouse.data.Product;
 
 
 
-@XmlType(name="ListNearOutOfStockResponse")
+@XmlType(name="ListNearOutOfStockResp")
 
 public class ListNearOutOfStockResponse {
 	@XmlElement(required=true, name="listProduct")

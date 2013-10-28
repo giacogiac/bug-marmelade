@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
-@XmlType(name="LocationResponse")
+@XmlType(name="LocationResp")
 public class LocationResponse {
 	
 	@XmlElement(required=true, name="location")

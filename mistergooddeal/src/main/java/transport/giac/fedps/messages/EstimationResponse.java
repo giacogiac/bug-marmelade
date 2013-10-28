@@ -2,10 +2,9 @@ package transport.giac.fedps.messages;
 
 import javax.xml.bind.annotation.*;
 
-@XmlType(name = "EstimationResponse")
+@XmlType(name="ResponseEstimation")
 public class EstimationResponse {
 
-	@XmlElement(required = true, name = "quote")
 	public Quote quote;
 
 }

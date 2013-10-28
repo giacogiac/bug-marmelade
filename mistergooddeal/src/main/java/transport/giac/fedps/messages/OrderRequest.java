@@ -2,7 +2,7 @@ package transport.giac.fedps.messages;
 
 import javax.xml.bind.annotation.*;
 
-@XmlType(name = "OrderRequest")
+@XmlRootElement
 public class OrderRequest {
 
 	@XmlElement(required = true, name = "pickup")

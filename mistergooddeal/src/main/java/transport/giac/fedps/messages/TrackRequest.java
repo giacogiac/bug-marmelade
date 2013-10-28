@@ -2,7 +2,7 @@ package transport.giac.fedps.messages;
 
 import javax.xml.bind.annotation.*;
 
-@XmlType(name = "TrackRequest")
+@XmlRootElement
 public class TrackRequest {
 
 	@XmlElement(required = true, name = "order")

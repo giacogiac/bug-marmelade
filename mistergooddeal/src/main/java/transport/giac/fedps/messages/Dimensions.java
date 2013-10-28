@@ -2,7 +2,7 @@ package transport.giac.fedps.messages;
 
 import javax.xml.bind.annotation.*;
 
-@XmlType(name = "Dimensions")
+@XmlRootElement
 public class Dimensions {
 
 	@XmlElement(required = true, name = "width")

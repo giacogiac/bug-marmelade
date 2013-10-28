@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="DeliveryServiceService" targetNamespace="http://fedps.giac.transport/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://fedps.giac.transport/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://fedps.giac.transport/" xmlns:tns="http://fedps.giac.transport/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="dimensions" type="tns:dimensions"/>
+<xs:element name="estimation" type="tns:estimation"/>
+<xs:element name="estimationRequest" type="tns:estimationRequest"/>
+<xs:element name="estimationResponse" type="tns:estimationResponse"/>
+<xs:element name="order" type="tns:order"/>
+<xs:element name="orderRequest" type="tns:orderRequest"/>
+<xs:element name="orderResponse" type="tns:orderResponse"/>
+<xs:element name="track" type="tns:track"/>
+<xs:element name="trackRequest" type="tns:trackRequest"/>
+<xs:element name="trackResponse" type="tns:trackResponse"/>
+<xs:complexType name="order">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="tns:orderRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="orderRequest">
+<xs:sequence>
+<xs:element name="pickup" type="xs:string"/>
+<xs:element name="delivery" type="xs:string"/>
+<xs:element name="dimensions" type="tns:dimensions"/>
+<xs:element name="weigth" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="dimensions">
+<xs:sequence>
+<xs:element name="width" type="xs:int"/>
+<xs:element name="depth" type="xs:int"/>
+<xs:element name="height" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="orderResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="response" type="tns:ResponseOrder"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ResponseOrder">
+<xs:sequence>
+<xs:element minOccurs="0" name="orderId" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="estimation">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="tns:estimationRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="estimationRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="pickup" type="xs:string"/>
+<xs:element minOccurs="0" name="delivery" type="xs:string"/>
+<xs:element name="dimensions" type="tns:dimensions"/>
+<xs:element name="weigth" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="estimationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="response" type="tns:ResponseEstimation"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ResponseEstimation">
+<xs:sequence>
+<xs:element minOccurs="0" name="quote" type="tns:quote"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="quote">
+<xs:sequence>
+<xs:element minOccurs="0" name="edd" type="xs:dateTime"/>
+<xs:element name="price" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="track">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="tns:trackRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="trackRequest">
+<xs:sequence>
+<xs:element name="order" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="trackResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="response" type="tns:ResponseTrack"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ResponseTrack">
+<xs:sequence>
+<xs:element minOccurs="0" name="location" type="xs:string"/>
+<xs:element minOccurs="0" name="edd" type="xs:dateTime"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="DeliveryFault" type="tns:DeliveryFault"/>
+<xs:complexType name="DeliveryFault">
+<xs:sequence/>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="orderResponse">
+    <wsdl:part element="tns:orderResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="order">
+    <wsdl:part element="tns:order" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="estimation">
+    <wsdl:part element="tns:estimation" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="track">
+    <wsdl:part element="tns:track" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="estimationResponse">
+    <wsdl:part element="tns:estimationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeliveryFault">
+    <wsdl:part element="tns:DeliveryFault" name="DeliveryFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="trackResponse">
+    <wsdl:part element="tns:trackResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="delivery">
+    <wsdl:operation name="order">
+      <wsdl:input message="tns:order" name="order">
+    </wsdl:input>
+      <wsdl:output message="tns:orderResponse" name="orderResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DeliveryFault" name="DeliveryFault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="estimation">
+      <wsdl:input message="tns:estimation" name="estimation">
+    </wsdl:input>
+      <wsdl:output message="tns:estimationResponse" name="estimationResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DeliveryFault" name="DeliveryFault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="track">
+      <wsdl:input message="tns:track" name="track">
+    </wsdl:input>
+      <wsdl:output message="tns:trackResponse" name="trackResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DeliveryFault" name="DeliveryFault">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DeliveryServiceServiceSoapBinding" type="tns:delivery">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="order">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="order">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="orderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DeliveryFault">
+        <soap:fault name="DeliveryFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="estimation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="estimation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="estimationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DeliveryFault">
+        <soap:fault name="DeliveryFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="track">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="track">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="trackResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DeliveryFault">
+        <soap:fault name="DeliveryFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DeliveryServiceService">
+    <wsdl:port binding="tns:DeliveryServiceServiceSoapBinding" name="deliveryPort">
+      <soap:address location="http://localhost:8090/ext/fedps_giac"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

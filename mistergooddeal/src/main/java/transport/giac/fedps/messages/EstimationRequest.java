@@ -2,7 +2,7 @@ package transport.giac.fedps.messages;
 
 import javax.xml.bind.annotation.*;
 
-@XmlType(name = "EstimationRequest")
+@XmlRootElement
 public class EstimationRequest {
 
 	@XmlElement(required = false, name = "pickup")

@@ -7,9 +7,9 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
     <flow name="customer_ha_flo" doc:name="customer_ha_flo">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="crmha" doc:name="HTTP"/>
         <jersey:resources doc:name="REST">
-            <component class="crm.ha.customer.Customer"/>
-            <component class="crm.ha.product.Product"/>
-            <component class="crm.ha.customer.Order"/>
+            <component class="external.crm.ha.customer.Order"/>
+            <component class="external.crm.ha.product.Product"/>
+            <component class="external.crm.ha.customer.Customer"/>
         </jersey:resources>
     </flow>
 </mule>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="internal-warehouse_david">
-    <flow SubFlow="false" name="client-warehouse-makeOrder" entity-id="513fe4db-4273-4542-abca-30abea006d7c">
+    <flow SubFlow="false" name="client-warehouse-makeOrder" entity-id="71fca591-0098-40ab-b179-b9923033aa94">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
-            <property name="tracking:enable-default-events"/>
             <property name="auxiliary;index" value="1"/>
+            <property name="tracking:enable-default-events"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#1">
             <graphicalData x="0" y="0" width="0" height="0"/>
@@ -20,29 +20,29 @@
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="address"/>
-                    <property name="path" value="vm/internal/client/warehouse/makeOrder"/>
+                    <property name="path" value="/vm/internal/client/warehouse/makeOrder"/>
                     <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="mimeType"/>
                     <property name="auxiliary;index" value="2"/>
                     <property name="responseTimeout"/>
+                    <property name="mimeType"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>
             <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#1">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="WarehouseServicePort"/>
                     <property name="wsdlLocation"/>
-                    <property name="operation" value="makeOrder"/>
+                    <property name="port" value="WareHouseServicePort"/>
                     <property name="serviceClass"/>
+                    <property name="operation" value="makeOrder"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
                     <property name="mtomEnabled"/>
                     <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
                     <property name="configuration-ref"/>
-                    <property name="clientClass" value="proxies.ext.warehouse_david.WarehouseService"/>
-                    <property name="decoupledEndpoint"/>
                     <property name="auxiliary;index" value="3"/>
+                    <property name="decoupledEndpoint"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/warehouse_david/makeOrder" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#1">
@@ -60,36 +60,31 @@
                     <property name="exchange-pattern" value="request-response"/>
                     <property name="tracking:enable-default-events"/>
                     <property name="ref"/>
-                    <property name="httpLabel"/>
                     <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
                     <property name="address"/>
-                    <property name="encoding"/>
                     <property name="path" value="ext/warehouse_david/makeOrder"/>
+                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
                     <property name="method" value="POST"/>
                     <property name="user"/>
-                    <property name="mimeType"/>
-                    <property name="responseTimeout"/>
                     <property name="auxiliary;index" value="4"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
         <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="client-warehouse-getLocation" entity-id="c570d8cd-a2c8-4d20-a866-886ca592184c">
+    <flow SubFlow="false" name="client-warehouse-getLocation" entity-id="7b4bf771-9b79-40a6-b84f-dc0be761e3be">
         <properties>
-            <property name="updated"/>
-            <property name="processingStrategy2" value=""/>
-            <property name="bussinessEventsLabel" value=""/>
-            <property name="tracking:enable-default-events" value="false"/>
-            <property name="auxiliary;erased;processingStrategy2" value="true"/>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="5"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;1094135223">
-                <property name="isProcessed$$$$" value="true"/>
-            </property-collection>
+            <property name="tracking:enable-default-events"/>
         </properties>
-        <description></description>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#2">
             <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/warehouse/getLocation" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#2">
@@ -102,29 +97,29 @@
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="address"/>
-                    <property name="path" value="vm/internal/client/warehouse/getLocation"/>
+                    <property name="path" value="/vm/internal/client/warehouse/getLocation"/>
                     <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="mimeType"/>
                     <property name="auxiliary;index" value="6"/>
                     <property name="responseTimeout"/>
+                    <property name="mimeType"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>
             <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#2">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="WarehouseServicePort"/>
                     <property name="wsdlLocation"/>
-                    <property name="operation" value="getLocation"/>
+                    <property name="port" value="WareHouseServicePort"/>
                     <property name="serviceClass"/>
+                    <property name="operation" value="getLocation"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
                     <property name="mtomEnabled"/>
                     <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
                     <property name="configuration-ref"/>
-                    <property name="clientClass" value="proxies.ext.warehouse_david.WarehouseService"/>
-                    <property name="decoupledEndpoint"/>
                     <property name="auxiliary;index" value="7"/>
+                    <property name="decoupledEndpoint"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/warehouse_david/getLocation" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#2">
@@ -142,38 +137,33 @@
                     <property name="exchange-pattern" value="request-response"/>
                     <property name="tracking:enable-default-events"/>
                     <property name="ref"/>
-                    <property name="httpLabel"/>
                     <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
                     <property name="address"/>
-                    <property name="encoding"/>
                     <property name="path" value="ext/warehouse_david/getLocation"/>
+                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
                     <property name="method" value="POST"/>
                     <property name="user"/>
-                    <property name="mimeType"/>
-                    <property name="responseTimeout"/>
                     <property name="auxiliary;index" value="8"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
         <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="client-warehouse_david-getPlanning" entity-id="246c13a5-2fae-467d-a439-bd101182bf9d">
+    <flow SubFlow="false" name="client-warehouse_david-getPlanning" entity-id="22062e71-60d1-45c0-9148-e98b72b74f65">
         <properties>
-            <property name="updated"/>
-            <property name="processingStrategy2" value=""/>
-            <property name="bussinessEventsLabel" value=""/>
-            <property name="tracking:enable-default-events" value="false"/>
-            <property name="auxiliary;erased;processingStrategy2" value="true"/>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="9"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;152103000">
-                <property name="isProcessed$$$$" value="true"/>
-            </property-collection>
+            <property name="tracking:enable-default-events"/>
         </properties>
-        <description></description>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#3">
-            <graphicalData x="14" y="529" width="763" height="181"/>
+            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/warehouse_david/getPlanning" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#3">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
@@ -184,30 +174,29 @@
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="address"/>
-                    <property name="path" value="vm/internal/client/warehouse_david/getPlanning"/>
+                    <property name="path" value="/vm/internal/client/warehouse_david/getPlanning"/>
                     <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="mimeType"/>
                     <property name="auxiliary;index" value="10"/>
                     <property name="responseTimeout"/>
+                    <property name="mimeType"/>
                     <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
             <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#3">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="WarehouseServicePort"/>
                     <property name="wsdlLocation"/>
-                    <property name="operation" value="getPlanning"/>
+                    <property name="port" value="WareHouseServicePort"/>
                     <property name="serviceClass"/>
+                    <property name="operation" value="getPlanning"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
                     <property name="mtomEnabled"/>
                     <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
                     <property name="configuration-ref"/>
-                    <property name="clientClass" value="proxies.ext.warehouse_david.WarehouseService"/>
-                    <property name="decoupledEndpoint"/>
                     <property name="auxiliary;index" value="11"/>
+                    <property name="decoupledEndpoint"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/warehouse_david/getPlanning" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#3">
@@ -225,235 +214,173 @@
                     <property name="exchange-pattern" value="request-response"/>
                     <property name="tracking:enable-default-events"/>
                     <property name="ref"/>
-                    <property name="httpLabel"/>
                     <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
                     <property name="address"/>
-                    <property name="encoding"/>
                     <property name="path" value="ext/warehouse_david/getPlanning"/>
+                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
                     <property name="method" value="POST"/>
                     <property name="user"/>
-                    <property name="mimeType"/>
-                    <property name="responseTimeout"/>
                     <property name="auxiliary;index" value="12"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
         <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="client-warehouse_david-listNearOutOfStock" entity-id="3da1d03c-8cad-47d6-acdf-6c0d057727af">
+    <flow SubFlow="false" name="client-warehouse_david-listNearOutOfStock" entity-id="8806e821-f0f5-4543-a830-3832e6e738a5">
         <properties>
-            <property name="updated"/>
-            <property name="processingStrategy2" value=""/>
-            <property name="bussinessEventsLabel" value=""/>
-            <property name="tracking:enable-default-events" value="false"/>
-            <property name="auxiliary;erased;processingStrategy2" value="true"/>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="13"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;353434605">
-                <property name="isProcessed$$$$" value="true"/>
-            </property-collection>
+            <property name="tracking:enable-default-events"/>
         </properties>
-        <description></description>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#4">
-            <graphicalData x="14" y="778" width="857" height="181"/>
+            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/warehouse_david/listNearOutOfStock" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#4">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
-                    <property name="businessEventsLabel" value=""/>
-                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events" value="false"/>
-                    <property name="ref" value=""/>
-                    <property name="transformer-refs" value=""/>
-                    <property name="updated"/>
-                    <property name="address" value=""/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
-                    <property name="path" value="vm/internal/client/warehouse_david/listNearOutOfStock"/>
-                    <property name="responseTransformer-refs" value=""/>
-                    <property name="responseTimeout" value=""/>
-                    <property name="mimeType" value=""/>
-                    <property name="auxiliary;erased;responseTimeout" value="true"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
+                    <property name="path" value="/vm/internal/client/warehouse_david/listNearOutOfStock"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
                     <property name="auxiliary;index" value="14"/>
-                    <property name="connector-ref" value=""/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
             <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#4">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="WarehouseServicePort"/>
-                    <property name="wsdlLocation" value=""/>
-                    <property name="serviceClass" value=""/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="DATABINDING" value=""/>
-                    <property name="configuration-ref" value=""/>
+                    <property name="wsdlLocation"/>
+                    <property name="port" value="WareHouseServicePort"/>
+                    <property name="serviceClass"/>
                     <property name="operation" value="listNearOutOfStock"/>
-                    <property name="auxiliary;erased;DATABINDING" value="true"/>
-                    <property name="updated"/>
-                    <property name="mtomEnabled" value="false"/>
-                    <property name="propertiesLabel" value=""/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
+                    <property name="mtomEnabled"/>
                     <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.warehouse_david.WarehouseService"/>
-                    <property name="decoupledEndpoint" value=""/>
+                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
+                    <property name="configuration-ref"/>
                     <property name="auxiliary;index" value="15"/>
-                    <property-collection name="">
-                        <property name="auxiliary;erased;DATABINDING" value="true"/>
-                        <property name="DATABINDING" value=""/>
-                        <property name="propertiesLabel" value=""/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-security-without-token-validator;154278813">
-                        <property name="isProcessed$$$$" value="true"/>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-config;1041616051">
-                            <property name="isProcessed$$$$" value="true"/>
-                        </property-collection>
-                    </property-collection>
+                    <property name="decoupledEndpoint"/>
                 </properties>
-                <description></description>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/warehouse_david/listNearOutOfStock" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#4">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
                     <property name="port" value="8090"/>
-                    <property name="contentType" value=""/>
-                    <property name="password" value=""/>
-                    <property name="tracking:enable-default-events" value="false"/>
-                    <property name="exchange-pattern" value="request-response"/>
-                    <property name="updated"/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="path" value="ext/warehouse_david/listNearOutOfStock"/>
-                    <property name="encoding" value=""/>
-                    <property name="responseTransformer-refs" value=""/>
-                    <property name="auxiliary;index" value="16"/>
-                    <property name="responseTimeout" value="10000"/>
-                    <property name="mimeType" value=""/>
-                    <property name="auxiliary;erased;contentType" value="true"/>
                     <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel" value=""/>
-                    <property name="followRedirects" value="false"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="followRedirects"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive" value="false"/>
-                    <property name="disableTransportTransformer" value="false"/>
-                    <property name="ref" value=""/>
-                    <property name="transformer-refs" value=""/>
-                    <property name="httpLabel" value=""/>
-                    <property name="address" value=""/>
+                    <property name="keep-alive"/>
+                    <property name="contentType"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="password"/>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
+                    <property name="address"/>
+                    <property name="path" value="ext/warehouse_david/listNearOutOfStock"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
                     <property name="method" value="POST"/>
-                    <property name="user" value=""/>
-                    <property name="connector-ref" value=""/>
+                    <property name="user"/>
+                    <property name="auxiliary;index" value="16"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
         </lane>
         <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="client-warehouse_david-getQuantity" entity-id="2507a626-b805-4794-b761-4a5ef1520930">
+    <flow SubFlow="false" name="client-warehouse_david-getQuantity" entity-id="cf4af89b-9e49-45a6-8c59-5df6a3faa9bb">
         <properties>
-            <property name="updated"/>
-            <property name="processingStrategy2" value=""/>
-            <property name="bussinessEventsLabel" value=""/>
-            <property name="tracking:enable-default-events" value="false"/>
-            <property name="auxiliary;erased;processingStrategy2" value="true"/>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="17"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;2018338537">
-                <property name="isProcessed$$$$" value="true"/>
-            </property-collection>
+            <property name="tracking:enable-default-events"/>
         </properties>
-        <description></description>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#5">
-            <graphicalData x="14" y="1027" width="763" height="181"/>
+            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/warehouse_david/getQuantity" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#5">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
-                    <property name="businessEventsLabel" value=""/>
-                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events" value="false"/>
-                    <property name="ref" value=""/>
-                    <property name="transformer-refs" value=""/>
-                    <property name="updated"/>
-                    <property name="address" value=""/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
-                    <property name="path" value="vm/internal/client/warehouse_david/getQuantity"/>
-                    <property name="responseTransformer-refs" value=""/>
-                    <property name="responseTimeout" value=""/>
-                    <property name="mimeType" value=""/>
-                    <property name="auxiliary;erased;responseTimeout" value="true"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
+                    <property name="path" value="/vm/internal/client/warehouse_david/getQuantity"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
                     <property name="auxiliary;index" value="18"/>
-                    <property name="connector-ref" value=""/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
             <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#5">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="WarehouseServicePort"/>
-                    <property name="wsdlLocation" value=""/>
-                    <property name="serviceClass" value=""/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="DATABINDING" value=""/>
-                    <property name="configuration-ref" value=""/>
+                    <property name="wsdlLocation"/>
+                    <property name="port" value="WareHouseServicePort"/>
+                    <property name="serviceClass"/>
                     <property name="operation" value="getQuantity"/>
-                    <property name="auxiliary;erased;DATABINDING" value="true"/>
-                    <property name="updated"/>
-                    <property name="mtomEnabled" value="false"/>
-                    <property name="propertiesLabel" value=""/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
+                    <property name="mtomEnabled"/>
                     <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.warehouse_david.WarehouseService"/>
-                    <property name="decoupledEndpoint" value=""/>
+                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
+                    <property name="configuration-ref"/>
                     <property name="auxiliary;index" value="19"/>
-                    <property-collection name="">
-                        <property name="auxiliary;erased;DATABINDING" value="true"/>
-                        <property name="DATABINDING" value=""/>
-                        <property name="propertiesLabel" value=""/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-security-without-token-validator;1291179521">
-                        <property name="isProcessed$$$$" value="true"/>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-config;1053438827">
-                            <property name="isProcessed$$$$" value="true"/>
-                        </property-collection>
-                    </property-collection>
+                    <property name="decoupledEndpoint"/>
                 </properties>
-                <description></description>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/warehouse_david/getQuantity" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#5">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="port" value="8090"/>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
-                    <property name="contentType" value=""/>
-                    <property name="password" value=""/>
-                    <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events" value="false"/>
-                    <property name="updated"/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
-                    <property name="path" value="ext/warehouse_david/getQuantity"/>
-                    <property name="responseTransformer-refs" value=""/>
-                    <property name="auxiliary;index" value="20"/>
-                    <property name="responseTimeout" value="10000"/>
-                    <property name="mimeType" value=""/>
-                    <property name="auxiliary;erased;contentType" value="true"/>
                     <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel" value=""/>
-                    <property name="followRedirects" value="false"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="followRedirects"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive" value="false"/>
-                    <property name="disableTransportTransformer" value="false"/>
-                    <property name="ref" value=""/>
-                    <property name="transformer-refs" value=""/>
-                    <property name="httpLabel" value=""/>
-                    <property name="address" value=""/>
+                    <property name="keep-alive"/>
+                    <property name="contentType"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="password"/>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
+                    <property name="address"/>
+                    <property name="path" value="ext/warehouse_david/getQuantity"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
                     <property name="method" value="POST"/>
-                    <property name="user" value=""/>
-                    <property name="connector-ref" value=""/>
+                    <property name="user"/>
+                    <property name="auxiliary;index" value="20"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
         </lane>
         <apikit>false</apikit>

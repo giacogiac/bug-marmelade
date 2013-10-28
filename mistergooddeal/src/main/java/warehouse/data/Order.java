@@ -9,21 +9,18 @@ public class Order implements Serializable{
 	
 	private String supplier;
 	private String dateOfDelivery;
-	private List<Product> listProduct;
-	private int quantity;
+	private List<Product> listProduct;;
 	
 	
 	
 	public Order() {
 		super();
 	}
-	public Order(String supplier, String dateOfDelivery, List<Product> listProduct,
-			int quantity) {
+	public Order(String supplier, String dateOfDelivery, List<Product> listProduct) {
 		super();
 		this.supplier = supplier;
 		this.dateOfDelivery = dateOfDelivery;
 		this.listProduct = listProduct;
-		this.quantity = quantity;
 	}
 	public String getSupplier() {
 		return supplier;
@@ -43,11 +40,5 @@ public class Order implements Serializable{
 	}
 	public void setListProduct(List<Product> listProduct) {
 		this.listProduct = listProduct;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
 	}
 }

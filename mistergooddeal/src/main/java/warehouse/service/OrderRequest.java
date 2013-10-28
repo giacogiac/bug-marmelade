@@ -17,6 +17,4 @@ public class OrderRequest {
 	public String dateOfDelivery;
 	@XmlElement(required=true, name="ref")
 	public List<Product> listProduct;
-	@XmlElement(required=true, name="quantity")
-	public int quantity;
 }

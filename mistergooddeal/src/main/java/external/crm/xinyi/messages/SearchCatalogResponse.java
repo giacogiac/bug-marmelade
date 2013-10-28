@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.xml.bind.annotation.*;
 
-@XmlType(name = "SearchCatalogResponse")
+@XmlType(name = "ResponseSearchCatalog")
 public class SearchCatalogResponse {
 	@XmlElement(required = true, name = "productsFound")
 	public List<Product> productsFound;

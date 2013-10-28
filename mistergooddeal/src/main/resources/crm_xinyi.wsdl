@@ -1,0 +1,439 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xinyi.crm.external/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="Crm" targetNamespace="http://xinyi.crm.external/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://xinyi.crm.external/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://xinyi.crm.external/">
+<xs:element name="addOrder" type="tns:addOrder"/>
+<xs:element name="addOrderResponse" type="tns:addOrderResponse"/>
+<xs:element name="createCustomer" type="tns:createCustomer"/>
+<xs:element name="createCustomerResponse" type="tns:createCustomerResponse"/>
+<xs:element name="deleteCustomer" type="tns:deleteCustomer"/>
+<xs:element name="deleteCustomerResponse" type="tns:deleteCustomerResponse"/>
+<xs:element name="deleteOrder" type="tns:deleteOrder"/>
+<xs:element name="deleteOrderResponse" type="tns:deleteOrderResponse"/>
+<xs:element name="getCustomer" type="tns:getCustomer"/>
+<xs:element name="getCustomerOrder" type="tns:getCustomerOrder"/>
+<xs:element name="getCustomerOrderResponse" type="tns:getCustomerOrderResponse"/>
+<xs:element name="getCustomerPreferredProducts" type="tns:getCustomerPreferredProducts"/>
+<xs:element name="getCustomerPreferredProductsResponse" type="tns:getCustomerPreferredProductsResponse"/>
+<xs:element name="getCustomerResponse" type="tns:getCustomerResponse"/>
+<xs:element name="searchCatalog" type="tns:searchCatalog"/>
+<xs:element name="searchCatalogResponse" type="tns:searchCatalogResponse"/>
+<xs:complexType name="addOrder">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="tns:AddOrderRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="AddOrderRequest">
+<xs:sequence>
+<xs:element name="username" type="xs:string"/>
+<xs:element name="order" type="tns:Order"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Order">
+<xs:sequence>
+<xs:element name="identifier" type="xs:int"/>
+<xs:element name="statu" type="xs:string"/>
+<xs:element maxOccurs="unbounded" name="products" type="tns:Product"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Product">
+<xs:sequence>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element minOccurs="0" name="category" type="xs:string"/>
+<xs:element minOccurs="0" name="reference" type="xs:string"/>
+<xs:element name="price" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="addOrderResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="response" type="tns:ResponseAddOrder"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ResponseAddOrder">
+<xs:sequence>
+<xs:element name="identifier" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCustomer">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="tns:DeleteCustomerRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeleteCustomerRequest">
+<xs:sequence>
+<xs:element name="goal" type="xs:string"/>
+<xs:element name="username" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCustomerResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="response" type="tns:ResponseGetCustomer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ResponseGetCustomer">
+<xs:sequence>
+<xs:element name="Customer" type="tns:Customer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Customer">
+<xs:sequence>
+<xs:element name="username" type="xs:string"/>
+<xs:element name="password" type="xs:string"/>
+<xs:element name="PersonalInformation" type="tns:PersonalInformation"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="orders" type="tns:Order"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="PersonalInformation">
+<xs:sequence>
+<xs:element minOccurs="0" name="firstName" type="xs:string"/>
+<xs:element minOccurs="0" name="lastName" type="xs:string"/>
+<xs:element minOccurs="0" name="deliveryAddress" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteOrder">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="tns:DeleteOrderRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeleteOrderRequest">
+<xs:sequence>
+<xs:element name="username" type="xs:string"/>
+<xs:element name="identifier" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteOrderResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="response" type="tns:ResponseDeleteCustomer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ResponseDeleteCustomer">
+<xs:sequence>
+<xs:element name="remove" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="searchCatalog">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="tns:SearchCatalogRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SearchCatalogRequest">
+<xs:sequence>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element minOccurs="0" name="category" type="xs:string"/>
+<xs:element minOccurs="0" name="reference" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="searchCatalogResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="response" type="tns:ResponseSearchCatalog"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ResponseSearchCatalog">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="productsFound" type="tns:Product"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createCustomer">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="tns:CreateCustomerRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CreateCustomerRequest">
+<xs:sequence>
+<xs:element name="Customer" type="tns:Customer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createCustomerResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="response" type="tns:ResponseCreateCustomer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ResponseCreateCustomer">
+<xs:sequence>
+<xs:element name="idCustomer" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteCustomer">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="tns:DeleteCustomerRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteCustomerResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="response" type="tns:ResponseDeleteCustomer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCustomerOrder">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="tns:DeleteCustomerRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCustomerOrderResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="response" type="tns:ResponseGetCustomerOrder"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ResponseGetCustomerOrder">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="orders" type="tns:Order"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCustomerPreferredProducts">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="tns:DeleteCustomerRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCustomerPreferredProductsResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="response" type="tns:ResponseGetCustomerPreferredProducts"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ResponseGetCustomerPreferredProducts">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="PreferredProducts" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="CrmExceptions" type="tns:CrmExceptions"/>
+<xs:complexType name="CrmExceptions">
+<xs:sequence/>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="searchCatalog">
+    <wsdl:part element="tns:searchCatalog" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchCatalogResponse">
+    <wsdl:part element="tns:searchCatalogResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addOrder">
+    <wsdl:part element="tns:addOrder" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteOrder">
+    <wsdl:part element="tns:deleteOrder" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteOrderResponse">
+    <wsdl:part element="tns:deleteOrderResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomerResponse">
+    <wsdl:part element="tns:getCustomerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomerPreferredProducts">
+    <wsdl:part element="tns:getCustomerPreferredProducts" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CrmExceptions">
+    <wsdl:part element="tns:CrmExceptions" name="CrmExceptions">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCustomerResponse">
+    <wsdl:part element="tns:createCustomerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addOrderResponse">
+    <wsdl:part element="tns:addOrderResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomerOrderResponse">
+    <wsdl:part element="tns:getCustomerOrderResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomer">
+    <wsdl:part element="tns:getCustomer" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteCustomerResponse">
+    <wsdl:part element="tns:deleteCustomerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCustomer">
+    <wsdl:part element="tns:createCustomer" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomerPreferredProductsResponse">
+    <wsdl:part element="tns:getCustomerPreferredProductsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomerOrder">
+    <wsdl:part element="tns:getCustomerOrder" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteCustomer">
+    <wsdl:part element="tns:deleteCustomer" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CrmService">
+    <wsdl:operation name="addOrder">
+      <wsdl:input message="tns:addOrder" name="addOrder">
+    </wsdl:input>
+      <wsdl:output message="tns:addOrderResponse" name="addOrderResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CrmExceptions" name="CrmExceptions">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomer">
+      <wsdl:input message="tns:getCustomer" name="getCustomer">
+    </wsdl:input>
+      <wsdl:output message="tns:getCustomerResponse" name="getCustomerResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CrmExceptions" name="CrmExceptions">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOrder">
+      <wsdl:input message="tns:deleteOrder" name="deleteOrder">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteOrderResponse" name="deleteOrderResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CrmExceptions" name="CrmExceptions">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchCatalog">
+      <wsdl:input message="tns:searchCatalog" name="searchCatalog">
+    </wsdl:input>
+      <wsdl:output message="tns:searchCatalogResponse" name="searchCatalogResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CrmExceptions" name="CrmExceptions">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCustomer">
+      <wsdl:input message="tns:createCustomer" name="createCustomer">
+    </wsdl:input>
+      <wsdl:output message="tns:createCustomerResponse" name="createCustomerResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CrmExceptions" name="CrmExceptions">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCustomer">
+      <wsdl:input message="tns:deleteCustomer" name="deleteCustomer">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteCustomerResponse" name="deleteCustomerResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CrmExceptions" name="CrmExceptions">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomerOrder">
+      <wsdl:input message="tns:getCustomerOrder" name="getCustomerOrder">
+    </wsdl:input>
+      <wsdl:output message="tns:getCustomerOrderResponse" name="getCustomerOrderResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CrmExceptions" name="CrmExceptions">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomerPreferredProducts">
+      <wsdl:input message="tns:getCustomerPreferredProducts" name="getCustomerPreferredProducts">
+    </wsdl:input>
+      <wsdl:output message="tns:getCustomerPreferredProductsResponse" name="getCustomerPreferredProductsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:CrmExceptions" name="CrmExceptions">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CrmSoapBinding" type="tns:CrmService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addOrder">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addOrder">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CrmExceptions">
+        <soap:fault name="CrmExceptions" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCustomer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCustomerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CrmExceptions">
+        <soap:fault name="CrmExceptions" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOrder">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteOrder">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CrmExceptions">
+        <soap:fault name="CrmExceptions" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchCatalog">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="searchCatalog">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchCatalogResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CrmExceptions">
+        <soap:fault name="CrmExceptions" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createCustomer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createCustomerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CrmExceptions">
+        <soap:fault name="CrmExceptions" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteCustomer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteCustomerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CrmExceptions">
+        <soap:fault name="CrmExceptions" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomerOrder">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCustomerOrder">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCustomerOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CrmExceptions">
+        <soap:fault name="CrmExceptions" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomerPreferredProducts">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCustomerPreferredProducts">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCustomerPreferredProductsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CrmExceptions">
+        <soap:fault name="CrmExceptions" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Crm">
+    <wsdl:port binding="tns:CrmSoapBinding" name="CrmServicePort">
+      <soap:address location="http://localhost:8090/ext/crm_xinyi"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

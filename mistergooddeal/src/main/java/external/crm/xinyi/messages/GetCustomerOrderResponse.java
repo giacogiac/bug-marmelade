@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.xml.bind.annotation.*;
 
-@XmlType(name = "GetCustomerOrderResponse")
+@XmlType(name = "ResponseGetCustomerOrder")
 public class GetCustomerOrderResponse {
 	@XmlElement(name = "orders")
 	public List<Order> orders;

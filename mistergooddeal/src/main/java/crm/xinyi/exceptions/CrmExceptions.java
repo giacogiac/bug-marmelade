@@ -1,4 +1,4 @@
-package crm.xingi.exceptions;
+package crm.xinyi.exceptions;
 
 public class CrmExceptions extends Exception{
 

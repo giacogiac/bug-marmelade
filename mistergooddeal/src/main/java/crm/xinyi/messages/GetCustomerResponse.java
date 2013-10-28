@@ -1,11 +1,9 @@
-package crm.xingi.messages;
+package crm.xinyi.messages;
 
 import javax.xml.bind.annotation.*;
 
-@XmlType(name = "CreateCustomerRequest")
-public class CreateCustomerRequest {
-	
+@XmlType(name = "GetCustomerResponse")
+public class GetCustomerResponse {
 	@XmlElement(required = true, name = "Customer")
 	public Customer customer;
-	
 }

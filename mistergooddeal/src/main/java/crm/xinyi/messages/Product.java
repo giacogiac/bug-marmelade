@@ -1,4 +1,4 @@
-package crm.xingi.messages;
+package crm.xinyi.messages;
 
 import javax.xml.bind.annotation.*;
 

@@ -1,9 +1,9 @@
-package crm.xingi;
+package crm.xinyi;
 
 import javax.jws.*;
 
-import crm.xingi.exceptions.*;
-import crm.xingi.messages.*;
+import crm.xinyi.exceptions.*;
+import crm.xinyi.messages.*;
 
 @WebService(serviceName = "Crm")
 public interface CrmService {

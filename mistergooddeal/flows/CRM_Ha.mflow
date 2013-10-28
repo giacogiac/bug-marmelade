@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="CRM_Ha">
-    <flow SubFlow="false" name="customer_ha_flo" entity-id="9282544e-5a89-4fdf-9b27-7856e007284c">
+    <flow SubFlow="false" name="customer_ha_flo" entity-id="af4a4e24-387f-4f0e-8dbe-5641f4865e8e">
         <properties>
             <property name="processingStrategy"/>
-            <property name="initialState"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
-            <property name="tracking:enable-default-events"/>
             <property name="auxiliary;index" value="1"/>
+            <property name="tracking:enable-default-events"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#1">
             <graphicalData x="0" y="0" width="0" height="0"/>
@@ -26,17 +26,17 @@
                     <property name="exchange-pattern" value="request-response"/>
                     <property name="tracking:enable-default-events"/>
                     <property name="ref"/>
-                    <property name="httpLabel"/>
                     <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
                     <property name="address"/>
-                    <property name="encoding"/>
                     <property name="path" value="crmha"/>
+                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
                     <property name="method"/>
                     <property name="user"/>
-                    <property name="mimeType"/>
-                    <property name="responseTimeout"/>
                     <property name="auxiliary;index" value="2"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>
@@ -46,25 +46,19 @@
                     <property name="ref" value=""/>
                     <property name="updated"/>
                     <property name="auxiliary;index" value="3"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;0">
-                        <property name="class" value="crm.ha.customer.Customer"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;1780876">
+                        <property name="class" value="external.crm.ha.customer.Order"/>
                         <property name="isProcessed$$$$" value="true"/>
-                        <property name="auxiliary;wrapIn" value="4"/>
-                        <property name="auxiliary;index" value="4"/>
                     </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;1">
-                        <property name="class" value="crm.ha.product.Product"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;16222570">
+                        <property name="class" value="external.crm.ha.product.Product"/>
                         <property name="isProcessed$$$$" value="true"/>
-                        <property name="auxiliary;wrapIn" value="5"/>
-                        <property name="auxiliary;index" value="5"/>
                     </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;2">
-                        <property name="class" value="crm.ha.customer.Order"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;16895832">
+                        <property name="class" value="external.crm.ha.customer.Customer"/>
                         <property name="isProcessed$$$$" value="true"/>
-                        <property name="auxiliary;wrapIn" value="6"/>
-                        <property name="auxiliary;index" value="6"/>
                     </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;1900149713">
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;31179659">
                         <property name="ref" value=""/>
                         <property name="isProcessed$$$$" value="true"/>
                     </property-collection>

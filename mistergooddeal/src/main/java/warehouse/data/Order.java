@@ -1,6 +1,7 @@
 package warehouse.data;
 
-import java.io.Serializable;;
+import java.io.Serializable;
+import java.util.List;
 
 public class Order implements Serializable{
 	
@@ -8,7 +9,7 @@ public class Order implements Serializable{
 	
 	private String supplier;
 	private String dateOfDelivery;
-	private int refProdct;
+	private List<Product> listProduct;
 	private int quantity;
 	
 	
@@ -16,12 +17,12 @@ public class Order implements Serializable{
 	public Order() {
 		super();
 	}
-	public Order(String supplier, String dateOfDelivery, int refProdct,
+	public Order(String supplier, String dateOfDelivery, List<Product> listProduct,
 			int quantity) {
 		super();
 		this.supplier = supplier;
 		this.dateOfDelivery = dateOfDelivery;
-		this.refProdct = refProdct;
+		this.listProduct = listProduct;
 		this.quantity = quantity;
 	}
 	public String getSupplier() {
@@ -36,11 +37,12 @@ public class Order implements Serializable{
 	public void setDateOfDelivery(String dateOfDelivery) {
 		this.dateOfDelivery = dateOfDelivery;
 	}
-	public int getRefProdct() {
-		return refProdct;
+	
+	public List<Product> getListProduct() {
+		return listProduct;
 	}
-	public void setRefProdct(int refProdct) {
-		this.refProdct = refProdct;
+	public void setListProduct(List<Product> listProduct) {
+		this.listProduct = listProduct;
 	}
 	public int getQuantity() {
 		return quantity;

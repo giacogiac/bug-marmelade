@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="external">
-    <flow SubFlow="false" name="WH_David" entity-id="f0bb9807-b831-4100-81b2-bc6f1dcb3716">
+    <flow SubFlow="false" name="WH_David" entity-id="a3a5d22d-d3f9-44d2-9dfe-b1b609d3cf4f">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="1"/>
             <property name="tracking:enable-default-events"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#1">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/wh_david" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#1">
+            <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/warehouse_david" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#1">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="port" value="8090"/>
@@ -48,7 +49,7 @@
                     <property name="auxiliary;index" value="3"/>
                 </properties>
             </pattern>
-            <pattern name="wh_david" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#1">
+            <pattern name="warehouse_david" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#1">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="port"/>
@@ -62,12 +63,12 @@
                     <property name="onException"/>
                     <property name="service"/>
                     <property name="mtomEnabled"/>
-                    <property name="soapVersion"/>
                     <property name="enableMuleSoapHeaders"/>
+                    <property name="soapVersion"/>
                     <property name="auxiliary;index" value="4"/>
                 </properties>
             </pattern>
-            <pattern name="wh_david_impl" type="http://www.mulesoft.org/schema/mule/core/component" entity-id="Java#1">
+            <pattern name="warehouse_david_impl" type="http://www.mulesoft.org/schema/mule/core/component" entity-id="Java#1">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="class" value="external.warehouse.service.WareHouseServiceImpl"/>
@@ -75,12 +76,12 @@
                 </properties>
             </pattern>
         </lane>
-        <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="FedPS_Giac" entity-id="05f56f49-5f94-400c-a983-41c68f78321d">
+    <flow SubFlow="false" name="FedPS_Giac" entity-id="e8901a9f-be72-4798-98c8-fb2795624e20">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="6"/>
             <property name="tracking:enable-default-events"/>
@@ -139,8 +140,8 @@
                     <property name="onException"/>
                     <property name="service"/>
                     <property name="mtomEnabled"/>
-                    <property name="soapVersion"/>
                     <property name="enableMuleSoapHeaders"/>
+                    <property name="soapVersion"/>
                     <property name="auxiliary;index" value="9"/>
                 </properties>
             </pattern>
@@ -152,19 +153,19 @@
                 </properties>
             </pattern>
         </lane>
-        <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="FedPS_Andien" entity-id="94b8d96f-7d72-4232-8bdf-4a9b66368468">
+    <flow SubFlow="false" name="FedPS_Andien" entity-id="8553a5c7-5a03-45ba-9098-1e2c882ea151">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="11"/>
             <property name="tracking:enable-default-events"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#3">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/fedps_andrien" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#3">
+            <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/fedps_adrien" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#3">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="port" value="8090"/>
@@ -202,72 +203,33 @@
                     <property name="auxiliary;index" value="13"/>
                 </properties>
             </pattern>
-            <pattern name="fedps_andrien" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#3">
+            <pattern name="fedps_adrien" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#3">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value=""/>
-                    <property name="wsdlLocation" value=""/>
+                    <property name="port"/>
+                    <property name="wsdlLocation"/>
                     <property name="serviceClass" value="external.transport.adrien.fedps.FedpsService"/>
-                    <property name="DATABINDING" value=""/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-service"/>
-                    <property name="configuration-ref" value=""/>
-                    <property name="namespace" value=""/>
-                    <property name="auxiliary;erased;DATABINDING" value="true"/>
-                    <property name="validationEnabled" value="false"/>
-                    <property name="updated"/>
-                    <property name="bindingId" value=""/>
-                    <property name="service" value=""/>
-                    <property name="mtomEnabled" value="false"/>
-                    <property name="soapVersion" value="1.1"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="propertiesLabel" value=""/>
+                    <property name="configuration-ref"/>
+                    <property name="namespace"/>
+                    <property name="validationEnabled"/>
+                    <property name="bindingId"/>
+                    <property name="onException"/>
+                    <property name="service"/>
+                    <property name="mtomEnabled"/>
+                    <property name="enableMuleSoapHeaders"/>
+                    <property name="soapVersion"/>
                     <property name="auxiliary;index" value="14"/>
-                    <property-collection name="">
-                        <property name="auxiliary;erased;DATABINDING" value="true"/>
-                        <property name="DATABINDING" value=""/>
-                        <property name="propertiesLabel" value=""/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/schemaLocations;845273244">
-                        <property name="isProcessed$$$$" value="true"/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-security-full;1740959717">
-                        <property name="isProcessed$$$$" value="true"/>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-config;2101162294">
-                            <property name="isProcessed$$$$" value="true"/>
-                        </property-collection>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-custom-validator;1558169605">
-                            <property name="isProcessed$$$$" value="true"/>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/bst-token-validator;510035426">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/saml1-token-validator;1465831926">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/saml2-token-validator;304781898">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/signature-token-validator;1565507210">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/timestamp-token-validator;720861591">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/username-token-validator;1013583990">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                        </property-collection>
-                    </property-collection>
                 </properties>
-                <description></description>
             </pattern>
-            <pattern name="fedps_andrien_impl" type="http://www.mulesoft.org/schema/mule/core/component" entity-id="Java#3">
+            <pattern name="fedps_adrien_impl" type="http://www.mulesoft.org/schema/mule/core/component" entity-id="Java#3">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="ref" value=""/>
                     <property name="updated"/>
                     <property name="class" value="external.transport.adrien.fedps.FedpsServiceImpl"/>
                     <property name="auxiliary;index" value="15"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;749167591">
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;828928697">
                         <property name="ref" value=""/>
                         <property name="isProcessed$$$$" value="true"/>
                     </property-collection>
@@ -275,12 +237,12 @@
                 <description></description>
             </pattern>
         </lane>
-        <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="CRM_ben" entity-id="deb577a6-d1b5-4d1c-ba49-57442628c790">
+    <flow SubFlow="false" name="CRM_ben" entity-id="ce9fbd0f-0c29-4fa9-9acf-b7d8ceb7d9cf">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="16"/>
             <property name="tracking:enable-default-events"/>
@@ -350,12 +312,12 @@
                 </properties>
             </pattern>
         </lane>
-        <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="CRM_Xinyi" entity-id="7ea1cd29-c1b7-4021-bb58-ac6147611548">
+    <flow SubFlow="false" name="CRM_Xinyi" entity-id="0129f10e-1f9e-45e0-b84a-2a89e6913cb1">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="23"/>
             <property name="tracking:enable-default-events"/>
@@ -414,8 +376,8 @@
                     <property name="onException"/>
                     <property name="service"/>
                     <property name="mtomEnabled"/>
-                    <property name="soapVersion"/>
                     <property name="enableMuleSoapHeaders"/>
+                    <property name="soapVersion"/>
                     <property name="auxiliary;index" value="26"/>
                 </properties>
             </pattern>
@@ -427,12 +389,12 @@
                 </properties>
             </pattern>
         </lane>
-        <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="CRM_ha_flow" entity-id="81caf75b-b08d-4e63-8ab9-2cb8f292eb61">
+    <flow SubFlow="false" name="CRM_ha_flow" entity-id="d37bc099-042b-456f-9365-e9266d55723a">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="28"/>
             <property name="tracking:enable-default-events"/>
@@ -502,7 +464,6 @@
                 </properties>
             </pattern>
         </lane>
-        <apikit>false</apikit>
     </flow>
     <description></description>
 </mule-configuration>

@@ -9,35 +9,35 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
     <flow name="WH_David" doc:name="WH_David">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/warehouse_david" doc:name="localhost:8090/ext/wh_david"/>
         <logger message="Calling external service from WHDavid" level="INFO" doc:name="Logger"/>
-        <cxf:jaxws-service serviceClass="warehouse.service.WareHouseService" doc:name="wh_david"/>
-        <component class="warehouse.service.WareHouseServiceImpl" doc:name="wh_david_impl"/>
+        <cxf:jaxws-service serviceClass="external.warehouse.service.WareHouseService" doc:name="wh_david"/>
+        <component class="external.warehouse.service.WareHouseServiceImpl" doc:name="wh_david_impl"/>
     </flow>
     <flow name="FedPS_Giac" doc:name="FedPS_Giac">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_giac" doc:name="localhost:8090/ext/fedps_giac"/>
         <logger message="Calling external service from FedPSGiac" level="INFO" doc:name="Logger"/>
-        <cxf:jaxws-service serviceClass="transport.giac.fedps.DeliveryService" doc:name="fedps_giac"/>
-        <component class="transport.giac.fedps.DeliveryServiceImpl" doc:name="fedps_giac_impl"/>
+        <cxf:jaxws-service serviceClass="external.transport.giac.fedps.DeliveryService" doc:name="fedps_giac"/>
+        <component class="external.transport.giac.fedps.DeliveryServiceImpl" doc:name="fedps_giac_impl"/>
     </flow>
     <flow name="FedPS_Andien" doc:name="FedPS_Andien">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_andrien" doc:name="localhost:8090/ext/fedps_andrien"/>
         <logger message="Calling external service from FedPS_Andrien" level="INFO" doc:name="Logger"/>
-        <cxf:jaxws-service serviceClass="transport.adrien.FedPS.FedpsService" doc:name="fedps_andrien"/>
-        <component class="transport.adrien.FedPS.FedpsServiceImpl" doc:name="fedps_andrien_impl"/>
+        <cxf:jaxws-service serviceClass="external.transport.adrien.FedPS.FedpsService" doc:name="fedps_andrien"/>
+        <component class="external.transport.adrien.FedPS.FedpsServiceImpl" doc:name="fedps_andrien_impl"/>
     </flow>
     <flow name="CRM_ben" doc:name="CRM_ben">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_ben" doc:name="localhost:8090/ext/crm_ben"/>
         <logger message="Calling external service from CRMben" level="INFO" doc:name="Logger"/>
         <jersey:resources doc:name="crm_ben">
-            <component class="crm.ben.service.ProduitService"/>
-            <component class="crm.ben.service.CustomerService"/>
-            <component class="crm.ben.service.CommandeService"/>
+            <component class="external.crm.ben.service.ProduitService"/>
+            <component class="external.crm.ben.service.CustomerService"/>
+            <component class="external.crm.ben.service.CommandeService"/>
         </jersey:resources>
     </flow>
     <flow name="CRM_Xinyi" doc:name="CRM_Xinyi">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi" doc:name="localhost:8090/ext/crm_xinyi"/>
         <logger message="Calling external service from CRMxiny" level="INFO" doc:name="Logger"/>
-        <cxf:jaxws-service serviceClass="crm.xinyi.CrmService" doc:name="crm_xinyi"/>
-        <component class="crm.xinyi.CrmServiceImpl" doc:name="crm_xinyi_impl"/>
+        <cxf:jaxws-service serviceClass="external.crm.xinyi.CrmService" doc:name="crm_xinyi"/>
+        <component class="external.crm.xinyi.CrmServiceImpl" doc:name="crm_xinyi_impl"/>
     </flow>
     <flow name="CRM_ha_flow" doc:name="CRM_ha_flow">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_ha" doc:name="localhost:8090/ext/crm_ha"/>

@@ -58,15 +58,11 @@ public class CommandeService {
 	@Produces("text/json")
 	public Response creatCommande(@QueryParam("idCustomer") String idCustomer,
 			@QueryParam("idProduit") List<Long> idProduits,
-			@QueryParam("deliveryAdress") String deliveryAdress,
-			@QueryParam("deliveryType") String deliveryType,
-			@QueryParam("status") String status) {
+			@QueryParam("deliveryAdress") String deliveryAdress) {
 		Commande c = new Commande();
 		c.setIdCustomer(Long.valueOf(idCustomer));
 		c.setIdProduit((ArrayList<Long>)idProduits);
 		c.setDeliveryAdress(deliveryAdress);
-		c.setStatus(status);
-		c.setDeliveryType(deliveryType);
 
 		return Response
 				.status(Status.OK)

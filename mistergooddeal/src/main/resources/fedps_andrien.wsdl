@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="Fedps" targetNamespace="http://FedPS.adrien.transport/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://FedPS.adrien.transport/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://FedPS.adrien.transport/" xmlns:tns="http://FedPS.adrien.transport/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="devis" type="tns:devis"/>
+<xs:element name="devisResponse" type="tns:devisResponse"/>
+<xs:element name="estimate_delivery_date" type="tns:estimate_delivery_date"/>
+<xs:element name="estimate_delivery_dateResponse" type="tns:estimate_delivery_dateResponse"/>
+<xs:element name="order_delivery" type="tns:order_delivery"/>
+<xs:element name="order_deliveryResponse" type="tns:order_deliveryResponse"/>
+<xs:element name="price" type="tns:price"/>
+<xs:element name="priceResponse" type="tns:priceResponse"/>
+<xs:element name="track" type="tns:track"/>
+<xs:element name="trackResponse" type="tns:trackResponse"/>
+<xs:complexType name="devis">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="list_packages" type="tns:package"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="package">
+<xs:sequence>
+<xs:element minOccurs="0" name="destination" type="xs:string"/>
+<xs:element minOccurs="0" name="dimension" type="tns:dimensions"/>
+<xs:element name="poids" type="xs:int"/>
+<xs:element minOccurs="0" name="source" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="dimensions">
+<xs:sequence>
+<xs:element name="hauteur" type="xs:float"/>
+<xs:element name="largeur" type="xs:float"/>
+<xs:element name="longueur" type="xs:float"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType abstract="true" name="abstractCollection">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType abstract="true" name="abstractList">
+<xs:complexContent>
+<xs:extension base="tns:abstractCollection">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="arrayList">
+<xs:complexContent>
+<xs:extension base="tns:abstractList">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="devisResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:VoucherClass"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="VoucherClass">
+<xs:sequence>
+<xs:element minOccurs="0" name="delivery" type="xs:string"/>
+<xs:element minOccurs="0" name="id_file" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="list_package" nillable="true" type="tns:package"/>
+<xs:element name="price" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="estimate_delivery_date">
+<xs:sequence>
+<xs:element minOccurs="0" name="id_file" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="estimate_delivery_dateResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="order_delivery">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="list_packages" type="tns:package"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="order_deliveryResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="price">
+<xs:sequence>
+<xs:element minOccurs="0" name="id_file" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="priceResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="track">
+<xs:sequence>
+<xs:element minOccurs="0" name="id_file" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="trackResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:tracking"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="tracking">
+<xs:sequence>
+<xs:element minOccurs="0" name="current_location" type="xs:string"/>
+<xs:element minOccurs="0" name="estimate_delivery_date" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="UnknownIdFile" type="tns:UnknownIdFile"/>
+<xs:complexType name="UnknownIdFile">
+<xs:sequence/>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="estimate_delivery_date">
+    <wsdl:part element="tns:estimate_delivery_date" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="devis">
+    <wsdl:part element="tns:devis" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="track">
+    <wsdl:part element="tns:track" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="trackResponse">
+    <wsdl:part element="tns:trackResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="order_deliveryResponse">
+    <wsdl:part element="tns:order_deliveryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnknownIdFile">
+    <wsdl:part element="tns:UnknownIdFile" name="UnknownIdFile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="priceResponse">
+    <wsdl:part element="tns:priceResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="price">
+    <wsdl:part element="tns:price" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="estimate_delivery_dateResponse">
+    <wsdl:part element="tns:estimate_delivery_dateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="order_delivery">
+    <wsdl:part element="tns:order_delivery" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="devisResponse">
+    <wsdl:part element="tns:devisResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FedpsService">
+    <wsdl:operation name="devis">
+      <wsdl:input message="tns:devis" name="devis">
+    </wsdl:input>
+      <wsdl:output message="tns:devisResponse" name="devisResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="estimate_delivery_date">
+      <wsdl:input message="tns:estimate_delivery_date" name="estimate_delivery_date">
+    </wsdl:input>
+      <wsdl:output message="tns:estimate_delivery_dateResponse" name="estimate_delivery_dateResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnknownIdFile" name="UnknownIdFile">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="order_delivery">
+      <wsdl:input message="tns:order_delivery" name="order_delivery">
+    </wsdl:input>
+      <wsdl:output message="tns:order_deliveryResponse" name="order_deliveryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="price">
+      <wsdl:input message="tns:price" name="price">
+    </wsdl:input>
+      <wsdl:output message="tns:priceResponse" name="priceResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnknownIdFile" name="UnknownIdFile">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="track">
+      <wsdl:input message="tns:track" name="track">
+    </wsdl:input>
+      <wsdl:output message="tns:trackResponse" name="trackResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnknownIdFile" name="UnknownIdFile">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FedpsSoapBinding" type="tns:FedpsService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="devis">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="devis">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="devisResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="estimate_delivery_date">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="estimate_delivery_date">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="estimate_delivery_dateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownIdFile">
+        <soap:fault name="UnknownIdFile" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="order_delivery">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="order_delivery">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="order_deliveryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="price">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="price">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="priceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownIdFile">
+        <soap:fault name="UnknownIdFile" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="track">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="track">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="trackResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownIdFile">
+        <soap:fault name="UnknownIdFile" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Fedps">
+    <wsdl:port binding="tns:FedpsSoapBinding" name="FedpsServicePort">
+      <soap:address location="http://localhost:8090/ext/fedps_andrien"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

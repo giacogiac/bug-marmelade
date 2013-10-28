@@ -54,7 +54,7 @@ public class CommandeService {
 	}
 
 	@POST
-	@Path("/")
+	@Path("/creat")
 	@Produces("text/json")
 	public Response creatCommande(@QueryParam("idCustomer") String idCustomer,
 			@QueryParam("idProduit") List<Long> idProduits,

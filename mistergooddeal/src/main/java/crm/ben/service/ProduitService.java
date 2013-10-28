@@ -74,7 +74,7 @@ public class ProduitService {
 	}
 
 	@POST
-	@Path("/")
+	@Path("/creat")
 	@Produces("text/json")
 	public Response creatProduit(@QueryParam("name") String name,
 			@QueryParam("description") String description,

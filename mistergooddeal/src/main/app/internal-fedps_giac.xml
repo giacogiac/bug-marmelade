@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
-    <flow name="client-fedps_giac-order" doc:name="client-fedps_giac-order">
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd">
+    <flow name="internal-fedps_giac-order" doc:name="internal-fedps_giac-order">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/fedps_giac/order" doc:name="client/fedps_giac/order"/>
-        <cxf:jaxws-client operation="order" clientClass="proxies.ext.fedps_giac.DeliveryServiceService" port="deliveryPort" enableMuleSoapHeaders="true" doc:name="order"/>
+        <cxf:jaxws-client operation="order" clientClass="proxies.ext.fedps_giac.Delivery" port="DeliveryServicePort" enableMuleSoapHeaders="true" doc:name="order"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_giac" method="POST" doc:name="localhost:8090/ext/fedps_giac"/>
     </flow>
-    <flow name="client-fedps_giac-estimation" doc:name="client-fedps_giac-estimation">
+    <flow name="internal-fedps_giac-estimation" doc:name="internal-fedps_giac-estimation">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/fedps_giac/estimation" doc:name="client/fedps_giac/estimation"/>
-        <cxf:jaxws-client operation="estimation" clientClass="proxies.ext.fedps_giac.DeliveryServiceService" port="deliveryPort" enableMuleSoapHeaders="true" doc:name="estimation"/>
+        <cxf:jaxws-client operation="estimation" clientClass="proxies.ext.fedps_giac.Delivery" port="DeliveryServicePort" enableMuleSoapHeaders="true" doc:name="estimation"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_giac" method="POST" doc:name="localhost:8090/ext/fedps_giac"/>
     </flow>
-    <flow name="client-fedps_giac-track" doc:name="client-fedps_giac-track">
+    <flow name="internal-fedps_giac-track" doc:name="internal-fedps_giac-track">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/fedps_giac/track" doc:name="client/fedps_giac/track"/>
-        <cxf:jaxws-client operation="track" clientClass="proxies.ext.fedps_giac.DeliveryServiceService" port="deliveryPort" enableMuleSoapHeaders="true" doc:name="track"/>
+        <cxf:jaxws-client operation="track" clientClass="proxies.ext.fedps_giac.Delivery" port="DeliveryServicePort" enableMuleSoapHeaders="true" doc:name="track"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_giac" method="POST" doc:name="localhost:8090/ext/fedps_giac"/>
     </flow>
 </mule>

@@ -3,6 +3,7 @@ package proxies.ext.fedps_giac;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -16,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="orderId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="order" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,34 +28,35 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ResponseOrder", propOrder = {
-    "orderId"
+    "order"
 })
 public class ResponseOrder {
 
-    protected String orderId;
+    @XmlElement(required = true)
+    protected String order;
 
     /**
-     * Gets the value of the orderId property.
+     * Gets the value of the order property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getOrderId() {
-        return orderId;
+    public String getOrder() {
+        return order;
     }
 
     /**
-     * Sets the value of the orderId property.
+     * Sets the value of the order property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setOrderId(String value) {
-        this.orderId = value;
+    public void setOrder(String value) {
+        this.order = value;
     }
 
 }

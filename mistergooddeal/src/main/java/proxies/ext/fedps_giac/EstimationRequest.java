@@ -19,8 +19,8 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="pickup" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="delivery" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="dimensions" type="{http://fedps.giac.transport/}dimensions"/>
- *         &lt;element name="weigth" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="dimensions" type="{http://fedps.giac.transport.external/}dimensions"/>
+ *         &lt;element name="weight" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
     "pickup",
     "delivery",
     "dimensions",
-    "weigth"
+    "weight"
 })
 public class EstimationRequest {
 
@@ -42,7 +42,7 @@ public class EstimationRequest {
     protected String delivery;
     @XmlElement(required = true)
     protected Dimensions dimensions;
-    protected int weigth;
+    protected int weight;
 
     /**
      * Gets the value of the pickup property.
@@ -117,19 +117,19 @@ public class EstimationRequest {
     }
 
     /**
-     * Gets the value of the weigth property.
+     * Gets the value of the weight property.
      * 
      */
-    public int getWeigth() {
-        return weigth;
+    public int getWeight() {
+        return weight;
     }
 
     /**
-     * Sets the value of the weigth property.
+     * Sets the value of the weight property.
      * 
      */
-    public void setWeigth(int value) {
-        this.weigth = value;
+    public void setWeight(int value) {
+        this.weight = value;
     }
 
 }

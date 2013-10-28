@@ -4,7 +4,7 @@ import javax.jws.*;
 
 import external.transport.giac.fedps.messages.*;
 
-@WebService(name = "delivery")
+@WebService(serviceName = "delivery")
 public interface DeliveryService {
 
 	@WebMethod

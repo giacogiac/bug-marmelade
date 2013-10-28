@@ -24,17 +24,17 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _OrderResponse_QNAME = new QName("http://fedps.giac.transport/", "orderResponse");
-    private final static QName _Order_QNAME = new QName("http://fedps.giac.transport/", "order");
-    private final static QName _Estimation_QNAME = new QName("http://fedps.giac.transport/", "estimation");
-    private final static QName _EstimationRequest_QNAME = new QName("http://fedps.giac.transport/", "estimationRequest");
-    private final static QName _OrderRequest_QNAME = new QName("http://fedps.giac.transport/", "orderRequest");
-    private final static QName _Track_QNAME = new QName("http://fedps.giac.transport/", "track");
-    private final static QName _Dimensions_QNAME = new QName("http://fedps.giac.transport/", "dimensions");
-    private final static QName _EstimationResponse_QNAME = new QName("http://fedps.giac.transport/", "estimationResponse");
-    private final static QName _DeliveryFault_QNAME = new QName("http://fedps.giac.transport/", "DeliveryFault");
-    private final static QName _TrackRequest_QNAME = new QName("http://fedps.giac.transport/", "trackRequest");
-    private final static QName _TrackResponse_QNAME = new QName("http://fedps.giac.transport/", "trackResponse");
+    private final static QName _EstimationResponse_QNAME = new QName("http://fedps.giac.transport.external/", "estimationResponse");
+    private final static QName _EstimationRequest_QNAME = new QName("http://fedps.giac.transport.external/", "estimationRequest");
+    private final static QName _OrderRequest_QNAME = new QName("http://fedps.giac.transport.external/", "orderRequest");
+    private final static QName _Track_QNAME = new QName("http://fedps.giac.transport.external/", "track");
+    private final static QName _Dimensions_QNAME = new QName("http://fedps.giac.transport.external/", "dimensions");
+    private final static QName _TrackRequest_QNAME = new QName("http://fedps.giac.transport.external/", "trackRequest");
+    private final static QName _TrackResponse_QNAME = new QName("http://fedps.giac.transport.external/", "trackResponse");
+    private final static QName _DeliveryFault_QNAME = new QName("http://fedps.giac.transport.external/", "DeliveryFault");
+    private final static QName _OrderResponse_QNAME = new QName("http://fedps.giac.transport.external/", "orderResponse");
+    private final static QName _Order_QNAME = new QName("http://fedps.giac.transport.external/", "order");
+    private final static QName _Estimation_QNAME = new QName("http://fedps.giac.transport.external/", "estimation");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: proxies.ext.fedps_giac
@@ -164,37 +164,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OrderResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link EstimationResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://fedps.giac.transport/", name = "orderResponse")
-    public JAXBElement<OrderResponse> createOrderResponse(OrderResponse value) {
-        return new JAXBElement<OrderResponse>(_OrderResponse_QNAME, OrderResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Order }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://fedps.giac.transport/", name = "order")
-    public JAXBElement<Order> createOrder(Order value) {
-        return new JAXBElement<Order>(_Order_QNAME, Order.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Estimation }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://fedps.giac.transport/", name = "estimation")
-    public JAXBElement<Estimation> createEstimation(Estimation value) {
-        return new JAXBElement<Estimation>(_Estimation_QNAME, Estimation.class, null, value);
+    @XmlElementDecl(namespace = "http://fedps.giac.transport.external/", name = "estimationResponse")
+    public JAXBElement<EstimationResponse> createEstimationResponse(EstimationResponse value) {
+        return new JAXBElement<EstimationResponse>(_EstimationResponse_QNAME, EstimationResponse.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link EstimationRequest }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://fedps.giac.transport/", name = "estimationRequest")
+    @XmlElementDecl(namespace = "http://fedps.giac.transport.external/", name = "estimationRequest")
     public JAXBElement<EstimationRequest> createEstimationRequest(EstimationRequest value) {
         return new JAXBElement<EstimationRequest>(_EstimationRequest_QNAME, EstimationRequest.class, null, value);
     }
@@ -203,7 +185,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link OrderRequest }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://fedps.giac.transport/", name = "orderRequest")
+    @XmlElementDecl(namespace = "http://fedps.giac.transport.external/", name = "orderRequest")
     public JAXBElement<OrderRequest> createOrderRequest(OrderRequest value) {
         return new JAXBElement<OrderRequest>(_OrderRequest_QNAME, OrderRequest.class, null, value);
     }
@@ -212,7 +194,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Track }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://fedps.giac.transport/", name = "track")
+    @XmlElementDecl(namespace = "http://fedps.giac.transport.external/", name = "track")
     public JAXBElement<Track> createTrack(Track value) {
         return new JAXBElement<Track>(_Track_QNAME, Track.class, null, value);
     }
@@ -221,34 +203,16 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Dimensions }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://fedps.giac.transport/", name = "dimensions")
+    @XmlElementDecl(namespace = "http://fedps.giac.transport.external/", name = "dimensions")
     public JAXBElement<Dimensions> createDimensions(Dimensions value) {
         return new JAXBElement<Dimensions>(_Dimensions_QNAME, Dimensions.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EstimationResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://fedps.giac.transport/", name = "estimationResponse")
-    public JAXBElement<EstimationResponse> createEstimationResponse(EstimationResponse value) {
-        return new JAXBElement<EstimationResponse>(_EstimationResponse_QNAME, EstimationResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeliveryFault }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://fedps.giac.transport/", name = "DeliveryFault")
-    public JAXBElement<DeliveryFault> createDeliveryFault(DeliveryFault value) {
-        return new JAXBElement<DeliveryFault>(_DeliveryFault_QNAME, DeliveryFault.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link TrackRequest }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://fedps.giac.transport/", name = "trackRequest")
+    @XmlElementDecl(namespace = "http://fedps.giac.transport.external/", name = "trackRequest")
     public JAXBElement<TrackRequest> createTrackRequest(TrackRequest value) {
         return new JAXBElement<TrackRequest>(_TrackRequest_QNAME, TrackRequest.class, null, value);
     }
@@ -257,9 +221,45 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link TrackResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://fedps.giac.transport/", name = "trackResponse")
+    @XmlElementDecl(namespace = "http://fedps.giac.transport.external/", name = "trackResponse")
     public JAXBElement<TrackResponse> createTrackResponse(TrackResponse value) {
         return new JAXBElement<TrackResponse>(_TrackResponse_QNAME, TrackResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeliveryFault }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://fedps.giac.transport.external/", name = "DeliveryFault")
+    public JAXBElement<DeliveryFault> createDeliveryFault(DeliveryFault value) {
+        return new JAXBElement<DeliveryFault>(_DeliveryFault_QNAME, DeliveryFault.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OrderResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://fedps.giac.transport.external/", name = "orderResponse")
+    public JAXBElement<OrderResponse> createOrderResponse(OrderResponse value) {
+        return new JAXBElement<OrderResponse>(_OrderResponse_QNAME, OrderResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Order }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://fedps.giac.transport.external/", name = "order")
+    public JAXBElement<Order> createOrder(Order value) {
+        return new JAXBElement<Order>(_Order_QNAME, Order.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Estimation }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://fedps.giac.transport.external/", name = "estimation")
+    public JAXBElement<Estimation> createEstimation(Estimation value) {
+        return new JAXBElement<Estimation>(_Estimation_QNAME, Estimation.class, null, value);
     }
 
 }

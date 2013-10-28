@@ -15,7 +15,7 @@ import javax.xml.ws.Service;
  * 
  */
 @WebServiceClient(name = "Crm", 
-                  wsdlLocation = "file:/C:/Users/user/git/bug-marmelade/mistergooddeal/src/main/resources/crm_xinyi.wsdl",
+                  wsdlLocation = "file:./src/main/resources/crm_xinyi.wsdl",
                   targetNamespace = "http://xinyi.crm.external/") 
 public class Crm extends Service {
 
@@ -26,11 +26,11 @@ public class Crm extends Service {
     static {
         URL url = null;
         try {
-            url = new URL("file:/C:/Users/user/git/bug-marmelade/mistergooddeal/src/main/resources/crm_xinyi.wsdl");
+            url = new URL("file:./src/main/resources/crm_xinyi.wsdl");
         } catch (MalformedURLException e) {
             java.util.logging.Logger.getLogger(Crm.class.getName())
                 .log(java.util.logging.Level.INFO, 
-                     "Can not initialize the default wsdl from {0}", "file:/C:/Users/user/git/bug-marmelade/mistergooddeal/src/main/resources/crm_xinyi.wsdl");
+                     "Can not initialize the default wsdl from {0}", "file:./src/main/resources/crm_xinyi.wsdl");
         }
         WSDL_LOCATION = url;
     }

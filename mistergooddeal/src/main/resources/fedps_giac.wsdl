@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="DeliveryServiceService" targetNamespace="http://fedps.giac.transport.external/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://fedps.giac.transport.external/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="delivery" targetNamespace="http://fedps.giac.transport.external/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://fedps.giac.transport.external/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <wsdl:types>
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://fedps.giac.transport.external/" xmlns:tns="http://fedps.giac.transport.external/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 <xs:element name="dimensions" type="tns:dimensions"/>
@@ -125,7 +125,7 @@
     <wsdl:part element="tns:estimation" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:portType name="delivery">
+  <wsdl:portType name="DeliveryService">
     <wsdl:operation name="order">
       <wsdl:input message="tns:order" name="order">
     </wsdl:input>
@@ -151,7 +151,7 @@
     </wsdl:fault>
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="DeliveryServiceServiceSoapBinding" type="tns:delivery">
+  <wsdl:binding name="deliverySoapBinding" type="tns:DeliveryService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <wsdl:operation name="order">
       <soap:operation soapAction="" style="document"/>
@@ -190,8 +190,8 @@
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="DeliveryServiceService">
-    <wsdl:port binding="tns:DeliveryServiceServiceSoapBinding" name="deliveryPort">
+  <wsdl:service name="delivery">
+    <wsdl:port binding="tns:deliverySoapBinding" name="DeliveryServicePort">
       <soap:address location="http://localhost:8090/ext/fedps_giac"/>
     </wsdl:port>
   </wsdl:service>

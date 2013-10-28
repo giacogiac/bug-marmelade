@@ -1,10 +1,14 @@
 package crm.ben.service;
 
+import java.util.ArrayList;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+
 import crm.ben.model.Customer;
+import crm.ben.model.Produit;
 import crm.ben.model.Server;
 
 
@@ -60,6 +64,37 @@ public class CustomerService {
 								+ "\"}")).build();
 
 	}
+	
+	@GET
+	@Path("/favori/{customerId}")
+	@Produces("text/json")
+	public Response getPreferredProducts(
+			@PathParam("customerId") String customerId) {
+		ArrayList<Produit> produits = new ArrayList<Produit>();
+		try {
+			produits = Server.getInstance().getPreferedProduits(
+					Long.valueOf(customerId));
+			String rep = "{[";
+			for (Produit p : produits) {
+				rep+="{\"id\": \"" + String.valueOf(p.getId())
+						+ "\", \"name\": \"" + p.getName() + "\", "
+						+ "\"price\": \"" + p.getPrice() + "\", "
+						+ "\"description\": \"" + p.getDescription()
+						+ "\"categorie\": \"" + p.getCategorie()
+						+ "\"}";
+				
+			}
+			rep+="]}";
+			return Response
+					.status(Status.OK)
+					.entity(rep).build();
+
+		} catch (NumberFormatException e) {
+
+		}
+		return Response.status(Status.NOT_FOUND).build();
+	}
+
 
 	@DELETE
 	@Path("/{customerId}")

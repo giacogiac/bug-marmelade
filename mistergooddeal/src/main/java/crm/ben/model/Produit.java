@@ -7,6 +7,9 @@ public class Produit {
 	private String description;
 	private float price;
 	private String categorie;
+	private String reference;
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -41,6 +44,12 @@ public class Produit {
 	@Override
 	public boolean equals(Object obj) {
 		return ((Produit)obj).id==(this.id);
+	}
+	public String getReference() {
+		return reference;
+	}
+	public void setReference(String reference) {
+		this.reference = reference;
 	}
 	
 

@@ -1,5 +1,7 @@
 package crm.ben.service;
 
+import java.util.ArrayList;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -12,7 +14,6 @@ import javax.ws.rs.core.Response.Status;
 
 import crm.ben.model.Produit;
 import crm.ben.model.Server;
-
 
 @Path("produit")
 public class ProduitService {
@@ -33,8 +34,39 @@ public class ProduitService {
 								+ "\", \"name\": \"" + c.getName() + "\", "
 								+ "\"price\": \"" + c.getPrice() + "\", "
 								+ "\"description\": \"" + c.getDescription()
+								+ "\"reference\": \"" + c.getReference()
 								+ "\"}").build();
 			}
+		} catch (NumberFormatException e) {
+
+		}
+		return Response.status(Status.NOT_FOUND).build();
+	}
+
+	@GET
+	@Path("/search/{motClef}")
+	@Produces("text/json")
+	public Response getProductsByWord(
+			@PathParam("motClef") String motClef) {
+		ArrayList<Produit> produits = new ArrayList<Produit>();
+		try {
+			produits = Server.getInstance().searchProduits(motClef);
+			String rep = "{[";
+			for (Produit p : produits) {
+				rep+="{\"id\": \"" + String.valueOf(p.getId())
+						+ "\", \"name\": \"" + p.getName() + "\", "
+						+ "\"price\": \"" + p.getPrice() + "\", "
+						+ "\"description\": \"" + p.getDescription()
+						+ "\"categorie\": \"" + p.getCategorie()
+						+ "\"reference\": \"" + p.getCategorie()
+						+ "\"}";
+				
+			}
+			rep+="]}";
+			return Response
+					.status(Status.OK)
+					.entity(rep).build();
+
 		} catch (NumberFormatException e) {
 
 		}
@@ -47,12 +79,14 @@ public class ProduitService {
 	public Response creatProduit(@QueryParam("name") String name,
 			@QueryParam("description") String description,
 			@QueryParam("price") String price,
-			@QueryParam("categorie") String categorie) {
+			@QueryParam("categorie") String categorie,
+			@QueryParam("reference") String reference) {
 		Produit c = new Produit();
 		c.setName(name);
 		c.setDescription(description);
 		c.setPrice(Float.valueOf(price));
 		c.setCategorie(categorie);
+		c.setReference(reference);
 
 		return Response
 				.status(Status.OK)

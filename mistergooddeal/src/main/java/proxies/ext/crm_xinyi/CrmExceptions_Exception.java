@@ -13,7 +13,9 @@ import javax.xml.ws.WebFault;
 @WebFault(name = "CrmExceptions", targetNamespace = "http://xinyi.crm.external/")
 public class CrmExceptions_Exception extends Exception {
     
-    private proxies.ext.crm_xinyi.CrmExceptions crmExceptions;
+	private static final long serialVersionUID = -1363829800126773685L;
+	
+	private proxies.ext.crm_xinyi.CrmExceptions crmExceptions;
 
     public CrmExceptions_Exception() {
         super();

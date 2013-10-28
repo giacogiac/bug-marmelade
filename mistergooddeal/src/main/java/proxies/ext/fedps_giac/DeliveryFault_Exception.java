@@ -13,7 +13,9 @@ import javax.xml.ws.WebFault;
 @WebFault(name = "DeliveryFault", targetNamespace = "http://fedps.giac.transport.external/")
 public class DeliveryFault_Exception extends Exception {
     
-    private proxies.ext.fedps_giac.DeliveryFault deliveryFault;
+	private static final long serialVersionUID = -6631189479907631362L;
+	
+	private proxies.ext.fedps_giac.DeliveryFault deliveryFault;
 
     public DeliveryFault_Exception() {
         super();

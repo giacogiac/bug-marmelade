@@ -13,7 +13,9 @@ import javax.xml.ws.WebFault;
 @WebFault(name = "UnknownIdFile", targetNamespace = "http://fedps.adrien.transport.external/")
 public class UnknownIdFile_Exception extends Exception {
     
-    private proxies.ext.fedps_adrien.UnknownIdFile unknownIdFile;
+	private static final long serialVersionUID = -6059973508418747609L;
+	
+	private proxies.ext.fedps_adrien.UnknownIdFile unknownIdFile;
 
     public UnknownIdFile_Exception() {
         super();

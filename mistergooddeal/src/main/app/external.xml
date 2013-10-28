@@ -19,7 +19,7 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
         <component class="external.transport.giac.fedps.DeliveryServiceImpl" doc:name="fedps_giac_impl"/>
     </flow>
     <flow name="FedPS_Andien" doc:name="FedPS_Andien">
-        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_andrien" doc:name="localhost:8090/ext/fedps_adrien"/>
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_adrien" doc:name="localhost:8090/ext/fedps_adrien"/>
         <logger message="Calling external service from FedPS_Andrien" level="INFO" doc:name="Logger"/>
         <cxf:jaxws-service serviceClass="external.transport.adrien.fedps.FedpsService" doc:name="fedps_adrien"/>
         <component class="external.transport.adrien.fedps.FedpsServiceImpl" doc:name="fedps_adrien_impl"/>

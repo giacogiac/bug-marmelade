@@ -10,4 +10,39 @@ http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/
         <cxf:jaxws-client operation="createCustomer" clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="createCustomer"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/createCustomer" method="POST" doc:name="localhost:8090/ext/crm_xinyi/createCustomer"/>
     </flow>
+    <flow name="internal-crm_xinyi-deleteCustomer" doc:name="internal-crm_xinyi-deleteCustomer">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/deleteCustomer" doc:name="client/crm_xinyi/deleteCustomer"/>
+        <cxf:jaxws-client operation="deleteCustomer" clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="deleteCustomer"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/deleteCustomer" method="POST" doc:name="localhost:8090/ext/crm_xinyi/deleteCustomer"/>
+    </flow>
+    <flow name="internal-crm_xinyi-getCustomer" doc:name="internal-crm_xinyi-getCustomer">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/getCustomer" doc:name="client/crm_xinyi/getCustomer"/>
+        <cxf:jaxws-client operation="getCustomer" clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="getCustomer"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/getCustomer" method="POST" doc:name="localhost:8090/ext/crm_xinyi/getCustomer"/>
+    </flow>
+    <flow name="internal-crm_xinyi-addOrder" doc:name="internal-crm_xinyi-addOrder">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/addOrder" doc:name="client/crm_xinyi/addOrder"/>
+        <cxf:jaxws-client operation="addOrder" clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="addOrder"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/addOrder" method="POST" doc:name="localhost:8090/ext/crm_xinyi/addOrder"/>
+    </flow>
+    <flow name="internal-crm_xinyi-deleteOrder" doc:name="internal-crm_xinyi-deleteOrder">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/deleteOrder" doc:name="client/crm_xinyi/deleteOrder"/>
+        <cxf:jaxws-client operation="deleteOrder" clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="deleteOrder"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/deleteOrder" method="POST" doc:name="localhost:8090/ext/crm_xinyi/deleteOrder"/>
+    </flow>
+    <flow name="internal-crm_xinyi-getCustomerOrder" doc:name="internal-crm_xinyi-getCustomerOrder">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/getCustomerOrder" doc:name="client/crm_xinyi/getCustomerOrder"/>
+        <cxf:jaxws-client operation="getCustomerOrder" clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="getCustomerOrder"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/getCustomerOrder" method="POST" doc:name="localhost:8090/ext/crm_xinyi/getCustomerOrder"/>
+    </flow>
+    <flow name="internal-crm_xinyi-getCustomerPreferredProducts" doc:name="internal-crm_xinyi-getCustomerPreferredProducts">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/getCustomerPreferredProducts" doc:name="client/crm_xinyi/getCustomerPreferredProducts"/>
+        <cxf:jaxws-client operation="getCustomerPreferredProducts" clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="getCustomerPreferredProducts"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/getCustomerPreferredProducts" method="POST" doc:name="localhost:8090/ext/crm_xinyi/getCustomerPreferredProducts"/>
+    </flow>
+    <flow name="internal-crm_xinyi-searchCatalog" doc:name="internal-crm_xinyi-searchCatalog">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/searchCatalog" doc:name="client/crm_xinyi/searchCatalog"/>
+        <cxf:jaxws-client clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="searchCatalog"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/searchCatalog" method="POST" doc:name="localhost:8090/ext/crm_xinyi/searchCatalog"/>
+    </flow>
 </mule>

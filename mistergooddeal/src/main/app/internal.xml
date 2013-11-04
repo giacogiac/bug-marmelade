@@ -1,68 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd">
-    <flow name="internal-fedps_giac-order" doc:name="internal-fedps_giac-order">
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    <flow name="client-fedps_giac-order" doc:name="client-fedps_giac-order">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/fedps_giac/order" doc:name="client/fedps_giac/order"/>
         <cxf:jaxws-client operation="order" clientClass="proxies.ext.fedps_giac.Delivery" port="DeliveryServicePort" enableMuleSoapHeaders="true" doc:name="order"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_giac" method="POST" doc:name="localhost:8090/ext/fedps_giac"/>
     </flow>
-    <flow name="internal-fedps_giac-estimation" doc:name="internal-fedps_giac-estimation">
+    <flow name="client-fedps_giac-estimation" doc:name="client-fedps_giac-estimation">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/fedps_giac/estimation" doc:name="client/fedps_giac/estimation"/>
         <cxf:jaxws-client operation="estimation" clientClass="proxies.ext.fedps_giac.Delivery" port="DeliveryServicePort" enableMuleSoapHeaders="true" doc:name="estimation"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_giac" method="POST" doc:name="localhost:8090/ext/fedps_giac"/>
     </flow>
-    <flow name="internal-fedps_giac-track" doc:name="internal-fedps_giac-track">
+    <flow name="client-fedps_giac-track" doc:name="client-fedps_giac-track">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/fedps_giac/track" doc:name="client/fedps_giac/track"/>
         <cxf:jaxws-client operation="track" clientClass="proxies.ext.fedps_giac.Delivery" port="DeliveryServicePort" enableMuleSoapHeaders="true" doc:name="track"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_giac" method="POST" doc:name="localhost:8090/ext/fedps_giac"/>
     </flow>
-    <flow name="internal-crm_xinyi-createCustomer" doc:name="internal-crm_xinyi-createCustomer">
+    <flow name="client-crm_xinyi-createCustomer" doc:name="client-crm_xinyi-createCustomer">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/createCustomer" doc:name="client/crm_xinyi/createCustomer"/>
         <cxf:jaxws-client operation="createCustomer" clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="createCustomer"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/createCustomer" method="POST" doc:name="localhost:8090/ext/crm_xinyi/createCustomer"/>
     </flow>
-    <flow name="internal-crm_xinyi-deleteCustomer" doc:name="internal-crm_xinyi-deleteCustomer">
+    <flow name="client-crm_xinyi-deleteCustomer" doc:name="client-crm_xinyi-deleteCustomer">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/deleteCustomer" doc:name="client/crm_xinyi/deleteCustomer"/>
         <cxf:jaxws-client operation="deleteCustomer" clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="deleteCustomer"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/deleteCustomer" method="POST" doc:name="localhost:8090/ext/crm_xinyi/deleteCustomer"/>
     </flow>
-    <flow name="internal-crm_xinyi-getCustomer" doc:name="internal-crm_xinyi-getCustomer">
+    <flow name="client-crm_xinyi-getCustomer" doc:name="client-crm_xinyi-getCustomer">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/getCustomer" doc:name="client/crm_xinyi/getCustomer"/>
         <cxf:jaxws-client operation="getCustomer" clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="getCustomer"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/getCustomer" method="POST" doc:name="localhost:8090/ext/crm_xinyi/getCustomer"/>
     </flow>
-    <flow name="internal-crm_xinyi-addOrder" doc:name="internal-crm_xinyi-addOrder">
+    <flow name="client-crm_xinyi-addOrder" doc:name="client-crm_xinyi-addOrder">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/addOrder" doc:name="client/crm_xinyi/addOrder"/>
         <cxf:jaxws-client operation="addOrder" clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="addOrder"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/addOrder" method="POST" doc:name="localhost:8090/ext/crm_xinyi/addOrder"/>
     </flow>
-    <flow name="internal-crm_xinyi-deleteOrder" doc:name="internal-crm_xinyi-deleteOrder">
+    <flow name="client-crm_xinyi-deleteOrder" doc:name="client-crm_xinyi-deleteOrder">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/deleteOrder" doc:name="client/crm_xinyi/deleteOrder"/>
         <cxf:jaxws-client operation="deleteOrder" clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="deleteOrder"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/deleteOrder" method="POST" doc:name="localhost:8090/ext/crm_xinyi/deleteOrder"/>
     </flow>
-    <flow name="internal-crm_xinyi-getCustomerOrder" doc:name="internal-crm_xinyi-getCustomerOrder">
+    <flow name="client-crm_xinyi-getCustomerOrder" doc:name="client-crm_xinyi-getCustomerOrder">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/getCustomerOrder" doc:name="client/crm_xinyi/getCustomerOrder"/>
         <cxf:jaxws-client operation="getCustomerOrder" clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="getCustomerOrder"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/getCustomerOrder" method="POST" doc:name="localhost:8090/ext/crm_xinyi/getCustomerOrder"/>
     </flow>
-    <flow name="internal-crm_xinyi-getCustomerPreferredProducts" doc:name="internal-crm_xinyi-getCustomerPreferredProducts">
+    <flow name="client-crm_xinyi-getCustomerPreferredProducts" doc:name="client-crm_xinyi-getCustomerPreferredProducts">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/getCustomerPreferredProducts" doc:name="client/crm_xinyi/getCustomerPreferredProducts"/>
         <cxf:jaxws-client operation="getCustomerPreferredProducts" clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="getCustomerPreferredProducts"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/getCustomerPreferredProducts" method="POST" doc:name="localhost:8090/ext/crm_xinyi/getCustomerPreferredProducts"/>
     </flow>
-    <flow name="internal-crm_xinyi-searchCatalog" doc:name="internal-crm_xinyi-searchCatalog">
+    <flow name="client-crm_xinyi-searchCatalog" doc:name="client-crm_xinyi-searchCatalog">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/searchCatalog" doc:name="client/crm_xinyi/searchCatalog"/>
         <cxf:jaxws-client clientClass="proxies.ext.crm_xinyi.Crm" port="CrmServicePort" enableMuleSoapHeaders="true" doc:name="searchCatalog"/>
         <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_xinyi/searchCatalog" method="POST" doc:name="localhost:8090/ext/crm_xinyi/searchCatalog"/>
     </flow>
     <flow name="client-fedps_adrien-order_delivery" doc:name="client-fedps_adrien-order_delivery">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/fedps_adrien/order_delivery" doc:name="client/fedps_adrien/order_delivery"/>
-        <cxf:jaxws-client doc:name="order_delivery" clientClass="proxies.ext.fedps_adrien.Fedps" enableMuleSoapHeaders="true" operation="order_delivery" port="FedpsServicePort"/>
-        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" method="POST" doc:name="localhost:8090/ext/fedps_adrien" path="ext/fedps_adrien"/>
+        <cxf:jaxws-client operation="order_delivery" clientClass="proxies.ext.fedps_adrien.Fedps" port="FedpsServicePort" enableMuleSoapHeaders="true" doc:name="order_delivery"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_adrien" method="POST" doc:name="localhost:8090/ext/fedps_adrien"/>
+    </flow>
+    <flow name="client-fedps_adrien-devis" doc:name="client-fedps_adrien-devis">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/fedps_adrien/devis" doc:name="client/fedps_adrien/devis"/>
+        <cxf:jaxws-client operation="devis" clientClass="proxies.ext.fedps_adrien.Fedps" port="FedpsServicePort" enableMuleSoapHeaders="true" doc:name="devis"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_adrien" method="POST" doc:name="localhost:8090/ext/fedps_adrien"/>
+    </flow>
+    <flow name="client-fedps_adrien-estimate_delivery_date" doc:name="client-fedps_adrien-estimate_delivery_date">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/fedps_adrien/estimate_delivery_date" doc:name="client/fedps_adrien/estimate_delivery_date"/>
+        <cxf:jaxws-client operation="estimate_delivery_date" clientClass="proxies.ext.fedps_adrien.Fedps" port="FedpsServicePort" enableMuleSoapHeaders="true" doc:name="estimate_delivery_date"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_adrien" method="POST" doc:name="localhost:8090/ext/fedps_adrien"/>
+    </flow>
+    <flow name="client-fedps_adrien-estimate_price" doc:name="client-fedps_adrien-estimate_price">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/fedps_adrien/price" doc:name="client/fedps_adrien/price"/>
+        <cxf:jaxws-client operation="price" clientClass="proxies.ext.fedps_adrien.Fedps" port="FedpsServicePort" enableMuleSoapHeaders="true" doc:name="price"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_adrien" method="POST" doc:name="localhost:8090/ext/fedps_adrien"/>
+    </flow>
+    <flow name="client-fedps_adrien-track" doc:name="client-fedps_adrien-track">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/fedps_adrien/track" doc:name="client/fedps_adrien/track"/>
+        <cxf:jaxws-client operation="track" clientClass="proxies.ext.fedps_adrien.Fedps" port="FedpsServicePort" enableMuleSoapHeaders="true" doc:name="track"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_adrien" method="POST" doc:name="localhost:8090/ext/fedps_adrien"/>
     </flow>
 </mule>

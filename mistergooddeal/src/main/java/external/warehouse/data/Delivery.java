@@ -6,14 +6,14 @@ import java.util.List;
 public class Delivery {
 	
 	private String transporter;
-	private Date dateOfPickUp;
+	private Date dateOfDelivery;
 	private List<Product> listProduct;
 	
-	public Delivery(String transporter, Date dateOfPickUp,
+	public Delivery(String transporter, Date dateOfDelivery,
 			List<Product> listProduct) {
 		super();
 		this.transporter = transporter;
-		this.dateOfPickUp = dateOfPickUp;
+		this.dateOfDelivery = dateOfDelivery;
 		this.listProduct = listProduct;
 	}
 	public Delivery() {
@@ -25,11 +25,11 @@ public class Delivery {
 	public void setTransporter(String transporter) {
 		this.transporter = transporter;
 	}
-	public Date getDateOfPickUp() {
-		return dateOfPickUp;
+	public Date getdateOfDelivery() {
+		return dateOfDelivery;
 	}
-	public void setDateOfPickUp(Date dateOfPickUp) {
-		this.dateOfPickUp = dateOfPickUp;
+	public void setdateOfDelivery(Date dateOfDelivery) {
+		this.dateOfDelivery = dateOfDelivery;
 	}
 	public List<Product> getListProduct() {
 		return listProduct;

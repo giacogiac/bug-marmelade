@@ -12,10 +12,10 @@ import external.warehouse.data.*;
 @XmlType(name="OrderRequest")
 public class OrderRequest {
 	
-	@XmlElement(required=true, name="supplier")
+	@XmlElement(required=true, name="client")
 	public String supplier;
 	@XmlElement(required=true, name="date")
 	public String dateOfDelivery;
-	@XmlElement(required=true, name="ref")
+	@XmlElement(required=true, name="product")
 	public List<Product> listProduct;
 }

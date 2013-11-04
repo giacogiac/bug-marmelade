@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="internal">
-<<<<<<< HEAD
-    <flow SubFlow="false" name="internal-fedps_giac-order" entity-id="ba5dfdfd-7972-4bd4-9a40-322572aa2ecc">
-=======
-    <flow SubFlow="false" name="client-fedps_giac-order" entity-id="602687c3-5338-4f5a-904c-811519da0c50">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-fedps_giac-order" entity-id="0c2fd33a-4489-4e14-bd24-cc21bca170c5">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="1"/>
             <property name="tracking:enable-default-events"/>
@@ -79,16 +76,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="internal-fedps_giac-estimation" entity-id="4214fb30-07cf-43fa-95e0-3895f042578a">
-=======
-    <flow SubFlow="false" name="client-fedps_giac-estimation" entity-id="d9dd39cb-0aaa-4bbd-9f0d-e5d32c746674">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-fedps_giac-estimation" entity-id="cc4cb60e-6edd-434b-abf0-f342bc100f6c">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="5"/>
             <property name="tracking:enable-default-events"/>
@@ -160,16 +153,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="internal-fedps_giac-track" entity-id="3dc58310-8430-41e9-9b4e-7da33a51573e">
-=======
-    <flow SubFlow="false" name="client-fedps_giac-track" entity-id="8b2d099f-eff4-481b-a40f-8b23a19340ae">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-fedps_giac-track" entity-id="841d7d8b-469d-458a-bdd9-ef8ac1bf257a">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="9"/>
             <property name="tracking:enable-default-events"/>
@@ -241,16 +230,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="internal-crm_xinyi-createCustomer" entity-id="4e3a55c7-47b1-42fa-ac8d-1d02b2c3ffe2">
-=======
-    <flow SubFlow="false" name="client-crm_xinyi-createCustomer" entity-id="7d28e9e0-6445-4592-8705-350b8090621a">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-crm_xinyi-createCustomer" entity-id="d2525a65-78c9-4a1a-82ea-ab48f975e05b">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="13"/>
             <property name="tracking:enable-default-events"/>
@@ -322,16 +307,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="internal-crm_xinyi-deleteCustomer" entity-id="24daacb2-13f4-422f-adc7-408c99dcf857">
-=======
-    <flow SubFlow="false" name="client-crm_xinyi-deleteCustomer" entity-id="d70476a4-0348-47a0-95d2-fbf52b17e399">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-crm_xinyi-deleteCustomer" entity-id="8acb4f5b-a8da-4f22-be71-045619968bf2">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="17"/>
             <property name="tracking:enable-default-events"/>
@@ -403,16 +384,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="internal-crm_xinyi-getCustomer" entity-id="308d174d-c432-4c30-bee5-74e0d11b110d">
-=======
-    <flow SubFlow="false" name="client-crm_xinyi-getCustomer" entity-id="9bc705bc-ebc5-4df0-9b05-9bf1a2750c75">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-crm_xinyi-getCustomer" entity-id="d431a11d-0dd1-4ec4-8b61-5b153c2610b0">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="21"/>
             <property name="tracking:enable-default-events"/>
@@ -484,16 +461,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="internal-crm_xinyi-addOrder" entity-id="2eb9b982-5975-4bed-b97c-0e98752862d5">
-=======
-    <flow SubFlow="false" name="client-crm_xinyi-addOrder" entity-id="de0da5d5-5b74-48a0-89c3-cae60ed2fefc">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-crm_xinyi-addOrder" entity-id="6b1ef3d7-e58f-4523-8422-63600516856c">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="25"/>
             <property name="tracking:enable-default-events"/>
@@ -565,16 +538,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="internal-crm_xinyi-deleteOrder" entity-id="6abf831f-70e7-44c7-ac66-9c795de0ec29">
-=======
-    <flow SubFlow="false" name="client-crm_xinyi-deleteOrder" entity-id="7c235ccd-487c-4b43-95fb-b613622e037d">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-crm_xinyi-deleteOrder" entity-id="d1d0a35c-d157-4e19-8780-05241a3832b8">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="29"/>
             <property name="tracking:enable-default-events"/>
@@ -646,16 +615,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="internal-crm_xinyi-getCustomerOrder" entity-id="4942e2a6-cd78-40c1-82b0-a61b60363228">
-=======
-    <flow SubFlow="false" name="client-crm_xinyi-getCustomerOrder" entity-id="b5f414fe-66cc-47c9-9a07-b0d69a574462">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-crm_xinyi-getCustomerOrder" entity-id="7814786f-8970-4391-b1f5-1ca7324f65cc">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="33"/>
             <property name="tracking:enable-default-events"/>
@@ -727,16 +692,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="internal-crm_xinyi-getCustomerPreferredProducts" entity-id="560933cc-0032-45d6-8ffe-794d4f7c44b7">
-=======
-    <flow SubFlow="false" name="client-crm_xinyi-getCustomerPreferredProducts" entity-id="1239640f-ecae-4d92-848e-7554eb15850e">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-crm_xinyi-getCustomerPreferredProducts" entity-id="11a806e7-9521-4b00-b79c-06f345852764">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="37"/>
             <property name="tracking:enable-default-events"/>
@@ -808,16 +769,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="internal-crm_xinyi-searchCatalog" entity-id="48afcde6-8f04-453b-ba80-90931f01d4b3">
-=======
-    <flow SubFlow="false" name="client-crm_xinyi-searchCatalog" entity-id="2948705b-dc6a-4771-b33a-fbfbdcfa7718">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-crm_xinyi-searchCatalog" entity-id="816be608-4f71-4035-813d-46cedcd12396">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="41"/>
             <property name="tracking:enable-default-events"/>
@@ -889,16 +846,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="client-warehouse-makeOrder" entity-id="5ba1d9d0-b1a7-478d-9ae3-07117c19c74f">
-=======
-    <flow SubFlow="false" name="client-warehouse-makeOrder" entity-id="7e713acb-5a14-4b4c-9947-a39880d0076b">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-warehouse-makeOrder" entity-id="7d9de293-35d9-45c5-b186-52595ea911cd">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="45"/>
             <property name="tracking:enable-default-events"/>
@@ -970,16 +923,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="client-warehouse-getLocation" entity-id="a64e9c61-1a53-493e-9c45-bba149a71224">
-=======
-    <flow SubFlow="false" name="client-warehouse-getLocation" entity-id="faf85ddc-0dab-4c40-ae9f-f9dce77bcb4d">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-warehouse-getLocation" entity-id="544c96ae-5ef7-4326-b251-000b550e62dd">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="49"/>
             <property name="tracking:enable-default-events"/>
@@ -1051,16 +1000,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="client-warehouse_david-getPlanning" entity-id="36bf8d55-3888-4e2e-9c1b-1c88375ae842">
-=======
-    <flow SubFlow="false" name="client-warehouse_david-getPlanning" entity-id="0202d201-92e7-49ba-9bd0-b6c348022e33">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-warehouse_david-getPlanning" entity-id="5fcd280b-db35-4c29-b0bb-4658e475f4e1">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="53"/>
             <property name="tracking:enable-default-events"/>
@@ -1132,16 +1077,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="client-warehouse_david-listNearOutOfStock" entity-id="3ac29bf4-55b2-4ff2-a137-14ff2923dd89">
-=======
-    <flow SubFlow="false" name="client-warehouse_david-listNearOutOfStock" entity-id="4167f96c-3f9b-4dc5-a6ca-65d8d1cb695a">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-warehouse_david-listNearOutOfStock" entity-id="be9877ea-ba05-4f1c-8dbf-0849e9bb46b4">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="57"/>
             <property name="tracking:enable-default-events"/>
@@ -1213,16 +1154,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="client-warehouse_david-getQuantity" entity-id="712dd6d7-4750-4133-ab9e-18d5ed910736">
-=======
-    <flow SubFlow="false" name="client-warehouse_david-getQuantity" entity-id="6ecfadc1-ecd1-4266-9efe-d81fa6a192a1">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-warehouse_david-getQuantity" entity-id="b55dc7d1-3aac-4c1b-9b32-a2d60ec6a40e">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="61"/>
             <property name="tracking:enable-default-events"/>
@@ -1294,16 +1231,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-<<<<<<< HEAD
-    <flow SubFlow="false" name="client-fedps_adrien-order_delivery" entity-id="be76eba8-4eb6-4cd8-8faa-2dbbd1c28fec">
-=======
-    <flow SubFlow="false" name="client-fedps_adrien-order_delivery" entity-id="c40be29c-597d-4960-af50-288f16ccc895">
->>>>>>> branch 'master' of https://github.com/giacogiac/bug-marmelade.git
+    <flow SubFlow="false" name="client-fedps_adrien-order_delivery" entity-id="614f1468-eff6-4c24-876a-688503a9f9b6">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="65"/>
             <property name="tracking:enable-default-events"/>
@@ -1375,12 +1308,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="client-fedps_adrien-devis" entity-id="a0a940eb-7f62-4a6e-b771-27846aa61ba9">
+    <flow SubFlow="false" name="client-fedps_adrien-devis" entity-id="a80d61d0-ae50-4360-a977-bcf100683d59">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="69"/>
             <property name="tracking:enable-default-events"/>
@@ -1452,12 +1385,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="client-fedps_adrien-estimate_delivery_date" entity-id="d628b1cf-b4dc-4bf7-bb11-5bfac4e522dd">
+    <flow SubFlow="false" name="client-fedps_adrien-estimate_delivery_date" entity-id="256e1685-ca26-49b3-b15a-f8b41ee86791">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="73"/>
             <property name="tracking:enable-default-events"/>
@@ -1529,12 +1462,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="client-fedps_adrien-estimate_price" entity-id="d973cc8b-c91e-41b5-b18b-9e8f9441d8f7">
+    <flow SubFlow="false" name="client-fedps_adrien-estimate_price" entity-id="4a693283-5c6b-4cdd-8953-78b750681889">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="77"/>
             <property name="tracking:enable-default-events"/>
@@ -1606,12 +1539,12 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="client-fedps_adrien-track" entity-id="742ba3a5-b8c2-45af-8cad-71984ac3197c">
+    <flow SubFlow="false" name="client-fedps_adrien-track" entity-id="841b588a-9531-471c-b9b3-9ad4802368da">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
+            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="81"/>
             <property name="tracking:enable-default-events"/>
@@ -1683,7 +1616,5 @@
                 </properties>
             </endpoint>
         </lane>
-        <apikit>false</apikit>
     </flow>
-    <description></description>
 </mule-configuration>

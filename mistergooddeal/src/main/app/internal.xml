@@ -88,7 +88,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     </flow>
     <flow name="client-fedps_adrien-order_delivery" doc:name="client-fedps_adrien-order_delivery">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/fedps_adrien/order_delivery" doc:name="client/fedps_adrien/order_delivery"/>
-        <cxf:jaxws-client doc:name="order_delivery" clientClass="proxies.ext.fedps_adrien.Fedps" enableMuleSoapHeaders="true" operation="order_delivery" port="FedpsServicePort"/>
-        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" method="POST" doc:name="localhost:8090/ext/fedps_adrien" path="ext/fedps_adrien"/>
+        <cxf:jaxws-client operation="order_delivery" clientClass="proxies.ext.fedps_adrien.Fedps" port="FedpsServicePort" enableMuleSoapHeaders="true" doc:name="order_delivery"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_adrien" method="POST" doc:name="localhost:8090/ext/fedps_adrien"/>
     </flow>
 </mule>

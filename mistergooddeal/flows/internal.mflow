@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="internal">
-    <flow SubFlow="false" name="internal-fedps_giac-order" entity-id="24cbdad8-3113-44ac-96c6-d24bf4e169f7">
+    <flow SubFlow="false" name="client-fedps_giac-order" entity-id="602687c3-5338-4f5a-904c-811519da0c50">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -77,7 +77,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-fedps_giac-estimation" entity-id="92dc1da8-79f1-4133-af41-9864a98ab920">
+    <flow SubFlow="false" name="client-fedps_giac-estimation" entity-id="d9dd39cb-0aaa-4bbd-9f0d-e5d32c746674">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -154,7 +154,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-fedps_giac-track" entity-id="d0fc6f72-47c3-4518-8a40-18276b5efe26">
+    <flow SubFlow="false" name="client-fedps_giac-track" entity-id="8b2d099f-eff4-481b-a40f-8b23a19340ae">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -231,7 +231,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-createCustomer" entity-id="20c5e00b-48b5-4770-8c14-ebb694560503">
+    <flow SubFlow="false" name="client-crm_xinyi-createCustomer" entity-id="7d28e9e0-6445-4592-8705-350b8090621a">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -308,7 +308,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-deleteCustomer" entity-id="98b95afc-2ff8-4414-be79-88d8e5415c21">
+    <flow SubFlow="false" name="client-crm_xinyi-deleteCustomer" entity-id="d70476a4-0348-47a0-95d2-fbf52b17e399">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -385,7 +385,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-getCustomer" entity-id="2ac549c5-d5a6-4f8a-9a2a-75750f56c973">
+    <flow SubFlow="false" name="client-crm_xinyi-getCustomer" entity-id="9bc705bc-ebc5-4df0-9b05-9bf1a2750c75">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -462,7 +462,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-addOrder" entity-id="c9072927-8df1-415f-a77c-edce3048ac1e">
+    <flow SubFlow="false" name="client-crm_xinyi-addOrder" entity-id="de0da5d5-5b74-48a0-89c3-cae60ed2fefc">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -539,7 +539,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-deleteOrder" entity-id="568eb8ac-5249-4bf1-9e1f-97ee82d09b3e">
+    <flow SubFlow="false" name="client-crm_xinyi-deleteOrder" entity-id="7c235ccd-487c-4b43-95fb-b613622e037d">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -616,7 +616,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-getCustomerOrder" entity-id="55438020-f8f7-42b4-9442-c982ed467a00">
+    <flow SubFlow="false" name="client-crm_xinyi-getCustomerOrder" entity-id="b5f414fe-66cc-47c9-9a07-b0d69a574462">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -693,7 +693,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-getCustomerPreferredProducts" entity-id="c0b7e5a6-7891-4817-8cc7-d576e7de67d2">
+    <flow SubFlow="false" name="client-crm_xinyi-getCustomerPreferredProducts" entity-id="1239640f-ecae-4d92-848e-7554eb15850e">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -770,7 +770,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-searchCatalog" entity-id="07b408a6-979f-4dfc-9aef-4c874c40c959">
+    <flow SubFlow="false" name="client-crm_xinyi-searchCatalog" entity-id="2948705b-dc6a-4771-b33a-fbfbdcfa7718">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -847,7 +847,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="client-warehouse-makeOrder" entity-id="0356d19e-341e-4227-962b-2ccb1f66df55">
+    <flow SubFlow="false" name="client-warehouse-makeOrder" entity-id="7e713acb-5a14-4b4c-9947-a39880d0076b">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -924,7 +924,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="client-warehouse-getLocation" entity-id="b9932c10-d7e9-4dfb-bf12-eb4d6aafbc21">
+    <flow SubFlow="false" name="client-warehouse-getLocation" entity-id="faf85ddc-0dab-4c40-ae9f-f9dce77bcb4d">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -1001,7 +1001,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="client-warehouse_david-getPlanning" entity-id="edf228b9-d870-46d2-8de8-9585d67bf0a1">
+    <flow SubFlow="false" name="client-warehouse_david-getPlanning" entity-id="0202d201-92e7-49ba-9bd0-b6c348022e33">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -1078,7 +1078,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="client-warehouse_david-listNearOutOfStock" entity-id="5ebf4678-b28c-49b5-bf97-88de4a4c6e12">
+    <flow SubFlow="false" name="client-warehouse_david-listNearOutOfStock" entity-id="4167f96c-3f9b-4dc5-a6ca-65d8d1cb695a">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -1155,7 +1155,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="client-warehouse_david-getQuantity" entity-id="4f95ac7e-8560-4708-8937-754cd1ae487d">
+    <flow SubFlow="false" name="client-warehouse_david-getQuantity" entity-id="6ecfadc1-ecd1-4266-9efe-d81fa6a192a1">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -1232,7 +1232,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="client-fedps_adrien-order_delivery" entity-id="8ced6b43-2088-4196-a4c7-669fc571145b">
+    <flow SubFlow="false" name="client-fedps_adrien-order_delivery" entity-id="c40be29c-597d-4960-af50-288f16ccc895">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>

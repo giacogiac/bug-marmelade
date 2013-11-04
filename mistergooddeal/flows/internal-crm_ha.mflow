@@ -1,51 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="internal-crm_ha">
-    <flow SubFlow="false" name="internal-crm_ha-createCustomer" entity-id="2fed6ca1-fa5a-462a-ab78-b302c19c57f3">
+    <flow SubFlow="false" name="internal-crm_ha-createCustomer" entity-id="a9d56ff4-bedd-47fb-a0fe-b1fc9b0c53fe">
         <properties>
-            <property name="id" value=""/>
-            <property name="updated"/>
-            <property name="auxiliary;erased;initialState" value="true"/>
-            <property name="initialState" value=""/>
-            <property name="processingStrategy2" value=""/>
-            <property name="bussinessEventsLabel" value=""/>
-            <property name="auxiliary;erased;processingStrategy2" value="true"/>
-            <property name="tracking:enable-default-events" value="false"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;1255914662">
-                <property name="id" value=""/>
-                <property name="isProcessed$$$$" value="true"/>
-            </property-collection>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="initialState"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="auxiliary;index" value="1"/>
+            <property name="tracking:enable-default-events"/>
         </properties>
-        <description></description>
-        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="42b4c8f3-91f6-4cf7-b66b-adac73f76eeb">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#1">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/customer/create" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="c51ac6dc-d988-4ba6-a3d7-7b2bfff68bc5">
-                <graphicalData x="0" y="0" width="0" height="0"/>
+            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/customer/create" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#1">
+                <graphicalData x="19" y="36" width="179" height="171"/>
                 <properties>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
-                    <property name="businessEventsLabel" value=""/>
-                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events" value="false"/>
-                    <property name="ref" value=""/>
-                    <property name="transformer-refs" value=""/>
-                    <property name="updated"/>
-                    <property name="address" value=""/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_ha/customer/create"/>
-                    <property name="responseTransformer-refs" value=""/>
-                    <property name="auxiliary;erased;responseTimeout" value="true"/>
-                    <property name="mimeType" value=""/>
-                    <property name="responseTimeout" value=""/>
-                    <property name="connector-ref" value=""/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="2"/>
+                    <property name="connector-ref"/>
                 </properties>
                 <description></description>
             </endpoint>
-            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/customer/create" type="http://www.mulesoft.org/schema/mule/https/endpoint" entity-id="990774fc-b193-4350-8fea-34e9cb333ffa">
-                <graphicalData x="0" y="0" width="0" height="0"/>
+            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/customer/create" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#1">
+                <graphicalData x="386" y="36" width="245" height="69"/>
                 <properties>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
                     <property name="port" value="8090"/>
+                    <property name="auxiliary;erased;mimeType" value="true"/>
                     <property name="contentType" value=""/>
                     <property name="password" value=""/>
                     <property name="exchange-pattern" value="request-response"/>
@@ -55,6 +45,7 @@
                     <property name="encoding" value=""/>
                     <property name="path" value="ext/crm_ha/customer/create"/>
                     <property name="responseTransformer-refs" value=""/>
+                    <property name="auxiliary;index" value="3"/>
                     <property name="responseTimeout" value="10000"/>
                     <property name="mimeType" value=""/>
                     <property name="auxiliary;erased;contentType" value="true"/>
@@ -65,10 +56,10 @@
                     <property name="keep-alive" value="false"/>
                     <property name="disableTransportTransformer" value="false"/>
                     <property name="ref" value=""/>
-                    <property name="httpLabel" value=""/>
                     <property name="transformer-refs" value=""/>
+                    <property name="httpLabel" value=""/>
                     <property name="address" value=""/>
-                    <property name="method" value="POST"/>
+                    <property name="method" value="GET"/>
                     <property name="user" value=""/>
                     <property name="connector-ref" value=""/>
                 </properties>
@@ -76,61 +67,51 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_ha-deleteCustomer" entity-id="b9997cee-08c1-4787-9057-b11370656a27">
+    <flow SubFlow="false" name="internal-crm_ha-deleteCustomer" entity-id="573e0e0b-d5fd-4b24-8690-3ef82e4bdacf">
         <properties>
-            <property name="id" value=""/>
-            <property name="updated"/>
-            <property name="processingStrategy2" value=""/>
-            <property name="initialState" value=""/>
-            <property name="auxiliary;erased;initialState" value="true"/>
-            <property name="bussinessEventsLabel" value=""/>
-            <property name="tracking:enable-default-events" value="false"/>
-            <property name="auxiliary;erased;processingStrategy2" value="true"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;1162595406">
-                <property name="id" value=""/>
-                <property name="isProcessed$$$$" value="true"/>
-            </property-collection>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="initialState"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="auxiliary;index" value="4"/>
+            <property name="tracking:enable-default-events"/>
         </properties>
-        <description></description>
-        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="4f9f444b-5d63-4a74-bc35-8e7bddb0404d">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#2">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/customer/delete" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="ffc53df8-9a0b-49bd-8123-fa8b820d6e0e">
-                <graphicalData x="19" y="285" width="68" height="171"/>
+            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/customer/delete" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#2">
+                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
-                    <property name="businessEventsLabel" value=""/>
-                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events" value="false"/>
-                    <property name="ref" value=""/>
-                    <property name="transformer-refs" value=""/>
-                    <property name="updated"/>
-                    <property name="address" value=""/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_ha/customer/delete"/>
-                    <property name="responseTransformer-refs" value=""/>
-                    <property name="auxiliary;erased;responseTimeout" value="true"/>
-                    <property name="mimeType" value=""/>
-                    <property name="responseTimeout" value=""/>
-                    <property name="connector-ref" value=""/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="5"/>
+                    <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
-            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/customer/delete" type="http://www.mulesoft.org/schema/mule/https/endpoint" entity-id="7769317e-d86d-4a83-8a72-6de50812bd39">
+            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/customer/delete" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#2">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="auxiliary;erased;mimeType" value="true"/>
                     <property name="port" value="8090"/>
                     <property name="contentType" value=""/>
                     <property name="password" value=""/>
-                    <property name="exchange-pattern" value="request-response"/>
                     <property name="tracking:enable-default-events" value="false"/>
+                    <property name="exchange-pattern" value="request-response"/>
                     <property name="updated"/>
                     <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
                     <property name="path" value="ext/crm_ha/customer/delete"/>
+                    <property name="encoding" value=""/>
                     <property name="responseTransformer-refs" value=""/>
+                    <property name="auxiliary;index" value="6"/>
                     <property name="responseTimeout" value="10000"/>
                     <property name="mimeType" value=""/>
                     <property name="auxiliary;erased;contentType" value="true"/>
@@ -141,10 +122,10 @@
                     <property name="keep-alive" value="false"/>
                     <property name="disableTransportTransformer" value="false"/>
                     <property name="ref" value=""/>
-                    <property name="httpLabel" value=""/>
                     <property name="transformer-refs" value=""/>
+                    <property name="httpLabel" value=""/>
                     <property name="address" value=""/>
-                    <property name="method" value="POST"/>
+                    <property name="method" value="GET"/>
                     <property name="user" value=""/>
                     <property name="connector-ref" value=""/>
                 </properties>
@@ -152,61 +133,51 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_ha-getCustomer" entity-id="d73244dc-a941-47f5-b524-7cfea80f907c">
+    <flow SubFlow="false" name="internal-crm_ha-getCustomer" entity-id="c172b8e0-9f81-47dd-b54b-57bf7c4e91f4">
         <properties>
-            <property name="id" value=""/>
-            <property name="updated"/>
-            <property name="processingStrategy2" value=""/>
-            <property name="initialState" value=""/>
-            <property name="auxiliary;erased;initialState" value="true"/>
-            <property name="bussinessEventsLabel" value=""/>
-            <property name="tracking:enable-default-events" value="false"/>
-            <property name="auxiliary;erased;processingStrategy2" value="true"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;517580783">
-                <property name="id" value=""/>
-                <property name="isProcessed$$$$" value="true"/>
-            </property-collection>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="initialState"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="auxiliary;index" value="7"/>
+            <property name="tracking:enable-default-events"/>
         </properties>
-        <description></description>
-        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="b272a443-8aa2-463e-afe6-39825f978614">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#3">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/customer/get" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="d7f116e9-9f95-428b-b5ef-ab6caf64730c">
-                <graphicalData x="19" y="534" width="68" height="171"/>
+            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/customer/get" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#3">
+                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
-                    <property name="businessEventsLabel" value=""/>
-                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events" value="false"/>
-                    <property name="ref" value=""/>
-                    <property name="transformer-refs" value=""/>
-                    <property name="updated"/>
-                    <property name="address" value=""/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_ha/customer/get"/>
-                    <property name="responseTransformer-refs" value=""/>
-                    <property name="responseTimeout" value=""/>
-                    <property name="mimeType" value=""/>
-                    <property name="auxiliary;erased;responseTimeout" value="true"/>
-                    <property name="connector-ref" value=""/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="8"/>
+                    <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
-            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/customer/get" type="http://www.mulesoft.org/schema/mule/https/endpoint" entity-id="a85c1934-6098-4c39-9b5c-81e37d5a562f">
+            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/customer/get" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#3">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="auxiliary;erased;mimeType" value="true"/>
                     <property name="port" value="8090"/>
                     <property name="contentType" value=""/>
                     <property name="password" value=""/>
-                    <property name="exchange-pattern" value="request-response"/>
                     <property name="tracking:enable-default-events" value="false"/>
+                    <property name="exchange-pattern" value="request-response"/>
                     <property name="updated"/>
                     <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
                     <property name="path" value="ext/crm_ha/customer/get"/>
+                    <property name="encoding" value=""/>
                     <property name="responseTransformer-refs" value=""/>
+                    <property name="auxiliary;index" value="9"/>
                     <property name="responseTimeout" value="10000"/>
                     <property name="mimeType" value=""/>
                     <property name="auxiliary;erased;contentType" value="true"/>
@@ -217,10 +188,10 @@
                     <property name="keep-alive" value="false"/>
                     <property name="disableTransportTransformer" value="false"/>
                     <property name="ref" value=""/>
-                    <property name="httpLabel" value=""/>
                     <property name="transformer-refs" value=""/>
+                    <property name="httpLabel" value=""/>
                     <property name="address" value=""/>
-                    <property name="method" value="POST"/>
+                    <property name="method" value="GET"/>
                     <property name="user" value=""/>
                     <property name="connector-ref" value=""/>
                 </properties>
@@ -228,61 +199,51 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_ha-createOrder" entity-id="8cbb5d12-fddb-4b0e-a98f-b79230d3ea1e">
+    <flow SubFlow="false" name="internal-crm_ha-createOrder" entity-id="71e78b7b-379c-4c1d-81ee-c2014eaab8b0">
         <properties>
-            <property name="id" value=""/>
-            <property name="updated"/>
-            <property name="processingStrategy2" value=""/>
-            <property name="initialState" value=""/>
-            <property name="auxiliary;erased;initialState" value="true"/>
-            <property name="bussinessEventsLabel" value=""/>
-            <property name="tracking:enable-default-events" value="false"/>
-            <property name="auxiliary;erased;processingStrategy2" value="true"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;696515522">
-                <property name="id" value=""/>
-                <property name="isProcessed$$$$" value="true"/>
-            </property-collection>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="initialState"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="auxiliary;index" value="10"/>
+            <property name="tracking:enable-default-events"/>
         </properties>
-        <description></description>
-        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="48cdc466-72d6-4a80-a004-b2db08731f82">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#4">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/order/create" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="e3559616-82d2-4c1d-afe3-f1be9ac899c2">
-                <graphicalData x="19" y="783" width="68" height="171"/>
+            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/order/create" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#4">
+                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
-                    <property name="businessEventsLabel" value=""/>
-                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events" value="false"/>
-                    <property name="ref" value=""/>
-                    <property name="transformer-refs" value=""/>
-                    <property name="updated"/>
-                    <property name="address" value=""/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_ha/order/create"/>
-                    <property name="responseTransformer-refs" value=""/>
-                    <property name="auxiliary;erased;responseTimeout" value="true"/>
-                    <property name="mimeType" value=""/>
-                    <property name="responseTimeout" value=""/>
-                    <property name="connector-ref" value=""/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="11"/>
+                    <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
-            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/order/create" type="http://www.mulesoft.org/schema/mule/https/endpoint" entity-id="39278908-ed85-4c08-99d0-dc63fada279b">
+            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/order/create" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#4">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="auxiliary;erased;mimeType" value="true"/>
                     <property name="port" value="8090"/>
                     <property name="contentType" value=""/>
                     <property name="password" value=""/>
-                    <property name="exchange-pattern" value="request-response"/>
                     <property name="tracking:enable-default-events" value="false"/>
+                    <property name="exchange-pattern" value="request-response"/>
                     <property name="updated"/>
                     <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
                     <property name="path" value="ext/crm_ha/order/create"/>
+                    <property name="encoding" value=""/>
                     <property name="responseTransformer-refs" value=""/>
+                    <property name="auxiliary;index" value="12"/>
                     <property name="responseTimeout" value="10000"/>
                     <property name="mimeType" value=""/>
                     <property name="auxiliary;erased;contentType" value="true"/>
@@ -293,10 +254,10 @@
                     <property name="keep-alive" value="false"/>
                     <property name="disableTransportTransformer" value="false"/>
                     <property name="ref" value=""/>
-                    <property name="httpLabel" value=""/>
                     <property name="transformer-refs" value=""/>
+                    <property name="httpLabel" value=""/>
                     <property name="address" value=""/>
-                    <property name="method" value="POST"/>
+                    <property name="method" value="GET"/>
                     <property name="user" value=""/>
                     <property name="connector-ref" value=""/>
                 </properties>
@@ -304,61 +265,51 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_ha-deleteOrder" entity-id="94972e00-ccb6-4469-8ebc-c67d6a11f6b6">
+    <flow SubFlow="false" name="internal-crm_ha-deleteOrder" entity-id="4d50bb15-be80-4c17-9a13-75d43c112c07">
         <properties>
-            <property name="id" value=""/>
-            <property name="updated"/>
-            <property name="processingStrategy2" value=""/>
-            <property name="initialState" value=""/>
-            <property name="auxiliary;erased;initialState" value="true"/>
-            <property name="bussinessEventsLabel" value=""/>
-            <property name="tracking:enable-default-events" value="false"/>
-            <property name="auxiliary;erased;processingStrategy2" value="true"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;2115423790">
-                <property name="id" value=""/>
-                <property name="isProcessed$$$$" value="true"/>
-            </property-collection>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="initialState"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="auxiliary;index" value="13"/>
+            <property name="tracking:enable-default-events"/>
         </properties>
-        <description></description>
-        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="c976021f-60c7-42fb-b213-907c9922d2a8">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#5">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/order/delete" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="ffcf06ca-96f0-4246-b71c-8948ab9c4dc8">
-                <graphicalData x="19" y="1032" width="68" height="171"/>
+            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/order/delete" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#5">
+                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
-                    <property name="businessEventsLabel" value=""/>
-                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events" value="false"/>
-                    <property name="ref" value=""/>
-                    <property name="transformer-refs" value=""/>
-                    <property name="updated"/>
-                    <property name="address" value=""/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_ha/order/delete"/>
-                    <property name="responseTransformer-refs" value=""/>
-                    <property name="auxiliary;erased;responseTimeout" value="true"/>
-                    <property name="mimeType" value=""/>
-                    <property name="responseTimeout" value=""/>
-                    <property name="connector-ref" value=""/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="14"/>
+                    <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
-            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/order/delete" type="http://www.mulesoft.org/schema/mule/https/endpoint" entity-id="0e36e2db-aae1-4841-aacb-3f60dc988e73">
+            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/order/delete" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#5">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="auxiliary;erased;mimeType" value="true"/>
                     <property name="port" value="8090"/>
                     <property name="contentType" value=""/>
                     <property name="password" value=""/>
-                    <property name="exchange-pattern" value="request-response"/>
                     <property name="tracking:enable-default-events" value="false"/>
+                    <property name="exchange-pattern" value="request-response"/>
                     <property name="updated"/>
                     <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
                     <property name="path" value="localhost:8090/ext/crm_ha/order/delete"/>
+                    <property name="encoding" value=""/>
                     <property name="responseTransformer-refs" value=""/>
+                    <property name="auxiliary;index" value="15"/>
                     <property name="responseTimeout" value="10000"/>
                     <property name="mimeType" value=""/>
                     <property name="auxiliary;erased;contentType" value="true"/>
@@ -369,10 +320,10 @@
                     <property name="keep-alive" value="false"/>
                     <property name="disableTransportTransformer" value="false"/>
                     <property name="ref" value=""/>
-                    <property name="httpLabel" value=""/>
                     <property name="transformer-refs" value=""/>
+                    <property name="httpLabel" value=""/>
                     <property name="address" value=""/>
-                    <property name="method" value="POST"/>
+                    <property name="method" value="GET"/>
                     <property name="user" value=""/>
                     <property name="connector-ref" value=""/>
                 </properties>
@@ -380,61 +331,51 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_ha-getOrder" entity-id="5baef85a-db01-4549-b032-5b5d84f92587">
+    <flow SubFlow="false" name="internal-crm_ha-getOrder" entity-id="9bbc0f87-2e2b-4068-8ae8-f91d00dc590a">
         <properties>
-            <property name="id" value=""/>
-            <property name="updated"/>
-            <property name="auxiliary;erased;initialState" value="true"/>
-            <property name="initialState" value=""/>
-            <property name="processingStrategy2" value=""/>
-            <property name="bussinessEventsLabel" value=""/>
-            <property name="auxiliary;erased;processingStrategy2" value="true"/>
-            <property name="tracking:enable-default-events" value="false"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;55358172">
-                <property name="id" value=""/>
-                <property name="isProcessed$$$$" value="true"/>
-            </property-collection>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="initialState"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="auxiliary;index" value="16"/>
+            <property name="tracking:enable-default-events"/>
         </properties>
-        <description></description>
-        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="9d412bdf-cd77-4e9e-96a2-a49d79eb0ad5">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#6">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/order/get" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="8a962c0c-973a-49d2-b211-0069e893194a">
-                <graphicalData x="19" y="1281" width="68" height="171"/>
+            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/order/get" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#6">
+                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
-                    <property name="businessEventsLabel" value=""/>
-                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events" value="false"/>
-                    <property name="ref" value=""/>
-                    <property name="transformer-refs" value=""/>
-                    <property name="updated"/>
-                    <property name="address" value=""/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_ha/order/get"/>
-                    <property name="responseTransformer-refs" value=""/>
-                    <property name="auxiliary;erased;responseTimeout" value="true"/>
-                    <property name="mimeType" value=""/>
-                    <property name="responseTimeout" value=""/>
-                    <property name="connector-ref" value=""/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="17"/>
+                    <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
-            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/order/get" type="http://www.mulesoft.org/schema/mule/https/endpoint" entity-id="2d27f220-8e89-48a7-9b92-19caf79cb143">
+            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/order/get" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#6">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="auxiliary;erased;mimeType" value="true"/>
                     <property name="port" value="8090"/>
                     <property name="contentType" value=""/>
                     <property name="password" value=""/>
-                    <property name="exchange-pattern" value="request-response"/>
                     <property name="tracking:enable-default-events" value="false"/>
+                    <property name="exchange-pattern" value="request-response"/>
                     <property name="updated"/>
                     <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
                     <property name="path" value="ext/crm_ha/order/get"/>
+                    <property name="encoding" value=""/>
                     <property name="responseTransformer-refs" value=""/>
+                    <property name="auxiliary;index" value="18"/>
                     <property name="responseTimeout" value="10000"/>
                     <property name="mimeType" value=""/>
                     <property name="auxiliary;erased;contentType" value="true"/>
@@ -445,10 +386,10 @@
                     <property name="keep-alive" value="false"/>
                     <property name="disableTransportTransformer" value="false"/>
                     <property name="ref" value=""/>
-                    <property name="httpLabel" value=""/>
                     <property name="transformer-refs" value=""/>
+                    <property name="httpLabel" value=""/>
                     <property name="address" value=""/>
-                    <property name="method" value="POST"/>
+                    <property name="method" value="GET"/>
                     <property name="user" value=""/>
                     <property name="connector-ref" value=""/>
                 </properties>
@@ -456,61 +397,51 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_ha-productGetPreferred" entity-id="0ebdc120-d865-40f5-a2d3-66a156003593">
+    <flow SubFlow="false" name="internal-crm_ha-productGetPreferred" entity-id="cee5dae0-efbf-42ff-b79d-7e4495f8eafe">
         <properties>
-            <property name="id" value=""/>
-            <property name="updated"/>
-            <property name="processingStrategy2" value=""/>
-            <property name="initialState" value=""/>
-            <property name="auxiliary;erased;initialState" value="true"/>
-            <property name="bussinessEventsLabel" value=""/>
-            <property name="tracking:enable-default-events" value="false"/>
-            <property name="auxiliary;erased;processingStrategy2" value="true"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;588397952">
-                <property name="id" value=""/>
-                <property name="isProcessed$$$$" value="true"/>
-            </property-collection>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="initialState"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="auxiliary;index" value="19"/>
+            <property name="tracking:enable-default-events"/>
         </properties>
-        <description></description>
-        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="443edc7e-6358-4f41-936d-95cc5a6f66f1">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#7">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/product/getPreferred" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="516186e3-57d6-4d06-b5fa-7b44ce0431c8">
-                <graphicalData x="19" y="1530" width="68" height="171"/>
+            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/product/getPreferred" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#7">
+                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
-                    <property name="businessEventsLabel" value=""/>
-                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events" value="false"/>
-                    <property name="ref" value=""/>
-                    <property name="transformer-refs" value=""/>
-                    <property name="updated"/>
-                    <property name="address" value=""/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_ha/product/getPreferred"/>
-                    <property name="responseTransformer-refs" value=""/>
-                    <property name="auxiliary;erased;responseTimeout" value="true"/>
-                    <property name="mimeType" value=""/>
-                    <property name="responseTimeout" value=""/>
-                    <property name="connector-ref" value=""/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="20"/>
+                    <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
-            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/product/getPreferred" type="http://www.mulesoft.org/schema/mule/https/endpoint" entity-id="80bdec8d-2ff1-46b8-8e2b-e0d59140a676">
+            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/product/getPreferred" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#7">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="auxiliary;erased;mimeType" value="true"/>
                     <property name="port" value="8090"/>
                     <property name="contentType" value=""/>
                     <property name="password" value=""/>
-                    <property name="exchange-pattern" value="request-response"/>
                     <property name="tracking:enable-default-events" value="false"/>
+                    <property name="exchange-pattern" value="request-response"/>
                     <property name="updated"/>
                     <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
                     <property name="path" value="ext/crm_ha/product/getPreferred"/>
+                    <property name="encoding" value=""/>
                     <property name="responseTransformer-refs" value=""/>
+                    <property name="auxiliary;index" value="21"/>
                     <property name="responseTimeout" value="10000"/>
                     <property name="mimeType" value=""/>
                     <property name="auxiliary;erased;contentType" value="true"/>
@@ -521,10 +452,10 @@
                     <property name="keep-alive" value="false"/>
                     <property name="disableTransportTransformer" value="false"/>
                     <property name="ref" value=""/>
-                    <property name="httpLabel" value=""/>
                     <property name="transformer-refs" value=""/>
+                    <property name="httpLabel" value=""/>
                     <property name="address" value=""/>
-                    <property name="method" value="POST"/>
+                    <property name="method" value="GET"/>
                     <property name="user" value=""/>
                     <property name="connector-ref" value=""/>
                 </properties>
@@ -532,61 +463,51 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_ha-productSearch" entity-id="a081c36d-a073-4e24-ad86-ecc9b08d702f">
+    <flow SubFlow="false" name="internal-crm_ha-productSearch" entity-id="c19242c1-2db4-4b4e-a097-539fc7ac6e59">
         <properties>
-            <property name="id" value=""/>
-            <property name="updated"/>
-            <property name="processingStrategy2" value=""/>
-            <property name="initialState" value=""/>
-            <property name="auxiliary;erased;initialState" value="true"/>
-            <property name="bussinessEventsLabel" value=""/>
-            <property name="tracking:enable-default-events" value="false"/>
-            <property name="auxiliary;erased;processingStrategy2" value="true"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;1296332210">
-                <property name="id" value=""/>
-                <property name="isProcessed$$$$" value="true"/>
-            </property-collection>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="initialState"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="auxiliary;index" value="22"/>
+            <property name="tracking:enable-default-events"/>
         </properties>
-        <description></description>
-        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="38376bf8-da80-4f3a-a5d4-d4a0267c6875">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#8">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/product/search" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="22c69be1-96c1-482c-a2ba-05d359214f3c">
-                <graphicalData x="19" y="1779" width="68" height="171"/>
+            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_ha/product/search" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#8">
+                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="auxiliary;erased;mimeType" value="true"/>
-                    <property name="businessEventsLabel" value=""/>
-                    <property name="disableTransportTransformer" value="false"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events" value="false"/>
-                    <property name="ref" value=""/>
-                    <property name="transformer-refs" value=""/>
-                    <property name="updated"/>
-                    <property name="address" value=""/>
-                    <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_ha/product/search"/>
-                    <property name="responseTransformer-refs" value=""/>
-                    <property name="auxiliary;erased;responseTimeout" value="true"/>
-                    <property name="mimeType" value=""/>
-                    <property name="responseTimeout" value=""/>
-                    <property name="connector-ref" value=""/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="23"/>
+                    <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
-            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/product/search" type="http://www.mulesoft.org/schema/mule/https/endpoint" entity-id="bd7cac68-f2e2-4de0-b7a6-15086d03f1dc">
+            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_ha/product/search" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#8">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="auxiliary;erased;mimeType" value="true"/>
                     <property name="port" value="8090"/>
                     <property name="contentType" value=""/>
                     <property name="password" value=""/>
-                    <property name="exchange-pattern" value="request-response"/>
                     <property name="tracking:enable-default-events" value="false"/>
+                    <property name="exchange-pattern" value="request-response"/>
                     <property name="updated"/>
                     <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="encoding" value=""/>
                     <property name="path" value="ext/crm_ha/product/search"/>
+                    <property name="encoding" value=""/>
                     <property name="responseTransformer-refs" value=""/>
+                    <property name="auxiliary;index" value="24"/>
                     <property name="responseTimeout" value="10000"/>
                     <property name="mimeType" value=""/>
                     <property name="auxiliary;erased;contentType" value="true"/>
@@ -597,10 +518,10 @@
                     <property name="keep-alive" value="false"/>
                     <property name="disableTransportTransformer" value="false"/>
                     <property name="ref" value=""/>
-                    <property name="httpLabel" value=""/>
                     <property name="transformer-refs" value=""/>
+                    <property name="httpLabel" value=""/>
                     <property name="address" value=""/>
-                    <property name="method" value="POST"/>
+                    <property name="method" value="GET"/>
                     <property name="user" value=""/>
                     <property name="connector-ref" value=""/>
                 </properties>

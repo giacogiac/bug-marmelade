@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd">
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
     <flow name="internal-fedps_giac-order" doc:name="internal-fedps_giac-order">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/fedps_giac/order" doc:name="client/fedps_giac/order"/>
         <cxf:jaxws-client operation="order" clientClass="proxies.ext.fedps_giac.Delivery" port="DeliveryServicePort" enableMuleSoapHeaders="true" doc:name="order"/>
@@ -87,7 +87,7 @@ http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/
     </flow>
     <flow name="client-fedps_adrien-order_delivery" doc:name="client-fedps_adrien-order_delivery">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/fedps_adrien/order_delivery" doc:name="client/fedps_adrien/order_delivery"/>
-        <cxf:jaxws-client doc:name="order_delivery" clientClass="proxies.ext.fedps_adrien.Fedps" enableMuleSoapHeaders="true" operation="order_delivery" port="FedpsServicePort"/>
-        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" method="POST" doc:name="localhost:8090/ext/fedps_adrien" path="ext/fedps_adrien"/>
+        <cxf:jaxws-client operation="order_delivery" clientClass="proxies.ext.fedps_adrien.Fedps" port="FedpsServicePort" enableMuleSoapHeaders="true" doc:name="order_delivery"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/fedps_adrien" method="POST" doc:name="localhost:8090/ext/fedps_adrien"/>
     </flow>
 </mule>

@@ -30,12 +30,12 @@ public class WareHouseServiceImpl implements WareHouseService {
 		response.location = wh.getLocation(request.idProduct);
 		return response;
 	}
-/*
+
 	public PlanningResponse getPlanning() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-*/
+
 	public ListNearOutOfStockResponse listNearOutOfStock() {
 		ListNearOutOfStockResponse response = new ListNearOutOfStockResponse();
 		response.list = wh.getListNearOutOfStock();
@@ -55,10 +55,10 @@ public class WareHouseServiceImpl implements WareHouseService {
 		response.result = wh.addOrder(order);
 		return response;
 	}
-/*
+
 	public DeliveryResponse haveDelivery(DeliveryRequest request) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-*/
+
 }

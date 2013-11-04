@@ -1,1313 +1,1244 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="internal">
-    <flow SubFlow="false" name="internal-fedps_giac-order" entity-id="24cbdad8-3113-44ac-96c6-d24bf4e169f7">
+    <flow SubFlow="false" name="internal-fedps_giac-order" entity-id="a9b515c1-be1f-4d0f-862a-2134f2107717">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="1"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="1"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#1">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/fedps_giac/order" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#1">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/fedps_giac/order"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="2"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="2"/>
                 </properties>
             </endpoint>
             <pattern name="order" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#1">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="DeliveryServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="order"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.fedps_giac.Delivery"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="3"/>
+                    <property name="operation" value="order"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.fedps_giac.Delivery"/>
+                    <property name="port" value="DeliveryServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="3"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/fedps_giac" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#1">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/fedps_giac"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/fedps_giac"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="4"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-fedps_giac-estimation" entity-id="92dc1da8-79f1-4133-af41-9864a98ab920">
+    <flow SubFlow="false" name="internal-fedps_giac-estimation" entity-id="b0d2a8e9-6285-43f3-a399-66a4de425ae2">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="5"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="5"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#2">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/fedps_giac/estimation" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#2">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/fedps_giac/estimation"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="6"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="6"/>
                 </properties>
             </endpoint>
             <pattern name="estimation" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#2">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="DeliveryServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="estimation"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.fedps_giac.Delivery"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="7"/>
+                    <property name="operation" value="estimation"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.fedps_giac.Delivery"/>
+                    <property name="port" value="DeliveryServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="7"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/fedps_giac" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#2">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/fedps_giac"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/fedps_giac"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="8"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-fedps_giac-track" entity-id="d0fc6f72-47c3-4518-8a40-18276b5efe26">
+    <flow SubFlow="false" name="internal-fedps_giac-track" entity-id="dc0892e6-2f31-4c59-8096-644867999537">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="9"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="9"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#3">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/fedps_giac/track" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#3">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/fedps_giac/track"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="10"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="10"/>
                 </properties>
             </endpoint>
             <pattern name="track" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#3">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="DeliveryServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="track"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.fedps_giac.Delivery"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="11"/>
+                    <property name="operation" value="track"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.fedps_giac.Delivery"/>
+                    <property name="port" value="DeliveryServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="11"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/fedps_giac" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#3">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/fedps_giac"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/fedps_giac"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="12"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-createCustomer" entity-id="20c5e00b-48b5-4770-8c14-ebb694560503">
+    <flow SubFlow="false" name="internal-crm_xinyi-createCustomer" entity-id="64e9ae3f-c831-4150-9720-0141102aa038">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="13"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="13"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#4">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_xinyi/createCustomer" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#4">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_xinyi/createCustomer"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="14"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="14"/>
                 </properties>
             </endpoint>
             <pattern name="createCustomer" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#4">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="CrmServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="createCustomer"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="15"/>
+                    <property name="operation" value="createCustomer"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
+                    <property name="port" value="CrmServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="15"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_xinyi/createCustomer" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#4">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/crm_xinyi/createCustomer"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/crm_xinyi/createCustomer"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="16"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-deleteCustomer" entity-id="98b95afc-2ff8-4414-be79-88d8e5415c21">
+    <flow SubFlow="false" name="internal-crm_xinyi-deleteCustomer" entity-id="c72e4272-f7b3-4e2c-a516-5df2fae2d6c9">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="17"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="17"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#5">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_xinyi/deleteCustomer" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#5">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_xinyi/deleteCustomer"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="18"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="18"/>
                 </properties>
             </endpoint>
             <pattern name="deleteCustomer" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#5">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="CrmServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="deleteCustomer"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="19"/>
+                    <property name="operation" value="deleteCustomer"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
+                    <property name="port" value="CrmServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="19"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_xinyi/deleteCustomer" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#5">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/crm_xinyi/deleteCustomer"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/crm_xinyi/deleteCustomer"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="20"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-getCustomer" entity-id="2ac549c5-d5a6-4f8a-9a2a-75750f56c973">
+    <flow SubFlow="false" name="internal-crm_xinyi-getCustomer" entity-id="af1479a1-04f1-41a6-8968-423b798ab5eb">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="21"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="21"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#6">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_xinyi/getCustomer" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#6">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_xinyi/getCustomer"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="22"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="22"/>
                 </properties>
             </endpoint>
             <pattern name="getCustomer" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#6">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="CrmServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="getCustomer"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="23"/>
+                    <property name="operation" value="getCustomer"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
+                    <property name="port" value="CrmServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="23"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_xinyi/getCustomer" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#6">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/crm_xinyi/getCustomer"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/crm_xinyi/getCustomer"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="24"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-addOrder" entity-id="c9072927-8df1-415f-a77c-edce3048ac1e">
+    <flow SubFlow="false" name="internal-crm_xinyi-addOrder" entity-id="f3220796-6bd5-416f-a31a-80b7fc923dfc">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="25"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="25"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#7">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_xinyi/addOrder" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#7">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_xinyi/addOrder"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="26"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="26"/>
                 </properties>
             </endpoint>
             <pattern name="addOrder" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#7">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="CrmServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="addOrder"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="27"/>
+                    <property name="operation" value="addOrder"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
+                    <property name="port" value="CrmServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="27"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_xinyi/addOrder" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#7">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/crm_xinyi/addOrder"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/crm_xinyi/addOrder"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="28"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-deleteOrder" entity-id="568eb8ac-5249-4bf1-9e1f-97ee82d09b3e">
+    <flow SubFlow="false" name="internal-crm_xinyi-deleteOrder" entity-id="072ce2b0-47fa-4586-a0f8-735f5607601e">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="29"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="29"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#8">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_xinyi/deleteOrder" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#8">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_xinyi/deleteOrder"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="30"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="30"/>
                 </properties>
             </endpoint>
             <pattern name="deleteOrder" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#8">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="CrmServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="deleteOrder"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="31"/>
+                    <property name="operation" value="deleteOrder"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
+                    <property name="port" value="CrmServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="31"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_xinyi/deleteOrder" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#8">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/crm_xinyi/deleteOrder"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/crm_xinyi/deleteOrder"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="32"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-getCustomerOrder" entity-id="55438020-f8f7-42b4-9442-c982ed467a00">
+    <flow SubFlow="false" name="internal-crm_xinyi-getCustomerOrder" entity-id="a30e3da5-7263-42e3-9c47-fe2623b7e055">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="33"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="33"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#9">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_xinyi/getCustomerOrder" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#9">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_xinyi/getCustomerOrder"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="34"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="34"/>
                 </properties>
             </endpoint>
             <pattern name="getCustomerOrder" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#9">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="CrmServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="getCustomerOrder"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="35"/>
+                    <property name="operation" value="getCustomerOrder"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
+                    <property name="port" value="CrmServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="35"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_xinyi/getCustomerOrder" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#9">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/crm_xinyi/getCustomerOrder"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/crm_xinyi/getCustomerOrder"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="36"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-getCustomerPreferredProducts" entity-id="c0b7e5a6-7891-4817-8cc7-d576e7de67d2">
+    <flow SubFlow="false" name="internal-crm_xinyi-getCustomerPreferredProducts" entity-id="9ff22849-1c2f-4286-af60-b2957c297457">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="37"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="37"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#10">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_xinyi/getCustomerPreferredProducts" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#10">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_xinyi/getCustomerPreferredProducts"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="38"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="38"/>
                 </properties>
             </endpoint>
             <pattern name="getCustomerPreferredProducts" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#10">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="CrmServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="getCustomerPreferredProducts"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="39"/>
+                    <property name="operation" value="getCustomerPreferredProducts"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
+                    <property name="port" value="CrmServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="39"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_xinyi/getCustomerPreferredProducts" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#10">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/crm_xinyi/getCustomerPreferredProducts"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/crm_xinyi/getCustomerPreferredProducts"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="40"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="internal-crm_xinyi-searchCatalog" entity-id="07b408a6-979f-4dfc-9aef-4c874c40c959">
+    <flow SubFlow="false" name="internal-crm_xinyi-searchCatalog" entity-id="970f4bae-573c-4962-a7df-7c4999975bab">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="41"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="41"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#11">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/crm_xinyi/searchCatalog" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#11">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/crm_xinyi/searchCatalog"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="42"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="42"/>
                 </properties>
             </endpoint>
             <pattern name="searchCatalog" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#11">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="CrmServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="43"/>
+                    <property name="operation"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.crm_xinyi.Crm"/>
+                    <property name="port" value="CrmServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="43"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/crm_xinyi/searchCatalog" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#11">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/crm_xinyi/searchCatalog"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/crm_xinyi/searchCatalog"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="44"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="client-warehouse-makeOrder" entity-id="0356d19e-341e-4227-962b-2ccb1f66df55">
+    <flow SubFlow="false" name="client-warehouse-makeOrder" entity-id="13e772bb-a1d4-474e-978e-272f666980c7">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="45"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="45"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#12">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/warehouse/makeOrder" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#12">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/warehouse/makeOrder"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="46"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="46"/>
                 </properties>
             </endpoint>
             <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#12">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="WareHouseServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="makeOrder"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="47"/>
+                    <property name="operation" value="makeOrder"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
+                    <property name="port" value="WareHouseServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="47"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/warehouse_david/makeOrder" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#12">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/warehouse_david/makeOrder"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/warehouse_david/makeOrder"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="48"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="client-warehouse-getLocation" entity-id="b9932c10-d7e9-4dfb-bf12-eb4d6aafbc21">
+    <flow SubFlow="false" name="client-warehouse-getLocation" entity-id="e65aed52-c18e-4444-9bf1-806af8ab8bd0">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="49"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="49"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#13">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/warehouse/getLocation" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#13">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/warehouse/getLocation"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="50"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="50"/>
                 </properties>
             </endpoint>
             <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#13">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="WareHouseServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="getLocation"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="51"/>
+                    <property name="operation" value="getLocation"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
+                    <property name="port" value="WareHouseServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="51"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/warehouse_david/getLocation" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#13">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/warehouse_david/getLocation"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/warehouse_david/getLocation"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="52"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="client-warehouse_david-getPlanning" entity-id="edf228b9-d870-46d2-8de8-9585d67bf0a1">
+    <flow SubFlow="false" name="client-warehouse_david-getPlanning" entity-id="db4550e0-f588-45b3-8035-e9bd22a0e3d3">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="53"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="53"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#14">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/warehouse_david/getPlanning" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#14">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/warehouse_david/getPlanning"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="54"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="54"/>
                 </properties>
             </endpoint>
             <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#14">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="WareHouseServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="getPlanning"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="55"/>
+                    <property name="operation" value="getPlanning"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
+                    <property name="port" value="WareHouseServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="55"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/warehouse_david/getPlanning" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#14">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/warehouse_david/getPlanning"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/warehouse_david/getPlanning"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="56"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="client-warehouse_david-listNearOutOfStock" entity-id="5ebf4678-b28c-49b5-bf97-88de4a4c6e12">
+    <flow SubFlow="false" name="client-warehouse_david-listNearOutOfStock" entity-id="07ccac10-d377-453b-b32e-6f7033d4f56a">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="57"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="57"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#15">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/warehouse_david/listNearOutOfStock" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#15">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/warehouse_david/listNearOutOfStock"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="58"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="58"/>
                 </properties>
             </endpoint>
             <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#15">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="WareHouseServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="listNearOutOfStock"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="59"/>
+                    <property name="operation" value="listNearOutOfStock"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
+                    <property name="port" value="WareHouseServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="59"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/warehouse_david/listNearOutOfStock" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#15">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/warehouse_david/listNearOutOfStock"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/warehouse_david/listNearOutOfStock"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="60"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="client-warehouse_david-getQuantity" entity-id="4f95ac7e-8560-4708-8937-754cd1ae487d">
+    <flow SubFlow="false" name="client-warehouse_david-getQuantity" entity-id="c505ad35-e6ac-41c6-9a84-d17e2e7bf966">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="61"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="61"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#16">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/warehouse_david/getQuantity" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#16">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/warehouse_david/getQuantity"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="62"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="62"/>
                 </properties>
             </endpoint>
             <pattern name="SOAP" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#16">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="WareHouseServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="getQuantity"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="63"/>
+                    <property name="operation" value="getQuantity"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.warehouse_david.WareHouse"/>
+                    <property name="port" value="WareHouseServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="63"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/warehouse_david/getQuantity" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#16">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/warehouse_david/getQuantity"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/warehouse_david/getQuantity"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="64"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="client-fedps_adrien-order_delivery" entity-id="8ced6b43-2088-4196-a4c7-669fc571145b">
+    <flow SubFlow="false" name="client-fedps_adrien-order_delivery" entity-id="97934504-db4c-4384-a119-ce898f8b2a98">
         <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
             <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
             <property name="bussinessEventsLabel"/>
-            <property name="auxiliary;index" value="65"/>
             <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="65"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#17">
-            <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="client/fedps_adrien/order_delivery" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#17">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
                     <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
                     <property name="path" value="/vm/internal/client/fedps_adrien/order_delivery"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="66"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
                     <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="66"/>
                 </properties>
             </endpoint>
             <pattern name="order_delivery" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#17">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="wsdlLocation"/>
-                    <property name="port" value="FedpsServicePort"/>
-                    <property name="serviceClass"/>
-                    <property name="operation" value="order_delivery"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-client"/>
-                    <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="clientClass" value="proxies.ext.fedps_adrien.Fedps"/>
                     <property name="configuration-ref"/>
-                    <property name="auxiliary;index" value="67"/>
+                    <property name="operation" value="order_delivery"/>
+                    <property name="serviceClass"/>
                     <property name="decoupledEndpoint"/>
+                    <property name="clientClass" value="proxies.ext.fedps_adrien.Fedps"/>
+                    <property name="port" value="FedpsServicePort"/>
+                    <property name="mtomEnabled"/>
+                    <property name="wsdlLocation"/>
+                    <property name="enableMuleSoapHeaders" value="true"/>
+                    <property name="auxiliary;index" value="67"/>
                 </properties>
             </pattern>
             <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="localhost:8090/ext/fedps_adrien" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#17">
-                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value="8090"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
                     <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="httpLabel"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="8090"/>
+                    <property name="path" value="ext/fedps_adrien"/>
+                    <property name="method" value="POST"/>
+                    <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
-                    <property name="httpLabel"/>
-                    <property name="address"/>
-                    <property name="path" value="ext/fedps_adrien"/>
-                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="method" value="POST"/>
                     <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
                     <property name="auxiliary;index" value="68"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
                 </properties>
             </endpoint>
         </lane>
     </flow>
-    <description></description>
 </mule-configuration>

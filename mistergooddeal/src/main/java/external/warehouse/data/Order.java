@@ -8,7 +8,7 @@ public class Order implements Serializable{
 	private static final long serialVersionUID = -1380185820507634525L;
 	
 	private String supplier;
-	private String dateOfDelivery;
+	private String dateOfPickup;
 	private List<Product> listProduct;;
 	
 	
@@ -16,10 +16,10 @@ public class Order implements Serializable{
 	public Order() {
 		super();
 	}
-	public Order(String supplier, String dateOfDelivery, List<Product> listProduct) {
+	public Order(String supplier, String dateOfPickup, List<Product> listProduct) {
 		super();
 		this.supplier = supplier;
-		this.dateOfDelivery = dateOfDelivery;
+		this.dateOfPickup = dateOfPickup;
 		this.listProduct = listProduct;
 	}
 	public String getSupplier() {
@@ -28,13 +28,12 @@ public class Order implements Serializable{
 	public void setSupplier(String supplier) {
 		this.supplier = supplier;
 	}
-	public String getDateOfDelivery() {
-		return dateOfDelivery;
+	public String getDateOfPickup() {
+		return dateOfPickup;
 	}
-	public void setDateOfDelivery(String dateOfDelivery) {
-		this.dateOfDelivery = dateOfDelivery;
+	public void setDateOfPickup(String dateOfPickup) {
+		this.dateOfPickup = dateOfPickup;
 	}
-	
 	public List<Product> getListProduct() {
 		return listProduct;
 	}

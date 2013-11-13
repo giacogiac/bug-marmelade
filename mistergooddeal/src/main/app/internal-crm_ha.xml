@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+    <flow name="internal-crm_ha-createCustomer" doc:name="internal-crm_ha-createCustomer">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_ha/customer/create" doc:name="client/crm_ha/customer/create"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_ha/customer/create" method="POST" doc:name="localhost:8090/ext/crm_ha/customer/create"/>
+    </flow>
+    <flow name="internal-crm_ha-deleteCustomer" doc:name="internal-crm_ha-deleteCustomer">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_ha/customer/delete" doc:name="client/crm_ha/customer/delete"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_ha/customer/delete" method="POST" doc:name="localhost:8090/ext/crm_ha/customer/delete"/>
+    </flow>
+    <flow name="internal-crm_ha-getCustomer" doc:name="internal-crm_ha-getCustomer">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_ha/customer/get" doc:name="client/crm_ha/customer/get"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_ha/customer/get" method="POST" doc:name="localhost:8090/ext/crm_ha/customer/get"/>
+    </flow>
+    <flow name="internal-crm_ha-createOrder" doc:name="internal-crm_ha-createOrder">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_ha/order/create" doc:name="client/crm_ha/order/create"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_ha/order/create" method="POST" doc:name="localhost:8090/ext/crm_ha/order/create"/>
+    </flow>
+    <flow name="internal-crm_ha-deleteOrder" doc:name="internal-crm_ha-deleteOrder">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_ha/order/delete" doc:name="client/crm_ha/order/delete"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="localhost:8090/ext/crm_ha/order/delete" method="POST" doc:name="localhost:8090/ext/crm_ha/order/delete"/>
+    </flow>
+    <flow name="internal-crm_ha-getOrder" doc:name="internal-crm_ha-getOrder">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_ha/order/get" doc:name="client/crm_ha/order/get"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_ha/order/get" method="POST" doc:name="localhost:8090/ext/crm_ha/order/get"/>
+    </flow>
+    <flow name="internal-crm_ha-productGetPreferred" doc:name="internal-crm_ha-productGetPreferred">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_ha/product/getPreferred" doc:name="client/crm_ha/product/getPreferred"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_ha/product/getPreferred" method="POST" doc:name="localhost:8090/ext/crm_ha/product/getPreferred"/>
+    </flow>
+    <flow name="internal-crm_ha-productSearch" doc:name="internal-crm_ha-productSearch">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_ha/product/search" doc:name="client/crm_ha/product/search"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8090" path="ext/crm_ha/product/search" method="POST" doc:name="localhost:8090/ext/crm_ha/product/search"/>
+    </flow>
+</mule>

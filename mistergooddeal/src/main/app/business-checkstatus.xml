@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:jdbc-ee="http://www.mulesoft.org/schema/mule/ee/jdbc" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/ee/jdbc/current/mule-jdbc-ee.xsd
+http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd">
+    <jdbc-ee:derby-data-source name="Derby_Data_Source" password="" transactionIsolation="UNSPECIFIED" database="STATUS" create="true" doc:name="Derby Data Source"/>
+    <jdbc-ee:connector name="Database" dataSource-ref="DataBean" validateConnections="true" queryTimeout="-1" pollingFrequency="0" doc:name="Database"/>
+    <spring:beans>
+        <spring:bean id="DataBean" name="Data" class="org.enhydra.jdbc.standard.StandardXADataSource" destroy-method="shutdown">
+            <spring:property name="driverName" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <spring:property name="url" value="jdbc:derby:memory:glue-database;create=true"/>
+        </spring:bean>
+    </spring:beans>
+    <flow name="vm-business-checkstatus" doc:name="vm-business-checkstatus">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="vm/internal/handleCheckStatus" doc:name="VM"/>
+        <logger message="r&#233;cup&#233;ration de la requ&#234;te SOAP CheckStatus par l'ESB" level="INFO" doc:name="Logger"/>
+        <ee:cache doc:name="Cache">
+            <logger level="INFO" doc:name="Logger" message="Consulting database / #[message.payload]"/>
+            <scripting:component doc:name="Groovy">
+                <scripting:script engine="Groovy">if (message.payload == null || message.payload.size() == 0)
+	throw new RuntimeException("No data!");
+
+if (message.payload == "id123") {
+	def info = new String();
+	info = "EN PREPARATION";
+	return info;
+}
+else if (message.payload == "idUnknown") 
+	{
+	def info = new String();
+	info = "Id unknown";
+	return info; }
+
+</scripting:script>
+            </scripting:component>
+        </ee:cache>
+    </flow>
+</mule>

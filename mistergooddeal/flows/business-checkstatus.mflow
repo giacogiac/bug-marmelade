@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="business-checkstatus">
+    <global-element name="Derby Data Source" type="http://www.mulesoft.org/schema/mule/ee/jdbc/derby-data-source" entity-id="!!!cd096ac3-157f-4391-9779-6ab7098d90bf">
+        <properties>
+            <property name="name" value="Derby_Data_Source"/>
+            <property name="loginTimeout" value="0"/>
+            <property name="transactionIsolation" value="UNSPECIFIED"/>
+            <property name="create" value="true"/>
+            <property name="password" value=""/>
+            <property name="user" value=""/>
+            <property name="database" value="STATUS"/>
+            <property name="url" value="jdbc:derby:[dbName]"/>
+        </properties>
+        <description></description>
+    </global-element>
+    <global-element name="Database" type="http://www.mulesoft.org/schema/mule/ee/jdbc/connector" entity-id="!!!5607b21c-7311-4cd4-b024-33c93be48d55">
+        <properties>
+            <property name="d" value=""/>
+            <property name="resultSetHandler-ref" value=""/>
+            <property name="customReconnection" value="false"/>
+            <property name="dataSource-ref to Bean" value="DataBean"/>
+            <property name="standardReconnection" value="false"/>
+            <property name="pollingFrequency" value="0"/>
+            <property name="queryTimeout" value="-1"/>
+            <property name="validateConnections" value="true"/>
+            <property name="noReconnection" value="true"/>
+            <property name="dispatcherPoolFactory-ref" value=""/>
+            <property name="transactionPerMessage" value="true"/>
+            <property name="blocking" value="true"/>
+            <property name="updated"/>
+            <property name="name" value="Database"/>
+            <property name="dynamicNotification" value="false"/>
+            <property name="queryRunner-ref" value=""/>
+            <property-collection name="">
+                <property name="blocking" value="true"/>
+                <property name="d" value=""/>
+                <property name="customReconnection" value="false"/>
+                <property name="standardReconnection" value="false"/>
+                <property name="noReconnection" value="true"/>
+            </property-collection>
+        </properties>
+        <description></description>
+    </global-element>
+    <global-element name="Bean" type="http://www.springframework.org/schema/beans/bean" entity-id="!!!57c8c988-eee8-4cee-9055-682b2455c906">
+        <properties>
+            <property name="factory-bean" value=""/>
+            <property name="abstract" value="false"/>
+            <property name="scope" value=""/>
+            <property name="init-method" value=""/>
+            <property name="autowire-candidate" value=""/>
+            <property name="auxiliary;erased;scope" value="true"/>
+            <property name="factory-method" value=""/>
+            <property name="class" value="org.enhydra.jdbc.standard.StandardXADataSource"/>
+            <property name="parent" value=""/>
+            <property name="lazy-init" value=""/>
+            <property name="id" value="DataBean"/>
+            <property name="auxiliary;erased;autowire-candidate" value="true"/>
+            <property name="auxiliary;erased;autowire" value="true"/>
+            <property name="updated"/>
+            <property name="auxiliary;erased;lazy-init" value="true"/>
+            <property name="primary" value="false"/>
+            <property name="name" value="Data"/>
+            <property name="autowire" value=""/>
+            <property name="destroy-method" value="shutdown"/>
+            <property name="depends-on" value=""/>
+            <property-collection name="@http://www.springframework.org/schema/beans/property;614022118">
+                <property name="ref" value=""/>
+                <property name="name" value="driverName"/>
+                <property name="value" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+                <property name="isProcessed$$$$" value="true"/>
+            </property-collection>
+            <property-collection name="@http://www.springframework.org/schema/beans/property;863620991">
+                <property name="ref" value=""/>
+                <property name="name" value="url"/>
+                <property name="value" value="jdbc:derby:memory:glue-database;create=true"/>
+                <property name="isProcessed$$$$" value="true"/>
+            </property-collection>
+        </properties>
+        <description></description>
+    </global-element>
+    <flow SubFlow="false" name="vm-business-checkstatus" entity-id="1661b803-e2da-4e0c-b00a-17c7cea0584d">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="1"/>
+        </properties>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#1">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="VM" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#1">
+                <graphicalData x="19" y="66" width="68" height="226"/>
+                <properties>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
+                    <property name="path" value="vm/internal/handleCheckStatus"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="2"/>
+                    <property name="responseTimeout"/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#1">
+                <graphicalData x="306" y="66" width="68" height="69"/>
+                <properties>
+                    <property name="message" value="récupération de la requête SOAP CheckStatus par l'ESB"/>
+                    <property name="category"/>
+                    <property name="level" value="INFO"/>
+                    <property name="auxiliary;index" value="3"/>
+                </properties>
+            </pattern>
+            <scope name="Cache" type="http://www.mulesoft.org/schema/mule/ee/core/cache" entity-id="Cache#1">
+                <graphicalData x="434" y="42" width="220" height="116"/>
+                <properties>
+                    <property name="use_an_expression"/>
+                    <property name="filterLabel"/>
+                    <property name="use_default2"/>
+                    <property name="dont_use"/>
+                    <property name="filterExpression"/>
+                    <property name="use_a_filter"/>
+                    <property name="use_default"/>
+                    <property name="filter-ref"/>
+                    <property name="auxiliary;index" value="4"/>
+                    <property name="cachingStrategy-ref"/>
+                </properties>
+                <compartment entity-id="compartment#1">
+                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#2">
+                        <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#2">
+                            <graphicalData x="287" y="103" width="68" height="69"/>
+                            <properties>
+<property name="message" value="Consulting database / #[message.payload]"/>
+<property name="category" value=""/>
+<property name="level" value="INFO"/>
+<property name="updated"/>
+<property name="auxiliary;index" value="5"/>
+                            </properties>
+                            <description></description>
+                        </pattern>
+                        <pattern name="Groovy" type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" entity-id="Groovy#1">
+                            <graphicalData x="609" y="103" width="68" height="69"/>
+                            <properties>
+<property name="ref" value=""/>
+<property name="text" value="if (message.payload == null || message.payload.size() == 0)&#xD;&#xA;&#x9;throw new RuntimeException(&quot;No data!&quot;);&#xD;&#xA;&#xD;&#xA;if (message.payload == &quot;id123&quot;) {&#xD;&#xA;&#x9;def info = new String();&#xD;&#xA;&#x9;info = &quot;EN PREPARATION&quot;;&#xD;&#xA;&#x9;return info;&#xD;&#xA;}&#xD;&#xA;else if (message.payload == &quot;idUnknown&quot;) &#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;def info = new String();&#xD;&#xA;&#x9;info = &quot;Id unknown&quot;;&#xD;&#xA;&#x9;return info; }&#xD;&#xA;&#xD;&#xA;"/>
+<property name="updated"/>
+<property name="auxiliary;index" value="7"/>
+<property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;1487522583">
+    <property name="ref" value=""/>
+    <property name="isProcessed$$$$" value="true"/>
+</property-collection>
+<property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;2098251710">
+    <property name="text" value="if (message.payload == null || message.payload.size() == 0)&#xD;&#xA;&#x9;throw new RuntimeException(&quot;No data!&quot;);&#xD;&#xA;&#xD;&#xA;if (message.payload == &quot;id123&quot;) {&#xD;&#xA;&#x9;def info = new String();&#xD;&#xA;&#x9;info = &quot;EN PREPARATION&quot;;&#xD;&#xA;&#x9;return info;&#xD;&#xA;}&#xD;&#xA;else if (message.payload == &quot;idUnknown&quot;) &#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;def info = new String();&#xD;&#xA;&#x9;info = &quot;Id unknown&quot;;&#xD;&#xA;&#x9;return info; }&#xD;&#xA;&#xD;&#xA;"/>
+    <property name="isProcessed$$$$" value="true"/>
+    <property name="auxiliary;index" value="8"/>
+</property-collection>
+                            </properties>
+                            <description></description>
+                        </pattern>
+                    </lane>
+                </compartment>
+            </scope>
+        </lane>
+        <apikit>false</apikit>
+    </flow>
+    <description></description>
+</mule-configuration>

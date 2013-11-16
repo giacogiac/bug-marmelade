@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd">
+    <flow name="CheckStatusFlow1" doc:name="CheckStatusFlow1">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8080" path="int/checkstatus" doc:name="localhost:8080/int/checkstatus"/>
+        <logger message="Appel CHECKSTATUS" level="INFO" doc:name="Logger"/>
+        <cxf:jaxws-service serviceClass="internal.handleCheckStatus" doc:name="handleCheckStatus"/>
+        <logger message="Message SOAP cr&#233;e : passage dans le ESB" level="INFO" doc:name="Logger"/>
+        <vm:outbound-endpoint exchange-pattern="request-response" path="/vm/internal/handleCheckStatus" doc:name="VM"/>
+    </flow>
+</mule>

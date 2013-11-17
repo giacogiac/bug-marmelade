@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="handleModifyOrderService" targetNamespace="http://internal/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://internal/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://internal/" version="1.0" xmlns:tns="http://internal/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="modifyOrder" type="tns:modifyOrder"/>
+<xs:element name="modifyOrderResponse" type="tns:modifyOrderResponse"/>
+<xs:complexType name="modifyOrder">
+<xs:sequence>
+<xs:element minOccurs="0" name="newCommand" type="tns:paramsCommand"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="paramsCommand">
+<xs:sequence>
+<xs:element minOccurs="0" name="deliveryAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="idCommand" type="xs:string"/>
+<xs:element minOccurs="0" name="idCustomer" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="listProd" nillable="true" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="modifyOrderResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="result" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="modifyOrderResponse">
+    <wsdl:part element="tns:modifyOrderResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyOrder">
+    <wsdl:part element="tns:modifyOrder" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ModifyOrder">
+    <wsdl:operation name="modifyOrder">
+      <wsdl:input message="tns:modifyOrder" name="modifyOrder">
+    </wsdl:input>
+      <wsdl:output message="tns:modifyOrderResponse" name="modifyOrderResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="handleModifyOrderServiceSoapBinding" type="tns:ModifyOrder">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="modifyOrder">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="modifyOrder">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modifyOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="handleModifyOrderService">
+    <wsdl:port binding="tns:handleModifyOrderServiceSoapBinding" name="ModifyOrderPort">
+      <soap:address location="http://localhost:8080/int/modify-order"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

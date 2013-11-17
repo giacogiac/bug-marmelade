@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><Graph author="Xadi" created="Sat Nov 16 12:57:00 CET 2013" guiVersion="3.4.0.P" id="1384622353474" licenseCode="Unlicensed" licenseType="Unknown" modified="Sat Nov 16 12:57:00 CET 2013" modifiedBy="Xadi" name="new_mapping_grf" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Output" id="6fc70f38-7408-41f8-b0fe-0bba38ae9d39">
+<Record fieldDelimiter="|" name="GetStatusParams" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __sourcePath="{}/object/idcommand" containerType="SINGLE" label="idcommand" name="idcommand" type="string"/>
+<Field __index="1" __sourcePath="{}/object/status" containerType="SINGLE" label="status" name="status" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Input" id="4c487f95-410c-4755-8479-d25eaaa15d1a">
+<Record fieldDelimiter="|" name="ParamsCommand" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __sourcePath="{}/object/deliveryAddress" containerType="SINGLE" label="deliveryAddress" name="deliveryAddress" type="string"/>
+<Field __index="1" __sourcePath="{}/object/idCommand" containerType="SINGLE" label="idCommand" name="idCommand" type="string"/>
+<Field __index="2" __sourcePath="{}/object/listProd" containerType="list" label="listProd" name="listProd" type="long"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:inputPayload" guiName="Pojo READER" guiX="20" guiY="20" id="BEAN_READER0" type="BEAN_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context outPort="0" sequenceField="__id" xpath=".">
+  <Mapping cloverField="deliveryAddress" trim="true" xpath="deliveryAddress"/>
+  <Mapping cloverField="idCommand" trim="true" xpath="idCommand"/>
+  <Mapping cloverField="listProd" trim="true" xpath="listProd"/>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?><schema-object>
+  <typed-object-ref type-ref="internal.data.ParamsCommand"/>
+  <typed-object type="java.lang.Long"/>
+  <typed-object type="java.lang.String"/>
+  <typed-object type="internal.data.ParamsCommand">
+    <typed-object-ref name="deliveryAddress" type-ref="java.lang.String"/>
+    <typed-object-ref name="idCommand" type-ref="java.lang.String"/>
+    <schema-collection name="listProd" type="java.util.List">
+      <typed-object-ref type-ref="java.lang.Long"/>
+    </schema-collection>
+  </typed-object>
+</schema-object>
+]]></attr>
+</Node>
+<Node enabled="enabled" fileURL="dict:outputPayload" guiName="Pojo WRITER" guiX="900" guiY="20" id="BEAN_WRITER0" type="BEAN_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<object xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <idcommand>$0.idcommand</idcommand>
+  <status>$0.status</status>
+</object>]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?><schema-object>
+  <typed-object-ref type-ref="internal.data.GetStatusParams"/>
+  <typed-object type="internal.data.GetStatusParams">
+    <typed-object-ref name="idcommand" type-ref="java.lang.String"/>
+    <typed-object-ref name="status" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="java.lang.String"/>
+</schema-object>
+]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'object' -&gt; 'object'" guiX="460" guiY="20" id="FOREACH_OBJECT_OBJECT" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+output.idcommand = input.idCommand;
+]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="BEAN_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="4c487f95-410c-4755-8479-d25eaaa15d1a" outPort="Port 0 (out)" toNode="FOREACH_OBJECT_OBJECT:0"/>
+<Edge debugMode="true" fromNode="FOREACH_OBJECT_OBJECT:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="6fc70f38-7408-41f8-b0fe-0bba38ae9d39" outPort="Port 0 (out)" toNode="BEAN_WRITER0:0"/>
+</Phase>
+</Graph>

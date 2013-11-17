@@ -1,95 +1,329 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="business-checkstatus">
-    <global-element name="Derby Data Source" type="http://www.mulesoft.org/schema/mule/ee/jdbc/derby-data-source" entity-id="!!!cd096ac3-157f-4391-9779-6ab7098d90bf">
+    <global-element name="Bean" type="http://www.springframework.org/schema/beans/bean" entity-id="Bean#1">
         <properties>
-            <property name="name" value="Derby_Data_Source"/>
-            <property name="loginTimeout" value="0"/>
-            <property name="transactionIsolation" value="UNSPECIFIED"/>
-            <property name="create" value="true"/>
-            <property name="password" value=""/>
-            <property name="user" value=""/>
-            <property name="database" value="STATUS"/>
-            <property name="url" value="jdbc:derby:[dbName]"/>
-        </properties>
-        <description></description>
-    </global-element>
-    <global-element name="Database" type="http://www.mulesoft.org/schema/mule/ee/jdbc/connector" entity-id="!!!5607b21c-7311-4cd4-b024-33c93be48d55">
-        <properties>
-            <property name="d" value=""/>
-            <property name="resultSetHandler-ref" value=""/>
-            <property name="customReconnection" value="false"/>
-            <property name="dataSource-ref to Bean" value="DataBean"/>
-            <property name="standardReconnection" value="false"/>
-            <property name="pollingFrequency" value="0"/>
-            <property name="queryTimeout" value="-1"/>
-            <property name="validateConnections" value="true"/>
-            <property name="noReconnection" value="true"/>
-            <property name="dispatcherPoolFactory-ref" value=""/>
-            <property name="transactionPerMessage" value="true"/>
-            <property name="blocking" value="true"/>
-            <property name="updated"/>
-            <property name="name" value="Database"/>
-            <property name="dynamicNotification" value="false"/>
-            <property name="queryRunner-ref" value=""/>
-            <property-collection name="">
-                <property name="blocking" value="true"/>
-                <property name="d" value=""/>
-                <property name="customReconnection" value="false"/>
-                <property name="standardReconnection" value="false"/>
-                <property name="noReconnection" value="true"/>
-            </property-collection>
-        </properties>
-        <description></description>
-    </global-element>
-    <global-element name="Bean" type="http://www.springframework.org/schema/beans/bean" entity-id="!!!57c8c988-eee8-4cee-9055-682b2455c906">
-        <properties>
-            <property name="factory-bean" value=""/>
-            <property name="abstract" value="false"/>
-            <property name="scope" value=""/>
-            <property name="init-method" value=""/>
-            <property name="autowire-candidate" value=""/>
-            <property name="auxiliary;erased;scope" value="true"/>
-            <property name="factory-method" value=""/>
+            <property name="factory-bean"/>
+            <property name="abstract"/>
+            <property name="scope"/>
+            <property name="init-method"/>
+            <property name="autowire-candidate"/>
+            <property name="factory-method"/>
             <property name="class" value="org.enhydra.jdbc.standard.StandardXADataSource"/>
-            <property name="parent" value=""/>
-            <property name="lazy-init" value=""/>
+            <property name="parent"/>
+            <property name="children"/>
+            <property name="lazy-init"/>
+            <property name="auxiliary;wrappedIn" value="beans@spring@http://www.springframework.org/schema/beans"/>
             <property name="id" value="DataBean"/>
-            <property name="auxiliary;erased;autowire-candidate" value="true"/>
-            <property name="auxiliary;erased;autowire" value="true"/>
-            <property name="updated"/>
-            <property name="auxiliary;erased;lazy-init" value="true"/>
-            <property name="primary" value="false"/>
             <property name="name" value="Data"/>
-            <property name="autowire" value=""/>
+            <property name="primary"/>
+            <property name="autowire"/>
             <property name="destroy-method" value="shutdown"/>
-            <property name="depends-on" value=""/>
-            <property-collection name="@http://www.springframework.org/schema/beans/property;614022118">
-                <property name="ref" value=""/>
+            <property name="auxiliary;wrapIn" value="1"/>
+            <property name="auxiliary;index" value="2"/>
+            <property name="depends-on"/>
+            <property-collection name="@http://www.springframework.org/schema/beans/property;0">
                 <property name="name" value="driverName"/>
                 <property name="value" value="org.apache.derby.jdbc.EmbeddedDriver"/>
                 <property name="isProcessed$$$$" value="true"/>
+                <property name="auxiliary;index" value="3"/>
+                <property name="auxiliary;wrapIn" value="3"/>
             </property-collection>
-            <property-collection name="@http://www.springframework.org/schema/beans/property;863620991">
-                <property name="ref" value=""/>
+            <property-collection name="@http://www.springframework.org/schema/beans/property;1">
                 <property name="name" value="url"/>
                 <property name="value" value="jdbc:derby:memory:glue-database;create=true"/>
                 <property name="isProcessed$$$$" value="true"/>
+                <property name="auxiliary;index" value="4"/>
+                <property name="auxiliary;wrapIn" value="4"/>
             </property-collection>
         </properties>
-        <description></description>
     </global-element>
-    <flow SubFlow="false" name="vm-business-checkstatus" entity-id="1661b803-e2da-4e0c-b00a-17c7cea0584d">
+    <global-element name="DataMapper" type="http://www.mulesoft.org/schema/mule/ee/data-mapper/config" entity-id="DataMapper#1">
+        <properties>
+            <property name="name" value="new_mapping_grf"/>
+            <property name="auxiliary;index" value="5"/>
+            <property name="transformationGraphPath" value="new_mapping.grf"/>
+        </properties>
+    </global-element>
+    <flow SubFlow="false" name="vm-business-modifyOrder" entity-id="e5bf642a-2bc4-41a0-b730-0baec4336207">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
+            <property name="auxiliary;index" value="6"/>
             <property name="tracking:enable-default-events"/>
-            <property name="auxiliary;index" value="1"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#1">
             <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="VM" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#1">
-                <graphicalData x="19" y="66" width="68" height="226"/>
+                <graphicalData x="19" y="250" width="68" height="309"/>
+                <properties>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
+                    <property name="path" value="vm/internal/handleModifyOrder"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="auxiliary;index" value="7"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+            <pattern name="Current = this" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#1">
+                <graphicalData x="147" y="250" width="87" height="69"/>
+                <properties>
+                    <property name="variableName" value="current"/>
+                    <property name="value" value="#[message.payload]"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
+                    <property name="auxiliary;index" value="9"/>
+                </properties>
+            </pattern>
+            <pattern name="sub-getStatus" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#1">
+                <graphicalData x="294" y="250" width="87" height="69"/>
+                <properties>
+                    <property name="name" value="sub-getStatus"/>
+                    <property name="auxiliary;index" value="10"/>
+                </properties>
+            </pattern>
+            <splitter index="12" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#1">
+                <graphicalData x="569" y="112" width="2287" height="345"/>
+                <properties>
+                    <property name=";INDEX" value="12"/>
+                    <property-collection name="d3c75acd-6423-424d-8708-13c3a475be1b">
+                        <property name="choice.otherwise" value="true"/>
+                        <property-collection name="choice.attributes"/>
+                    </property-collection>
+                    <property-collection name="0ac29e90-c638-40bc-98b0-7a6af0936361">
+                        <property name="choice.expression" value="#[message.payload == &quot;SHIPPED&quot;]"/>
+                        <property-collection name="choice.attributes">
+                            <property name="expression" value="#[message.payload == &quot;SHIPPED&quot;]"/>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+                <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#2">
+                    <properties>
+                        <property name=";INDEX" value="12"/>
+                        <property-collection name="d3c75acd-6423-424d-8708-13c3a475be1b">
+                            <property name="choice.otherwise" value="true"/>
+                            <property-collection name="choice.attributes"/>
+                        </property-collection>
+                        <property-collection name="0ac29e90-c638-40bc-98b0-7a6af0936361">
+                            <property name="choice.expression" value="#[message.payload == &quot;SHIPPED&quot;]"/>
+                            <property-collection name="choice.attributes">
+<property name="expression" value="#[message.payload == &quot;SHIPPED&quot;]"/>
+                            </property-collection>
+                        </property-collection>
+                    </properties>
+                </pattern>
+                <compartment entity-id="compartment#1">
+                    <lane hadOnlyOneElement="false" index="14" isChoiceOtherwiseLane="false" entity-id="0ac29e90-c638-40bc-98b0-7a6af0936361">
+                        <pattern name="SHIPPED" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#3">
+                            <graphicalData x="0" y="0" width="0" height="0"/>
+                            <properties>
+<property name="message" value="getStatus - SHIPPED"/>
+<property name="category"/>
+<property name="level" value="INFO"/>
+<property name="auxiliary;index" value="14"/>
+                            </properties>
+                        </pattern>
+                        <pattern name="Return END" type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" entity-id="Groovy#1">
+                            <graphicalData x="0" y="0" width="0" height="0"/>
+                            <properties>
+<property name="script-ref"/>
+<property name="auxiliary;index" value="15"/>
+<property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+    <property name="text" value="return &quot;Can not modify your Command, because it is already Shipped. Sorry !&quot;;"/>
+    <property name="engine" value="Groovy"/>
+    <property name="isProcessed$$$$" value="true"/>
+    <property name="auxiliary;index" value="16"/>
+    <property name="auxiliary;wrapIn" value="16"/>
+</property-collection>
+<property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+    <property name="text" value="return &quot;Can not modify your Command, because it is already Shipped. Sorry !&quot;;"/>
+    <property name="engine" value="Groovy"/>
+    <property name="isProcessed$$$$" value="true"/>
+    <property name="auxiliary;index" value="16"/>
+    <property name="auxiliary;wrapIn" value="16"/>
+</property-collection>
+                            </properties>
+                        </pattern>
+                    </lane>
+                    <lane hadOnlyOneElement="false" index="18" isChoiceOtherwiseLane="true" entity-id="d3c75acd-6423-424d-8708-13c3a475be1b">
+                        <pattern name="-&gt; ParamsCommand" type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" entity-id="Groovy#2">
+                            <graphicalData x="599" y="295" width="126" height="69"/>
+                            <properties>
+<property name="script-ref"/>
+<property name="auxiliary;index" value="19"/>
+<property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+    <property name="text" value="def tpi = new internal.data.ParamsCommand();&#xA;&#xA;tpi.setDeliveryAddress(flowVars['current'].deliveryAddress);&#xA;tpi.setIdCommand(flowVars['current'].idCommand);&#xA;tpi.setListProd(flowVars['current'].listProd);&#xA;tpi.setIdCustomer(flowVars['current'].idCustomer);&#xA;&#xA;return tpi;"/>
+    <property name="engine" value="Groovy"/>
+    <property name="isProcessed$$$$" value="true"/>
+    <property name="auxiliary;index" value="20"/>
+    <property name="auxiliary;wrapIn" value="20"/>
+</property-collection>
+<property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+    <property name="text" value="def tpi = new internal.data.ParamsCommand();&#xA;&#xA;tpi.setDeliveryAddress(flowVars['current'].deliveryAddress);&#xA;tpi.setIdCommand(flowVars['current'].idCommand);&#xA;tpi.setListProd(flowVars['current'].listProd);&#xA;tpi.setIdCustomer(flowVars['current'].idCustomer);&#xA;&#xA;return tpi;"/>
+    <property name="engine" value="Groovy"/>
+    <property name="isProcessed$$$$" value="true"/>
+    <property name="auxiliary;index" value="20"/>
+    <property name="auxiliary;wrapIn" value="20"/>
+</property-collection>
+                            </properties>
+                        </pattern>
+                        <pattern name="sub-createNewCommand" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#2">
+                            <graphicalData x="785" y="295" width="151" height="69"/>
+                            <properties>
+<property name="name" value="sub-createNewCommand"/>
+<property name="auxiliary;index" value="22"/>
+                            </properties>
+                        </pattern>
+                        <splitter index="24" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#3">
+                            <graphicalData x="1124" y="226" width="1304" height="207"/>
+                            <properties>
+<property name=";INDEX" value="24"/>
+<property-collection name="319b3545-7cbf-4d51-aae0-be4bb74b9398">
+    <property name="choice.otherwise" value="true"/>
+    <property-collection name="choice.attributes"/>
+</property-collection>
+<property-collection name="77d3d3a2-b2ca-47f3-a0ed-ac806dc405cc">
+    <property name="choice.expression" value="#[message.payload==&quot;-1&quot;]"/>
+    <property-collection name="choice.attributes">
+        <property name="expression" value="#[message.payload==&quot;-1&quot;]"/>
+    </property-collection>
+</property-collection>
+                            </properties>
+                            <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#4">
+<properties>
+    <property name=";INDEX" value="24"/>
+    <property-collection name="319b3545-7cbf-4d51-aae0-be4bb74b9398">
+        <property name="choice.otherwise" value="true"/>
+        <property-collection name="choice.attributes"/>
+    </property-collection>
+    <property-collection name="77d3d3a2-b2ca-47f3-a0ed-ac806dc405cc">
+        <property name="choice.expression" value="#[message.payload==&quot;-1&quot;]"/>
+        <property-collection name="choice.attributes">
+            <property name="expression" value="#[message.payload==&quot;-1&quot;]"/>
+        </property-collection>
+    </property-collection>
+</properties>
+                            </pattern>
+                            <compartment entity-id="compartment#2">
+<lane hadOnlyOneElement="false" index="26" isChoiceOtherwiseLane="false" entity-id="77d3d3a2-b2ca-47f3-a0ed-ac806dc405cc">
+    <pattern name="Create FAIL" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#7">
+        <graphicalData x="0" y="0" width="0" height="0"/>
+        <properties>
+            <property name="message" value="Create New Command FAIL"/>
+            <property name="category"/>
+            <property name="level" value="INFO"/>
+            <property name="auxiliary;index" value="26"/>
+        </properties>
+    </pattern>
+    <pattern name="Return END" type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" entity-id="Groovy#3">
+        <graphicalData x="0" y="0" width="0" height="0"/>
+        <properties>
+            <property name="script-ref"/>
+            <property name="auxiliary;index" value="27"/>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                <property name="text" value="return &quot;Your new command is not possible. Sorry !&quot;;"/>
+                <property name="engine" value="Groovy"/>
+                <property name="isProcessed$$$$" value="true"/>
+                <property name="auxiliary;index" value="28"/>
+                <property name="auxiliary;wrapIn" value="28"/>
+            </property-collection>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                <property name="text" value="return &quot;Your new command is not possible. Sorry !&quot;;"/>
+                <property name="engine" value="Groovy"/>
+                <property name="isProcessed$$$$" value="true"/>
+                <property name="auxiliary;index" value="28"/>
+                <property name="auxiliary;wrapIn" value="28"/>
+            </property-collection>
+        </properties>
+    </pattern>
+</lane>
+<lane hadOnlyOneElement="false" index="30" isChoiceOtherwiseLane="true" entity-id="319b3545-7cbf-4d51-aae0-be4bb74b9398">
+    <pattern name="New ID Command" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#2">
+        <graphicalData x="1154" y="340" width="112" height="69"/>
+        <properties>
+            <property name="variableName" value="newIdCommand"/>
+            <property name="value" value="#[message.payload]"/>
+            <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
+            <property name="auxiliary;index" value="31"/>
+        </properties>
+    </pattern>
+    <pattern name="-&gt; Delete Params" type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" entity-id="Groovy#4">
+        <graphicalData x="1326" y="340" width="105" height="69"/>
+        <properties>
+            <property name="script-ref"/>
+            <property name="auxiliary;index" value="32"/>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                <property name="text" value="return flowVars['current'].idCommand;&#xA;"/>
+                <property name="engine" value="Groovy"/>
+                <property name="isProcessed$$$$" value="true"/>
+                <property name="auxiliary;index" value="33"/>
+                <property name="auxiliary;wrapIn" value="33"/>
+            </property-collection>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                <property name="text" value="return flowVars['current'].idCommand;&#xA;"/>
+                <property name="engine" value="Groovy"/>
+                <property name="isProcessed$$$$" value="true"/>
+                <property name="auxiliary;index" value="33"/>
+                <property name="auxiliary;wrapIn" value="33"/>
+            </property-collection>
+        </properties>
+    </pattern>
+    <pattern name="sub-deleteFormerCommand" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#3">
+        <graphicalData x="1491" y="340" width="165" height="69"/>
+        <properties>
+            <property name="name" value="sub-deleteFormerCommand"/>
+            <property name="auxiliary;index" value="35"/>
+        </properties>
+    </pattern>
+    <pattern name="return new ID Command" type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" entity-id="Groovy#5">
+        <graphicalData x="1844" y="340" width="145" height="69"/>
+        <properties>
+            <property name="script-ref"/>
+            <property name="auxiliary;index" value="37"/>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                <property name="text" value="return flowVars['newIdCommand'];"/>
+                <property name="engine" value="Groovy"/>
+                <property name="isProcessed$$$$" value="true"/>
+                <property name="auxiliary;index" value="38"/>
+                <property name="auxiliary;wrapIn" value="38"/>
+            </property-collection>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                <property name="text" value="return flowVars['newIdCommand'];"/>
+                <property name="engine" value="Groovy"/>
+                <property name="isProcessed$$$$" value="true"/>
+                <property name="auxiliary;index" value="38"/>
+                <property name="auxiliary;wrapIn" value="38"/>
+            </property-collection>
+        </properties>
+    </pattern>
+</lane>
+                            </compartment>
+                        </splitter>
+                    </lane>
+                </compartment>
+            </splitter>
+        </lane>
+        <apikit>false</apikit>
+    </flow>
+    <flow SubFlow="false" name="vm-business-checkstatus" entity-id="5bdd7fc1-f01e-418e-8ffb-f2c26a28ff34">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="auxiliary;index" value="39"/>
+            <property name="tracking:enable-default-events"/>
+        </properties>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#2">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="vm/internal/handleCheckStatus" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#2">
+                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="businessEventsLabel"/>
                     <property name="disableTransportTransformer"/>
@@ -101,70 +335,186 @@
                     <property name="path" value="vm/internal/handleCheckStatus"/>
                     <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="mimeType"/>
-                    <property name="auxiliary;index" value="2"/>
+                    <property name="auxiliary;index" value="40"/>
                     <property name="responseTimeout"/>
+                    <property name="mimeType"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>
-            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#1">
-                <graphicalData x="306" y="66" width="68" height="69"/>
+            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#11">
+                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="message" value="récupération de la requête SOAP CheckStatus par l'ESB"/>
                     <property name="category"/>
                     <property name="level" value="INFO"/>
-                    <property name="auxiliary;index" value="3"/>
+                    <property name="auxiliary;index" value="41"/>
                 </properties>
             </pattern>
             <scope name="Cache" type="http://www.mulesoft.org/schema/mule/ee/core/cache" entity-id="Cache#1">
-                <graphicalData x="434" y="42" width="220" height="116"/>
+                <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="use_an_expression"/>
                     <property name="filterLabel"/>
                     <property name="use_default2"/>
-                    <property name="dont_use"/>
                     <property name="filterExpression"/>
+                    <property name="dont_use"/>
                     <property name="use_a_filter"/>
                     <property name="use_default"/>
+                    <property name="auxiliary;index" value="42"/>
                     <property name="filter-ref"/>
-                    <property name="auxiliary;index" value="4"/>
                     <property name="cachingStrategy-ref"/>
                 </properties>
-                <compartment entity-id="compartment#1">
-                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#2">
-                        <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#2">
-                            <graphicalData x="287" y="103" width="68" height="69"/>
+                <compartment entity-id="compartment#3">
+                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#3">
+                        <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#12">
+                            <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
 <property name="message" value="Consulting database / #[message.payload]"/>
-<property name="category" value=""/>
+<property name="category"/>
 <property name="level" value="INFO"/>
-<property name="updated"/>
-<property name="auxiliary;index" value="5"/>
+<property name="auxiliary;index" value="43"/>
                             </properties>
-                            <description></description>
                         </pattern>
-                        <pattern name="Groovy" type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" entity-id="Groovy#1">
-                            <graphicalData x="609" y="103" width="68" height="69"/>
+                        <pattern name="Groovy" type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" entity-id="Groovy#6">
+                            <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
-<property name="ref" value=""/>
-<property name="text" value="if (message.payload == null || message.payload.size() == 0)&#xD;&#xA;&#x9;throw new RuntimeException(&quot;No data!&quot;);&#xD;&#xA;&#xD;&#xA;if (message.payload == &quot;id123&quot;) {&#xD;&#xA;&#x9;def info = new String();&#xD;&#xA;&#x9;info = &quot;EN PREPARATION&quot;;&#xD;&#xA;&#x9;return info;&#xD;&#xA;}&#xD;&#xA;else if (message.payload == &quot;idUnknown&quot;) &#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;def info = new String();&#xD;&#xA;&#x9;info = &quot;Id unknown&quot;;&#xD;&#xA;&#x9;return info; }&#xD;&#xA;&#xD;&#xA;"/>
-<property name="updated"/>
-<property name="auxiliary;index" value="7"/>
-<property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;1487522583">
-    <property name="ref" value=""/>
+<property name="script-ref"/>
+<property name="auxiliary;index" value="44"/>
+<property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+    <property name="text" value="if (message.payload == null || message.payload.size() == 0)&#xA;&#x9;throw new RuntimeException(&quot;No data!&quot;);&#xA;&#xA;if (message.payload == &quot;id123&quot;) {&#xA;&#x9;def info = new String();&#xA;&#x9;info = &quot;EN PREPARATION&quot;;&#xA;&#x9;return info;&#xA;}&#xA;else if (message.payload == &quot;idUnknown&quot;) &#xA;&#x9;{&#xA;&#x9;def info = new String();&#xA;&#x9;info = &quot;Id unknown&quot;;&#xA;&#x9;return info; }&#xA;&#xA;"/>
+    <property name="engine" value="Groovy"/>
     <property name="isProcessed$$$$" value="true"/>
+    <property name="auxiliary;index" value="45"/>
+    <property name="auxiliary;wrapIn" value="45"/>
 </property-collection>
-<property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;2098251710">
-    <property name="text" value="if (message.payload == null || message.payload.size() == 0)&#xD;&#xA;&#x9;throw new RuntimeException(&quot;No data!&quot;);&#xD;&#xA;&#xD;&#xA;if (message.payload == &quot;id123&quot;) {&#xD;&#xA;&#x9;def info = new String();&#xD;&#xA;&#x9;info = &quot;EN PREPARATION&quot;;&#xD;&#xA;&#x9;return info;&#xD;&#xA;}&#xD;&#xA;else if (message.payload == &quot;idUnknown&quot;) &#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;def info = new String();&#xD;&#xA;&#x9;info = &quot;Id unknown&quot;;&#xD;&#xA;&#x9;return info; }&#xD;&#xA;&#xD;&#xA;"/>
+<property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+    <property name="text" value="if (message.payload == null || message.payload.size() == 0)&#xA;&#x9;throw new RuntimeException(&quot;No data!&quot;);&#xA;&#xA;if (message.payload == &quot;id123&quot;) {&#xA;&#x9;def info = new String();&#xA;&#x9;info = &quot;EN PREPARATION&quot;;&#xA;&#x9;return info;&#xA;}&#xA;else if (message.payload == &quot;idUnknown&quot;) &#xA;&#x9;{&#xA;&#x9;def info = new String();&#xA;&#x9;info = &quot;Id unknown&quot;;&#xA;&#x9;return info; }&#xA;&#xA;"/>
+    <property name="engine" value="Groovy"/>
     <property name="isProcessed$$$$" value="true"/>
-    <property name="auxiliary;index" value="8"/>
+    <property name="auxiliary;index" value="45"/>
+    <property name="auxiliary;wrapIn" value="45"/>
 </property-collection>
                             </properties>
-                            <description></description>
                         </pattern>
                     </lane>
                 </compartment>
             </scope>
+        </lane>
+        <apikit>false</apikit>
+    </flow>
+    <flow SubFlow="false" name="sub-getStatus" entity-id="4a279f71-be5a-4a23-8cb0-f6652c6b4ce8">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="auxiliary;index" value="46"/>
+            <property name="tracking:enable-default-events"/>
+        </properties>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#4">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <pattern name="DataMapper" type="http://www.mulesoft.org/schema/mule/ee/data-mapper/data-mapper-connector" entity-id="DataMapper#2">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="returnClass"/>
+                    <property name="stream"/>
+                    <property name="input-ref"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/ee/data-mapper/transform"/>
+                    <property name="pipeSize"/>
+                    <property name="config-ref" value="new_mapping_grf"/>
+                    <property name="auxiliary;index" value="47"/>
+                </properties>
+            </pattern>
+            <pattern name="Groovy" type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" entity-id="Groovy#7">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="script-ref"/>
+                    <property name="auxiliary;index" value="48"/>
+                    <property name="changed"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                        <property name="text" value="if (message.payload.idcommand == &quot;idShipped&quot;) {&#xA;&#x9;def info = new String();&#xA;&#x9;info = &quot;SHIPPED&quot;;&#xA;&#x9;message.payload.status = info;&#xA;return info;&#xA;&#x9;&#xA;}&#xA;else if (message.payload.idcommand == &quot;idNotShipped&quot;) &#xA;&#x9;{&#xA;&#x9;def info = new String();&#xA;&#x9;info = &quot;NOTSHIPPED&quot;;&#xA;&#x9;message.payload.status = info;&#xA;return info;&#xA;&#x9; }"/>
+                        <property name="engine" value="Groovy"/>
+                        <property name="isProcessed$$$$" value="true"/>
+                        <property name="auxiliary;index" value="49"/>
+                        <property name="auxiliary;wrapIn" value="49"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                        <property name="text" value="if (message.payload.idcommand == &quot;idShipped&quot;) {&#xA;&#x9;def info = new String();&#xA;&#x9;info = &quot;SHIPPED&quot;;&#xA;&#x9;message.payload.status = info;&#xA;return info;&#xA;&#x9;&#xA;}&#xA;else if (message.payload.idcommand == &quot;idNotShipped&quot;) &#xA;&#x9;{&#xA;&#x9;def info = new String();&#xA;&#x9;info = &quot;NOTSHIPPED&quot;;&#xA;&#x9;message.payload.status = info;&#xA;return info;&#xA;&#x9; }"/>
+                        <property name="engine" value="Groovy"/>
+                        <property name="isProcessed$$$$" value="true"/>
+                        <property name="auxiliary;index" value="49"/>
+                        <property name="auxiliary;wrapIn" value="49"/>
+                    </property-collection>
+                </properties>
+                <description></description>
+            </pattern>
+        </lane>
+        <apikit>false</apikit>
+    </flow>
+    <flow SubFlow="false" name="sub-createNewCommand" entity-id="952b147d-ca47-4b44-80d1-d6b2bee9b318">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="auxiliary;index" value="50"/>
+            <property name="tracking:enable-default-events"/>
+        </properties>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#5">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <pattern name="Groovy" type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" entity-id="Groovy#8">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="script-ref"/>
+                    <property name="auxiliary;index" value="51"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                        <property name="text" value="if (message.payload.idCustomer == &quot;createFail&quot;) {&#xA;&#x9;return &quot;-1&quot;;&#xA;}&#xA;else {&#xA;&#x9;return &quot;1234&quot;;&#xA;}"/>
+                        <property name="engine" value="Groovy"/>
+                        <property name="isProcessed$$$$" value="true"/>
+                        <property name="auxiliary;index" value="52"/>
+                        <property name="auxiliary;wrapIn" value="52"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                        <property name="text" value="if (message.payload.idCustomer == &quot;createFail&quot;) {&#xA;&#x9;return &quot;-1&quot;;&#xA;}&#xA;else {&#xA;&#x9;return &quot;1234&quot;;&#xA;}"/>
+                        <property name="engine" value="Groovy"/>
+                        <property name="isProcessed$$$$" value="true"/>
+                        <property name="auxiliary;index" value="52"/>
+                        <property name="auxiliary;wrapIn" value="52"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+        </lane>
+        <apikit>false</apikit>
+    </flow>
+    <flow SubFlow="false" name="sub-deleteFormerCommand" entity-id="38ed5d97-f1e5-444e-80e9-2e20d2d681bb">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="auxiliary;index" value="53"/>
+            <property name="tracking:enable-default-events"/>
+        </properties>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#6">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <pattern name="Groovy" type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" entity-id="Groovy#9">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="script-ref"/>
+                    <property name="auxiliary;index" value="54"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                        <property name="text" value="return &quot;Delete Former Command - SUCCESS&quot;;"/>
+                        <property name="engine" value="Groovy"/>
+                        <property name="isProcessed$$$$" value="true"/>
+                        <property name="auxiliary;index" value="55"/>
+                        <property name="auxiliary;wrapIn" value="55"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                        <property name="text" value="return &quot;Delete Former Command - SUCCESS&quot;;"/>
+                        <property name="engine" value="Groovy"/>
+                        <property name="isProcessed$$$$" value="true"/>
+                        <property name="auxiliary;index" value="55"/>
+                        <property name="auxiliary;wrapIn" value="55"/>
+                    </property-collection>
+                </properties>
+            </pattern>
         </lane>
         <apikit>false</apikit>
     </flow>

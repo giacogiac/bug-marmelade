@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="external">
-    <flow SubFlow="false" name="WH_David" entity-id="7b808ca5-252d-4072-96fa-c34912c5bf84">
+    <flow SubFlow="false" name="WH_David" entity-id="86e02dba-7597-4284-9316-13781b353a8b">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
-            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="1"/>
             <property name="tracking:enable-default-events"/>
@@ -63,8 +62,8 @@
                     <property name="onException"/>
                     <property name="service"/>
                     <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders"/>
                     <property name="soapVersion"/>
+                    <property name="enableMuleSoapHeaders"/>
                     <property name="auxiliary;index" value="4"/>
                 </properties>
             </pattern>
@@ -76,12 +75,12 @@
                 </properties>
             </pattern>
         </lane>
+        <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="FedPS_Giac" entity-id="759fda23-cd9c-42be-95ad-e1407dc33d3d">
+    <flow SubFlow="false" name="FedPS_Giac" entity-id="11a6ee90-a583-4c0a-a7ff-f1b5f273623c">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
-            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="6"/>
             <property name="tracking:enable-default-events"/>
@@ -140,8 +139,8 @@
                     <property name="onException"/>
                     <property name="service"/>
                     <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders"/>
                     <property name="soapVersion"/>
+                    <property name="enableMuleSoapHeaders"/>
                     <property name="auxiliary;index" value="9"/>
                 </properties>
             </pattern>
@@ -153,12 +152,12 @@
                 </properties>
             </pattern>
         </lane>
+        <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="FedPS_Andien" entity-id="2a86e1d2-84e4-413e-8f7a-5ea25c4efd35">
+    <flow SubFlow="false" name="FedPS_Andien" entity-id="c7d71d90-8c9a-4159-8ff8-8aa71324295b">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
-            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="11"/>
             <property name="tracking:enable-default-events"/>
@@ -217,8 +216,8 @@
                     <property name="onException"/>
                     <property name="service"/>
                     <property name="mtomEnabled"/>
-                    <property name="enableMuleSoapHeaders"/>
                     <property name="soapVersion"/>
+                    <property name="enableMuleSoapHeaders"/>
                     <property name="auxiliary;index" value="14"/>
                 </properties>
             </pattern>
@@ -230,12 +229,12 @@
                 </properties>
             </pattern>
         </lane>
+        <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="CRM_ben" entity-id="dcec8fbf-e545-4bbd-9979-afbc6b22104e">
+    <flow SubFlow="false" name="CRM_ben" entity-id="fa535cd4-69af-497e-99fc-e8409833966f">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
-            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="16"/>
             <property name="tracking:enable-default-events"/>
@@ -270,6 +269,7 @@
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
                 </properties>
+                <description></description>
             </endpoint>
             <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#4">
                 <graphicalData x="0" y="0" width="0" height="0"/>
@@ -283,6 +283,8 @@
             <pattern name="crm_ben" type="http://www.mulesoft.org/schema/mule/jersey/resources" entity-id="REST#1">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
+                    <property name="ref" value=""/>
+                    <property name="updated"/>
                     <property name="auxiliary;index" value="19"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/component;0">
                         <property name="class" value="external.crm.ben.service.ProduitService"/>
@@ -302,15 +304,20 @@
                         <property name="auxiliary;index" value="22"/>
                         <property name="auxiliary;wrapIn" value="22"/>
                     </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;856362001">
+                        <property name="ref" value=""/>
+                        <property name="isProcessed$$$$" value="true"/>
+                    </property-collection>
                 </properties>
+                <description></description>
             </pattern>
         </lane>
+        <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="CRM_Xinyi" entity-id="869b1e40-8cfe-468a-8882-28fb5cd1fb60">
+    <flow SubFlow="false" name="CRM_Xinyi" entity-id="419e8ab7-600f-45d7-ab9e-db23bd1dea07">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
-            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="23"/>
             <property name="tracking:enable-default-events"/>
@@ -350,72 +357,29 @@
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="message" value="Calling external service from CRMxinyi"/>
-                    <property name="category" value=""/>
+                    <property name="category"/>
                     <property name="level" value="INFO"/>
-                    <property name="updated"/>
                     <property name="auxiliary;index" value="25"/>
                 </properties>
-                <description></description>
             </pattern>
             <pattern name="crm_xinyi" type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" entity-id="SOAP#4">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="port" value=""/>
-                    <property name="wsdlLocation" value=""/>
+                    <property name="port"/>
+                    <property name="wsdlLocation"/>
                     <property name="serviceClass" value="external.crm.xinyi.CrmService"/>
-                    <property name="DATABINDING" value=""/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/cxf/jaxws-service"/>
-                    <property name="class" value=""/>
-                    <property name="configuration-ref" value=""/>
-                    <property name="namespace" value=""/>
-                    <property name="validationEnabled" value="false"/>
-                    <property name="auxiliary;erased;DATABINDING" value="true"/>
-                    <property name="updated"/>
-                    <property name="bindingId" value=""/>
-                    <property name="service" value=""/>
-                    <property name="mtomEnabled" value="false"/>
-                    <property name="soapVersion" value="1.1"/>
-                    <property name="enableMuleSoapHeaders" value="true"/>
-                    <property name="propertiesLabel" value=""/>
+                    <property name="configuration-ref"/>
+                    <property name="namespace"/>
+                    <property name="validationEnabled"/>
+                    <property name="bindingId"/>
+                    <property name="onException"/>
+                    <property name="service"/>
+                    <property name="mtomEnabled"/>
+                    <property name="soapVersion"/>
+                    <property name="enableMuleSoapHeaders"/>
                     <property name="auxiliary;index" value="26"/>
-                    <property-collection name="">
-                        <property name="auxiliary;erased;DATABINDING" value="true"/>
-                        <property name="DATABINDING" value=""/>
-                        <property name="class" value=""/>
-                        <property name="propertiesLabel" value=""/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/schemaLocations;15544270">
-                        <property name="isProcessed$$$$" value="true"/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-security-full;18522044">
-                        <property name="isProcessed$$$$" value="true"/>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-config;1481025">
-                            <property name="isProcessed$$$$" value="true"/>
-                        </property-collection>
-                        <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/ws-custom-validator;21241394">
-                            <property name="isProcessed$$$$" value="true"/>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/bst-token-validator;21453181">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/saml1-token-validator;8371640">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/saml2-token-validator;8429360">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/signature-token-validator;25979158">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/timestamp-token-validator;5455862">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                            <property-collection name="@http://www.mulesoft.org/schema/mule/cxf/username-token-validator;27761215">
-<property name="isProcessed$$$$" value="true"/>
-                            </property-collection>
-                        </property-collection>
-                    </property-collection>
                 </properties>
-                <description></description>
             </pattern>
             <pattern name="crm_xinyi_impl" type="http://www.mulesoft.org/schema/mule/core/component" entity-id="Java#4">
                 <graphicalData x="0" y="0" width="0" height="0"/>
@@ -425,12 +389,12 @@
                 </properties>
             </pattern>
         </lane>
+        <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="CRM_ha_flow" entity-id="15978f5f-8522-48cb-8609-a5adaa70a629">
+    <flow SubFlow="false" name="CRM_ha_flow" entity-id="9dd29e40-7c81-4e70-9f49-060d104891c2">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
-            <property name="initialState"/>
             <property name="bussinessEventsLabel"/>
             <property name="auxiliary;index" value="28"/>
             <property name="tracking:enable-default-events"/>
@@ -474,7 +438,6 @@
                     <property name="level" value="INFO"/>
                     <property name="auxiliary;index" value="30"/>
                 </properties>
-                <description></description>
             </pattern>
             <pattern name="crm_ha" type="http://www.mulesoft.org/schema/mule/jersey/resources" entity-id="REST#2">
                 <graphicalData x="0" y="0" width="0" height="0"/>
@@ -501,6 +464,7 @@
                 </properties>
             </pattern>
         </lane>
+        <apikit>false</apikit>
     </flow>
     <description></description>
 </mule-configuration>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="item" type="itemType"/>
+  <xs:complexType name="itemType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="title"/>
+      <xs:element type="xs:anyURI" name="link"/>
+      <xs:element type="xs:string" name="description"/>
+      <xs:element ref="ns:id" xmlns:ns="http://base.google.com/ns/1.0"/>
+      <xs:element ref="ns:condition" xmlns:ns="http://base.google.com/ns/1.0"/>
+      <xs:element ref="ns:price" xmlns:ns="http://base.google.com/ns/1.0"/>
+      <xs:element ref="ns:availability" xmlns:ns="http://base.google.com/ns/1.0"/>
+      <xs:element ref="ns:image_link" xmlns:ns="http://base.google.com/ns/1.0"/>
+      <xs:element ref="ns:google_product_category" xmlns:ns="http://base.google.com/ns/1.0"/>
+      <xs:element ref="ns:product_type" xmlns:ns="http://base.google.com/ns/1.0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/smtp http://www.mulesoft.org/schema/mule/smtp/current/mule-smtp.xsd
+http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd">
+    <data-mapper:config name="new_mapping_4_grf" transformationGraphPath="new_mapping_4.grf" doc:name="new_mapping_4_grf"/>
+    <smtp:connector name="SMTP" validateConnections="true" doc:name="SMTP"/>
+    <smtp:endpoint host="localhost" name="SMTP1" responseTimeout="10000" doc:name="SMTP"/>
+    <flow name="business-printedcatalogueFlow1" doc:name="business-printedcatalogueFlow1">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="business/print_catalogue" doc:name="HTTP"/>
+        <all doc:name="All">
+            <processor-chain>
+                <vm:outbound-endpoint exchange-pattern="one-way" path="/vm/internal/client/fedps_giac/estimation" doc:name="VM"/>
+                <data-mapper:transform config-ref="new_mapping_4_grf" doc:name="DataMapper"/>
+            </processor-chain>
+            <vm:outbound-endpoint exchange-pattern="one-way" path="/vm/internal/client/crm_fake/customers" doc:name="VM"/>
+        </all>
+        <message-chunk-aggregator failOnTimeout="true" doc:name="Message Chunk Aggregator"/>
+        <smtp:outbound-endpoint host="localhost" user="soa1" password="pwd" to="printer@catalogue.com" from="crm@soa1.polytech.fr" subject="catalogue a imprimer" responseTimeout="10000" mimeType="text/xml" doc:name="SMTP"/>
+    </flow>
+    <flow name="business-printedcatalogueFlow3" doc:name="business-printedcatalogueFlow3">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_fake/customers" doc:name="client/crm_fake/customers"/>
+        <scripting:component doc:name="Groovy">
+            <scripting:script engine="Groovy"><![CDATA[def c1 = new internal.data.Customer("robert", "robert@wanadoo.fr")
+def c2 = new internal.data.Customer("jeanne", "jeanne@wanadoo.fr")
+def c3 = new internal.data.Customer("jean", "jean@wanadoo.fr")
+def c4 = new internal.data.Customer("jeanette", "jeanette@wanadoo.fr")
+def c5 = new internal.data.Customer("jeanot", "jeanot@wanadoo.fr")
+def ret = new java.util.ArrayList<internal.data.Customer>();
+ret.add(c1);
+ret.add(c2);
+ret.add(c3);
+ret.add(c4);
+return ret;]]></scripting:script>
+        </scripting:component>
+    </flow>
+    <flow name="business-printedcatalogueFlow2" doc:name="business-printedcatalogueFlow2">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_fake/products" doc:name="client/crm_fake/products"/>
+        <scripting:component doc:name="Groovy">
+            <scripting:script engine="Groovy"><![CDATA[def p1 = new internal.data.Product(1, "produit1", "Description produit 1", "Categorie1", "CRM1", 11.99, internal.data.CRM.CRMBENJAMIN);
+def p2 = new internal.data.Product(2, "produit2", "Description produit 2", "Categorie2", "CRM2", 12.99, internal.data.CRM.CRMBENJAMIN);
+def p3 = new internal.data.Product(3, "produit3", "Description produit 3", "Categorie3", "CRM3", 13.99, internal.data.CRM.CRMBENJAMIN);
+def p4 = new internal.data.Product(4, "produit4", "Description produit 4", "Categorie4", "CRM4", 14.99, internal.data.CRM.CRMBENJAMIN);
+def ret = new java.util.ArrayList<internal.data.Product>();
+ret.add(p1);
+ret.add(p2);
+ret.add(p3);
+ret.add(p4);
+return ret;]]></scripting:script>
+        </scripting:component>
+    </flow>
+</mule>

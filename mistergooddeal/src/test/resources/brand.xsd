@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://base.google.com/ns/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="brand" type="xs:string"/>
+  <xs:element name="condition">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="new"/>
+        <xs:enumeration value="used"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="image_link">
+    <xs:simpleType>
+      <xs:restriction base="xs:anyURI">
+        <xs:enumeration value="http://www.example.com/image1.jpg"/>
+        <xs:enumeration value="http://www.example.com/image2.jpg"/>
+        <xs:enumeration value="http://www.example.com/image3.jpg"/>
+        <xs:enumeration value="http://www.example.com/image4.jpg"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="mpn">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="ABC123"/>
+        <xs:enumeration value="XXYYZZ"/>
+        <xs:enumeration value="AB001"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="price">
+    <xs:simpleType>
+      <xs:restriction base="xs:float">
+        <xs:enumeration value="25"/>
+        <xs:enumeration value="12"/>
+        <xs:enumeration value="20"/>
+        <xs:enumeration value="6.99"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="product_type">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="Clothing &amp; Accessories > Clothing > Outerwear > Sweaters"/>
+        <xs:enumeration value="Media > DVDs &amp; Videos > Science Fiction"/>
+        <xs:enumeration value="Media > Books > Fiction > Literature"/>
+        <xs:enumeration value="Toys &amp; Games > Toys > Dolls &amp; Action Figures > Stuffed Toys"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="quantity">
+    <xs:simpleType>
+      <xs:restriction base="xs:byte">
+        <xs:enumeration value="3"/>
+        <xs:enumeration value="1"/>
+        <xs:enumeration value="5"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="shipping" type="ns:shippingType" xmlns:ns="http://base.google.com/ns/1.0"/>
+  <xs:element name="tax" type="ns:taxType" xmlns:ns="http://base.google.com/ns/1.0"/>
+  <xs:element name="upc">
+    <xs:simpleType>
+      <xs:restriction base="xs:long">
+        <xs:enumeration value="0001230001230"/>
+        <xs:enumeration value="0004560004560"/>
+        <xs:enumeration value="0789012345678"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="weight">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="0.1 lb"/>
+        <xs:enumeration value="0.2 lb"/>
+        <xs:enumeration value="0.3 lb"/>
+        <xs:enumeration value="0.4 lb"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="isbn" type="xs:int"/>
+  <xs:complexType name="shippingType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="country"/>
+      <xs:element name="region" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="MA"/>
+            <xs:enumeration value="024*"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="service" minOccurs="0"/>
+      <xs:element name="price">
+        <xs:simpleType>
+          <xs:restriction base="xs:float">
+            <xs:enumeration value="5.95"/>
+            <xs:enumeration value="7.95"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="taxType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="country"/>
+      <xs:element name="region" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="CA"/>
+            <xs:enumeration value="926*"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="rate">
+        <xs:simpleType>
+          <xs:restriction base="xs:float">
+            <xs:enumeration value="8.25"/>
+            <xs:enumeration value="8.75"/>
+            <xs:enumeration value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="tax_ship" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

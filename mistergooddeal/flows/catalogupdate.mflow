@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="catalogUpdate">
+    <global-element name="MySQL Data Source" type="http://www.mulesoft.org/schema/mule/ee/jdbc/mysql-data-source" entity-id="!!!8888ed44-8626-4079-8013-7811cc3e0762">
+        <properties>
+            <property name="port" value=""/>
+            <property name="host" value=""/>
+            <property name="auxiliary;erased;port" value="true"/>
+            <property name="name" value="MySQL_Data_Source"/>
+            <property name="loginTimeout" value="0"/>
+            <property name="transactionIsolation" value="UNSPECIFIED"/>
+            <property name="password" value=""/>
+            <property name="user" value=""/>
+            <property name="database" value=""/>
+            <property name="url" value="jdbc:mysql://localhost:3306/[dbName]"/>
+        </properties>
+        <description></description>
+    </global-element>
+    <global-element name="Database" type="http://www.mulesoft.org/schema/mule/ee/jdbc/connector" entity-id="!!!0ad1916c-2b4c-4410-8c2b-e38a896d67eb">
+        <properties>
+            <property name="d" value=""/>
+            <property name="resultSetHandler-ref" value=""/>
+            <property name="count" value="2"/>
+            <property name="customReconnection" value="false"/>
+            <property name="standardReconnection" value="false"/>
+            <property name="pollingFrequency" value="0"/>
+            <property name="queryTimeout" value="-1"/>
+            <property name="class" value=""/>
+            <property name="validateConnections" value="true"/>
+            <property name="frequency" value="2000"/>
+            <property name="reconnectForever" value="false"/>
+            <property name="noReconnection" value="true"/>
+            <property name="dataSource-ref to JDBC DataSource" value="MySQL_Data_Source"/>
+            <property name="dispatcherPoolFactory-ref" value=""/>
+            <property name="transactionPerMessage" value="true"/>
+            <property name="blocking" value="true"/>
+            <property name="name" value="Database"/>
+            <property name="dynamicNotification" value="false"/>
+            <property name="queryRunner-ref" value=""/>
+            <property-collection name="">
+                <property name="d" value=""/>
+                <property name="blocking" value="true"/>
+                <property name="count" value="2"/>
+                <property name="customReconnection" value="false"/>
+                <property name="standardReconnection" value="false"/>
+                <property name="class" value=""/>
+                <property name="frequency" value="2000"/>
+                <property name="reconnectForever" value="false"/>
+                <property name="noReconnection" value="true"/>
+            </property-collection>
+        </properties>
+        <description></description>
+    </global-element>
+    <flow SubFlow="false" name="getCatalog" entity-id="62add0eb-95b9-43be-a725-61a01d5406ee">
+        <properties>
+            <property name="id" value=""/>
+            <property name="updated"/>
+            <property name="auxiliary;erased;initialState" value="true"/>
+            <property name="initialState" value=""/>
+            <property name="processingStrategy2" value=""/>
+            <property name="bussinessEventsLabel" value=""/>
+            <property name="auxiliary;erased;processingStrategy2" value="true"/>
+            <property name="tracking:enable-default-events" value="false"/>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;2060911926">
+                <property name="id" value=""/>
+                <property name="isProcessed$$$$" value="true"/>
+            </property-collection>
+        </properties>
+        <description></description>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="d9db43ae-fada-48b6-94a5-6e84604ded87">
+            <graphicalData x="14" y="160" width="85" height="85"/>
+            <pattern name="Groovy" type="http://www.mulesoft.org/schema/mule/scripting/groovyComponent" entity-id="0cfc3f9d-275d-4095-98eb-15720da37a73">
+                <graphicalData x="19" y="165" width="68" height="69"/>
+                <properties>
+                    <property name="ref" value=""/>
+                    <property name="text" value="def catalog = new ArrayList&lt;internal.data.Product&gt;();&#xD;&#xA;catalog.add(new Product(1, &quot;pomme&quot;,&quot;une pomme&quot; , &quot;fruit&quot;,&#xD;&#xA;&#x9;&#x9;&#x9;&quot;123&quot;, 1.3, internal.data.CRM.CRMHA);&#xD;&#xA;catalog.add(new Product(2, &quot;poire&quot;,&quot;une poire&quot; , &quot;fruit&quot;,&#xD;&#xA;&#x9;&#x9;&#x9;&quot;324&quot;, 1.2, internal.data.CRM.CRMHA);&#xD;&#xA;return catalog;"/>
+                    <property name="updated"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;1253323092">
+                        <property name="ref" value=""/>
+                        <property name="isProcessed$$$$" value="true"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;812200832">
+                        <property name="text" value="def catalog = new ArrayList&lt;internal.data.Product&gt;();&#xD;&#xA;catalog.add(new Product(1, &quot;pomme&quot;,&quot;une pomme&quot; , &quot;fruit&quot;,&#xD;&#xA;&#x9;&#x9;&#x9;&quot;123&quot;, 1.3, internal.data.CRM.CRMHA);&#xD;&#xA;catalog.add(new Product(2, &quot;poire&quot;,&quot;une poire&quot; , &quot;fruit&quot;,&#xD;&#xA;&#x9;&#x9;&#x9;&quot;324&quot;, 1.2, internal.data.CRM.CRMHA);&#xD;&#xA;return catalog;"/>
+                        <property name="isProcessed$$$$" value="true"/>
+                    </property-collection>
+                </properties>
+                <description></description>
+            </pattern>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>

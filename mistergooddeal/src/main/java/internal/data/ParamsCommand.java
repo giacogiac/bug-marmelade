@@ -7,8 +7,10 @@ public class ParamsCommand {
 	
 	private String deliveryAddress;
 	private String idCommand;
-	private List<Long> listProd;
+	private List<Product> listProd;
 	private String idCustomer;
+	private String expectation;
+	private String statu;
 	
 	public String getIdCustomer() {
 		return idCustomer;
@@ -28,11 +30,23 @@ public class ParamsCommand {
 	public void setIdCommand(String idCommand) {
 		this.idCommand = idCommand;
 	}
-	public List<Long> getListProd() {
+	public List<Product> getListProd() {
 		return listProd;
 	}
-	public void setListProd(List<Long> listProd) {
-		this.listProd = listProd;
+	public void setListProd(List<Product> listProd) {
+		this.listProd = listProd;;
+	}
+	public String getExpectation() {
+		return expectation;
+	}
+	public void setExpectation(String expectation) {
+		this.expectation = expectation;
+	}
+	public String getStatu() {
+		return statu;
+	}
+	public void setStatu(String statu) {
+		this.statu = statu;
 	}
 	
 	

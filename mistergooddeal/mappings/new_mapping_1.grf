@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Graph author="user" created="Sun Nov 24 17:02:48 CET 2013" guiVersion="3.4.0.P" id="1385309446413" licenseCode="Unlicensed" licenseType="Unknown" modified="Sun Nov 24 17:02:48 CET 2013" modifiedBy="user" name="new_mapping_1_grf" preview-file="${Project_Home}/_inputs/orders.csv" revision="1.0" showComponentDetails="false">
+<Graph author="user" created="Sun Nov 24 20:12:15 CET 2013" guiVersion="3.4.0.P" id="1385324730776" licenseCode="Unlicensed" licenseType="Unknown" modified="Sun Nov 24 20:12:15 CET 2013" modifiedBy="user" name="new_mapping_1_grf" preview-file="${Project_Home}/_inputs/orders.csv" revision="1.0" showComponentDetails="false">
 <Global>
-<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/list" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Output" id="78988e82-b2ae-4d65-a97c-623c86c46b8b">
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/list" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Output" id="94416a28-b6fe-4f8a-adc6-e1e8ef82de73">
 <Record fieldDelimiter="|" name="list" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
 <Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
 <Field __index="0" __sourcePath="{}/list/deliveryAddress" containerType="SINGLE" label="deliveryAddress" name="deliveryAddress" type="string"/>
@@ -11,7 +11,7 @@
 <Field __index="11" __sourcePath="{}/list/statu" containerType="SINGLE" label="statu" name="statu" type="string"/>
 </Record>
 </Metadata>
-<Metadata __index="4" __referenceCounter="0" __sourcePath="{}/list/listProd" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="78988e82-b2ae-4d65-a97c-623c86c46b8b" _parent_id="__parent_id" _type="Output" id="396fb0da-fcd2-4fbe-a9f4-97704ef3747d">
+<Metadata __index="4" __referenceCounter="0" __sourcePath="{}/list/listProd" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="94416a28-b6fe-4f8a-adc6-e1e8ef82de73" _parent_id="__parent_id" _type="Output" id="f5af9527-c1f2-43cd-8ef6-b73641dfccf2">
 <Record fieldDelimiter="|" name="listProd" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
 <Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
 <Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
@@ -24,7 +24,7 @@
 <Field __index="10" __sourcePath="{}/list/listProd/price" containerType="SINGLE" label="price" name="price" type="number"/>
 </Record>
 </Metadata>
-<Metadata __referenceCounter="1" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _type="Input" id="99a30be6-885c-4d0e-b0b9-d34fdc39dd9e">
+<Metadata __referenceCounter="1" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _type="Input" id="5faf20ad-67bb-4b98-b86a-ebbee3ba16d0">
 <Record fieldDelimiter="," name="orders" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
 <Field containerType="SINGLE" label="id_order" name="id_order" size="10" type="string"/>
 <Field containerType="SINGLE" label="id_customer" name="id_customer" size="10" type="string"/>
@@ -97,9 +97,28 @@
 //START -> DO NOT REMOVE
 output.__id = (isnull(input.__id) ? null : num2str(input.__id));
 //END -> DO NOT REMOVE
-]]></attr>
+output.idCommand = input.id_order;
+output.idCustomer = input.id_customer;
+output.deliveryAddress = input.delivery_address;
+output.statu = input.statu_order;
+output.expectation = input.expectation_order;]]></attr>
 </Node>
-<Edge debugMode="true" fromNode="DATA_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="99a30be6-885c-4d0e-b0b9-d34fdc39dd9e" outPort="Port 0 (output)" toNode="FOREACH_ORDERS_LIST:0"/>
-<Edge debugMode="true" fromNode="FOREACH_ORDERS_LIST:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="78988e82-b2ae-4d65-a97c-623c86c46b8b" outPort="Port 0 (out)" toNode="BEAN_WRITER0:0"/>
+<Node enabled="enabled" guiName="Foreach 'orders' -&gt; 'listProd'" guiX="460" guiY="120" id="FOREACH_ORDERS_LIST_PROD" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = (isnull(input.__id) ? null : num2str(input.__id));
+output.__parent_id = (isnull(input.__id) ? null : num2str(input.__id));
+//END -> DO NOT REMOVE
+output.name = input.name_product;
+output.category = input.category_product;
+output.crmReference = input.ref_product;
+output.price = (isnull(input.price_product) ? null : str2double(input.price_product));]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Simple Copy" guiX="240" guiY="20" id="SIMPLE_COPY0" type="SIMPLE_COPY"/>
+<Edge debugMode="true" fromNode="DATA_READER0:0" guiBendpoints="" id="Edge2" inPort="Port 0 (in)" metadata="5faf20ad-67bb-4b98-b86a-ebbee3ba16d0" outPort="Port 0 (output)" toNode="SIMPLE_COPY0:0"/>
+<Edge debugMode="true" fromNode="FOREACH_ORDERS_LIST:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="94416a28-b6fe-4f8a-adc6-e1e8ef82de73" outPort="Port 0 (out)" toNode="BEAN_WRITER0:0"/>
+<Edge debugMode="true" fromNode="FOREACH_ORDERS_LIST_PROD:0" guiBendpoints="" id="Edge4" inPort="Port 1 (in)" metadata="f5af9527-c1f2-43cd-8ef6-b73641dfccf2" outPort="Port 0 (out)" toNode="BEAN_WRITER0:1"/>
+<Edge debugMode="true" fromNode="SIMPLE_COPY0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="5faf20ad-67bb-4b98-b86a-ebbee3ba16d0" outPort="Port 0 (out)" toNode="FOREACH_ORDERS_LIST:0"/>
+<Edge debugMode="true" fromNode="SIMPLE_COPY0:1" guiBendpoints="" id="Edge3" inPort="Port 0 (in)" metadata="5faf20ad-67bb-4b98-b86a-ebbee3ba16d0" outPort="Port 1 (out)" toNode="FOREACH_ORDERS_LIST_PROD:0"/>
 </Phase>
 </Graph>

@@ -10,9 +10,9 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/ee/jdbc/current/mule-jdbc-ee.xsd
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
     <data-mapper:config name="new_mapping_1_grf" transformationGraphPath="new_mapping_1.grf" doc:name="DataMapper"/>
-    <data-mapper:config name="new_mapping_2_grf" transformationGraphPath="new_mapping_2.grf" doc:name="new_mapping_2_grf"/>
+    <data-mapper:config name="new_mapping_2_grf" transformationGraphPath="new_mapping_2.grf" doc:name="DataMapper"/>
     <flow name="business-takingorders-fax" doc:name="business-takingorders-fax">
-        <file:inbound-endpoint path="./_inputs" moveToDirectory="./_data" responseTimeout="10000" doc:name="_inputs/orders.csv"/>
+        <file:inbound-endpoint path="./_inputs" moveToDirectory="./src/test/resources" responseTimeout="10000" doc:name="_inputs/orders.csv"/>
         <data-mapper:transform config-ref="new_mapping_2_grf" doc:name="DataMapper"/>
         <logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
         <vm:outbound-endpoint exchange-pattern="request-response" path="/vm/internal/takingOrders" doc:name="takingOrders"/>
@@ -26,7 +26,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     </flow>
     <flow name="VM_takingOrders" doc:name="VM_takingOrders">
         <vm:inbound-endpoint exchange-pattern="one-way" path="/vm/internal/takingOrders" doc:name="takingOrders"/>
-        <logger level="INFO" doc:name="Logger"/>
+        <logger level="INFO" doc:name="Logger" message="handle takingOrders"/>
         <jdbc-ee:outbound-endpoint exchange-pattern="one-way" queryKey="get" queryTimeout="-1" connector-ref="DatabaseConnector" doc:name="Select From Customer">
             <jdbc-ee:query key="get" value="SELECT * FROM customers WHERE id_customer = #[message.payload.idCustomer]"/>
         </jdbc-ee:outbound-endpoint>

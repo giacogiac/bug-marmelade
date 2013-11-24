@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="user" created="Sun Nov 24 17:02:48 CET 2013" guiVersion="3.4.0.P" id="1385309838744" licenseCode="Unlicensed" licenseType="Unknown" modified="Sun Nov 24 17:02:48 CET 2013" modifiedBy="user" name="new_mapping_2_grf" preview-file="${Project_Home}/_inputs/orders.csv" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __index="4" __referenceCounter="0" __sourcePath="{}/object/listProd" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="65f26ca0-8fa9-4191-92de-c11269819088" _parent_id="__parent_id" _type="Output" id="7effdeb3-3bf4-44fd-887c-b36131d90971">
+<Record fieldDelimiter="|" name="listProd" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="4" __sourcePath="{}/object/listProd/category" containerType="SINGLE" label="category" name="category" type="string"/>
+<Field __index="5" __sourcePath="{}/object/listProd/crm" containerType="SINGLE" label="crm" name="crm" type="string"/>
+<Field __index="6" __sourcePath="{}/object/listProd/crmReference" containerType="SINGLE" label="crmReference" name="crmReference" type="string"/>
+<Field __index="7" __sourcePath="{}/object/listProd/description" containerType="SINGLE" label="description" name="description" type="string"/>
+<Field __index="8" __sourcePath="{}/object/listProd/id" containerType="SINGLE" label="id" name="id" type="integer"/>
+<Field __index="9" __sourcePath="{}/object/listProd/name" containerType="SINGLE" label="name" name="name" type="string"/>
+<Field __index="10" __sourcePath="{}/object/listProd/price" containerType="SINGLE" label="price" name="price" type="number"/>
+</Record>
+</Metadata>
+<Metadata __referenceCounter="1" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _type="Input" id="0cfc43a1-d777-4e2a-a7a4-6139b0ee7adc">
+<Record fieldDelimiter="," name="orders" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field containerType="SINGLE" label="id_order" name="id_order" size="10" type="string"/>
+<Field containerType="SINGLE" label="id_customer" name="id_customer" size="10" type="string"/>
+<Field containerType="SINGLE" label="delivery_address" name="delivery_address" size="10" type="string"/>
+<Field containerType="SINGLE" label="statu_order" name="statu_order" size="10" type="string"/>
+<Field containerType="SINGLE" label="expectation_order" name="expectation_order" size="10" type="string"/>
+<Field containerType="SINGLE" label="name_product" name="name_product" size="10" type="string"/>
+<Field containerType="SINGLE" label="category_product" name="category_product" size="10" type="string"/>
+<Field containerType="SINGLE" label="ref_product" name="ref_product" size="10" type="string"/>
+<Field containerType="SINGLE" eofAsDelimiter="true" label="price_product" name="price_product" size="10" type="string"/>
+<Field __artificialType="_id" auto_filling="global_row_count" name="__id" type="long"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Output" id="65f26ca0-8fa9-4191-92de-c11269819088">
+<Record fieldDelimiter="|" name="ParamsCommand" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __sourcePath="{}/object/deliveryAddress" containerType="SINGLE" label="deliveryAddress" name="deliveryAddress" type="string"/>
+<Field __index="1" __sourcePath="{}/object/expectation" containerType="SINGLE" label="expectation" name="expectation" type="string"/>
+<Field __index="2" __sourcePath="{}/object/idCommand" containerType="SINGLE" label="idCommand" name="idCommand" type="string"/>
+<Field __index="3" __sourcePath="{}/object/idCustomer" containerType="SINGLE" label="idCustomer" name="idCustomer" type="string"/>
+<Field __index="11" __sourcePath="{}/object/statu" containerType="SINGLE" label="statu" name="statu" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:outputPayload" guiName="Pojo WRITER" guiX="900" guiY="20" id="BEAN_WRITER0" type="BEAN_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<object xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <deliveryAddress>$0.deliveryAddress</deliveryAddress>
+  <expectation>$0.expectation</expectation>
+  <idCommand>$0.idCommand</idCommand>
+  <idCustomer>$0.idCustomer</idCustomer>
+  <statu>$0.statu</statu>
+</object>]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema-object>
+  <typed-object-ref type-ref="internal.data.ParamsCommand"/>
+  <typed-object type="internal.data.CRM"/>
+  <typed-object type="int"/>
+  <typed-object type="java.lang.String"/>
+  <typed-object type="internal.data.Product">
+    <typed-object-ref name="category" type-ref="java.lang.String"/>
+    <typed-object-ref name="crm" type-ref="internal.data.CRM"/>
+    <typed-object-ref name="crmReference" type-ref="java.lang.String"/>
+    <typed-object-ref name="description" type-ref="java.lang.String"/>
+    <typed-object-ref name="id" type-ref="int"/>
+    <typed-object-ref name="name" type-ref="java.lang.String"/>
+    <typed-object-ref name="price" type-ref="float"/>
+  </typed-object>
+  <typed-object type="float"/>
+  <typed-object type="internal.data.ParamsCommand">
+    <typed-object-ref name="deliveryAddress" type-ref="java.lang.String"/>
+    <typed-object-ref name="expectation" type-ref="java.lang.String"/>
+    <typed-object-ref name="idCommand" type-ref="java.lang.String"/>
+    <typed-object-ref name="idCustomer" type-ref="java.lang.String"/>
+    <schema-collection name="listProd" type="java.util.List">
+      <typed-object-ref type-ref="internal.data.Product"/>
+    </schema-collection>
+    <typed-object-ref name="statu" type-ref="java.lang.String"/>
+  </typed-object>
+</schema-object>
+]]></attr>
+<attr name="cacheInMemory"><![CDATA[true]]></attr>
+</Node>
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiName="CSV READER" guiX="20" guiY="20" id="DATA_READER0" quotedStrings="true" skipRows="1" trim="true" type="DATA_READER">
+<attr name="_data_format"><![CDATA[CSV]]></attr>
+<attr name="__dataSourceDefinition"><![CDATA[${Project_Home}/_inputs/orders.csv]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'orders' -&gt; 'listProd'" guiX="460" guiY="120" id="FOREACH_ORDERS_LIST_PROD" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = (isnull(input.__id) ? null : num2str(input.__id));
+output.__parent_id = (isnull(input.__id) ? null : num2str(input.__id));
+//END -> DO NOT REMOVE
+output.name = input.name_product;
+output.category = input.category_product;
+output.crmReference = input.ref_product;
+output.price = (isnull(input.price_product) ? null : str2double(input.price_product));]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'orders' -&gt; 'object'" guiX="460" guiY="20" id="FOREACH_ORDERS_OBJECT" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = (isnull(input.__id) ? null : num2str(input.__id));
+//END -> DO NOT REMOVE
+output.idCommand = input.id_order;
+output.idCustomer = input.id_customer;
+output.deliveryAddress = input.delivery_address;
+output.statu = input.statu_order;
+output.expectation = input.expectation_order;]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Simple Copy" guiX="240" guiY="20" id="SIMPLE_COPY0" type="SIMPLE_COPY"/>
+<Edge debugMode="true" fromNode="DATA_READER0:0" guiBendpoints="" id="Edge2" inPort="Port 0 (in)" metadata="0cfc43a1-d777-4e2a-a7a4-6139b0ee7adc" outPort="Port 0 (output)" toNode="SIMPLE_COPY0:0"/>
+<Edge debugMode="true" fromNode="FOREACH_ORDERS_LIST_PROD:0" guiBendpoints="" id="Edge4" inPort="Port 1 (in)" metadata="7effdeb3-3bf4-44fd-887c-b36131d90971" outPort="Port 0 (out)" toNode="BEAN_WRITER0:1"/>
+<Edge debugMode="true" fromNode="FOREACH_ORDERS_OBJECT:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="65f26ca0-8fa9-4191-92de-c11269819088" outPort="Port 0 (out)" toNode="BEAN_WRITER0:0"/>
+<Edge debugMode="true" fromNode="SIMPLE_COPY0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="0cfc43a1-d777-4e2a-a7a4-6139b0ee7adc" outPort="Port 0 (out)" toNode="FOREACH_ORDERS_OBJECT:0"/>
+<Edge debugMode="true" fromNode="SIMPLE_COPY0:1" guiBendpoints="" id="Edge3" inPort="Port 0 (in)" metadata="0cfc43a1-d777-4e2a-a7a4-6139b0ee7adc" outPort="Port 1 (out)" toNode="FOREACH_ORDERS_LIST_PROD:0"/>
+</Phase>
+</Graph>

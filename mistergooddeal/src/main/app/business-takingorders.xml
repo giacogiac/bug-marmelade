@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:jdbc-ee="http://www.mulesoft.org/schema/mule/ee/jdbc" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core" version="EE-3.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/ee/jdbc/current/mule-jdbc-ee.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    <data-mapper:config name="new_mapping_1_grf" transformationGraphPath="new_mapping_1.grf" doc:name="DataMapper"/>
+    <data-mapper:config name="new_mapping_2_grf" transformationGraphPath="new_mapping_2.grf" doc:name="new_mapping_2_grf"/>
+    <flow name="business-takingorders-fax" doc:name="business-takingorders-fax">
+        <file:inbound-endpoint path="./_inputs" moveToDirectory="./_data" responseTimeout="10000" doc:name="_inputs/orders.csv"/>
+        <data-mapper:transform config-ref="new_mapping_2_grf" doc:name="DataMapper"/>
+        <logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
+        <vm:outbound-endpoint exchange-pattern="request-response" path="/vm/internal/takingOrders" doc:name="takingOrders"/>
+    </flow>
+    <flow name="business-takingorders-http" doc:name="business-takingorders-http">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" doc:name="HTTP"/>
+        <cxf:jaxws-service serviceClass="internal.takingOrder" doc:name="SOAP"/>
+        <data-mapper:transform doc:name="DataMapper"/>
+        <logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
+        <vm:outbound-endpoint exchange-pattern="request-response" path="/vm/internal/takingOrders" doc:name="takingOrders"/>
+    </flow>
+    <flow name="VM_takingOrders" doc:name="VM_takingOrders">
+        <vm:inbound-endpoint exchange-pattern="one-way" path="/vm/internal/takingOrders" doc:name="takingOrders"/>
+        <logger level="INFO" doc:name="Logger"/>
+        <jdbc-ee:outbound-endpoint exchange-pattern="one-way" queryKey="get" queryTimeout="-1" connector-ref="DatabaseConnector" doc:name="Select From Customer">
+            <jdbc-ee:query key="get" value="SELECT * FROM customers WHERE id_customer = #[message.payload.idCustomer]"/>
+        </jdbc-ee:outbound-endpoint>
+        <choice doc:name="Choice">
+            <when expression="#[message.payload == null]">
+                <logger message="handle createCustomer" level="INFO" doc:name="Logger"/>
+                <vm:outbound-endpoint exchange-pattern="one-way" path="/vm/internal/client/crm_xinyi/createCustomer" doc:name="client/crm_xinyi/createCustomer"/>
+                <jdbc-ee:outbound-endpoint exchange-pattern="request-response" queryKey="add" queryTimeout="-1" connector-ref="DatabaseConnector" doc:name="INSERT INTO customers">
+                    <jdbc-ee:query key="add" value="INSERT INTO customers VALUES (#[message.payload.idCustomer], #[message.payload.username], #[message.payload.password], #[message.payload.firstName], #[message.payload.lastName])"/>
+                </jdbc-ee:outbound-endpoint>
+            </when>
+            <otherwise>
+                <logger message="handle addOrder" level="INFO" doc:name="Logger"/>
+                <vm:outbound-endpoint exchange-pattern="request-response" path="/vm/internal/client/crm_xinyi/addOrder" doc:name="client/crm_xinyi/addOrder"/>
+            </otherwise>
+        </choice>
+        <jdbc-ee:outbound-endpoint exchange-pattern="one-way" queryKey="add" queryTimeout="-1" connector-ref="DatabaseConnector" doc:name="INSERT INTO orders">
+            <jdbc-ee:query key="add" value="INSERT INTO orders VALUES (#[message.payload.idCommand], #[message.payload.idCustomer], #[message.payload.deliveryAddress], #[message.payload.statu], #[message.payload.expectation], #[message.payload.name], #[message.payload.category], #[message.payload.crmReference], #[message.payload.price])"/>
+        </jdbc-ee:outbound-endpoint>
+    </flow>
+</mule>

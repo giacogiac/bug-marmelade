@@ -12,6 +12,6 @@ import external.warehouse.data.Product;
 @XmlType(name="ListNearOutOfStockResp")
 
 public class ListNearOutOfStockResponse {
-	@XmlElement(required=true, name="listProduct")
+	@XmlElement(required=true, name="product")
 	public List<Product> list;
 }

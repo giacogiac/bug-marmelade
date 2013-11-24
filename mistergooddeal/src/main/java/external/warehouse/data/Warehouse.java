@@ -14,6 +14,7 @@ public class Warehouse {
 		this.locationOfProduct = new HashMap<Integer, String>();
 		this.listOfProduct = new HashMap<Integer, Product>();
 		this.listOrder = new ArrayList<Order>();
+		this.listDelivery = new ArrayList<Delivery>();
 	}
 	public String getPlanning(){
 		StringBuilder sb = new StringBuilder();

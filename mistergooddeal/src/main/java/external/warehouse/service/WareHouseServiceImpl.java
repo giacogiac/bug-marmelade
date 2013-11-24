@@ -1,6 +1,12 @@
 package external.warehouse.service;
 
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 import javax.jws.*;
 
 import external.warehouse.data.*;
@@ -18,9 +24,13 @@ public class WareHouseServiceImpl implements WareHouseService {
 		super();
 		this.wh = new Warehouse();
 		Product CDs = new Product(1, 200, 500, "CDs");
-		Product DVDs = new Product(3, 200, 300, "DVDs");
+		Product DVDs = new Product(3, 200, 100, "DVDs");
 		wh.addProduct(CDs, "A");
 		wh.addProduct(DVDs, "B");
+		List listp = new ArrayList<Product>();
+		listp.add(CDs);
+		Delivery d1 = new Delivery("ups", "1/1/1",listp);
+		wh.addDelivery(d1);
 		
 	}
 
@@ -40,7 +50,7 @@ public class WareHouseServiceImpl implements WareHouseService {
 	public ListNearOutOfStockResponse listNearOutOfStock() {
 		ListNearOutOfStockResponse response = new ListNearOutOfStockResponse();
 		response.list = wh.getListNearOutOfStock();
-		return null;
+		return response;
 	}
 
 	public QuantityResponse getQuantity(QuantityRequest request) {

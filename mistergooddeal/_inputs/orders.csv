@@ -1,0 +1,2 @@
+id_order,id_customer,delivery_address,statu_order,expectation_order,name_product,category_product,ref_product,price_product
+1,2,6 Rue ABCD,NOTSHIPPED,as soon as possible,iphone5s,mobile,mmmm,600

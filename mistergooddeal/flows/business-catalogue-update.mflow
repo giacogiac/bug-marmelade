@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="business-catalogue-update">
+    <global-element name="MySQL Data Source" type="http://www.mulesoft.org/schema/mule/ee/jdbc/mysql-data-source" entity-id="MySQL Data Source#1">
+        <properties>
+            <property name="port"/>
+            <property name="host"/>
+            <property name="name" value="MySQL_Data_Source"/>
+            <property name="loginTimeout"/>
+            <property name="transactionIsolation" value="UNSPECIFIED"/>
+            <property name="user" value="root"/>
+            <property name="password" value="gooddeal"/>
+            <property name="url" value="jdbc:mysql://localhost:3306/mistergooddeal"/>
+            <property name="database"/>
+            <property name="auxiliary;index" value="1"/>
+        </properties>
+    </global-element>
+    <global-element name="Database" type="http://www.mulesoft.org/schema/mule/ee/jdbc/connector" entity-id="Database#1">
+        <properties>
+            <property name="dispatcherPoolFactory-ref"/>
+            <property name="transactionPerMessage"/>
+            <property name="resultSetHandler-ref"/>
+            <property name="dataSource-ref to Bean" value="MySQL_Data_Source"/>
+            <property name="pollingFrequency" value="0"/>
+            <property name="queryTimeout" value="-1"/>
+            <property name="name" value="Database"/>
+            <property name="validateConnections" value="true"/>
+            <property name="dynamicNotification"/>
+            <property name="queryRunner-ref"/>
+            <property name="auxiliary;index" value="2"/>
+            <property name="dataSource-ref to JDBC DataSource" value="MySQL_Data_Source"/>
+        </properties>
+    </global-element>
+    <flow SubFlow="false" name="business-catalogue-update" entity-id="c795b0a8-79a0-49b9-af7f-d68c7d51b1b3">
+        <properties>
+            <property name="id" value=""/>
+            <property name="updated"/>
+            <property name="auxiliary;erased;initialState" value="true"/>
+            <property name="initialState" value=""/>
+            <property name="processingStrategy2" value=""/>
+            <property name="bussinessEventsLabel" value=""/>
+            <property name="auxiliary;index" value="3"/>
+            <property name="auxiliary;erased;processingStrategy2" value="true"/>
+            <property name="tracking:enable-default-events" value="false"/>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;1203429707">
+                <property name="id" value=""/>
+                <property name="isProcessed$$$$" value="true"/>
+            </property-collection>
+        </properties>
+        <description></description>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#1">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <endpoint direction="Outbound" message-exchange-pattern="OneWay" name="VMCatalogueUpdate" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#1">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="exchange-pattern" value="one-way"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
+                    <property name="path" value="/vm/internal/HandleCatalogueUpdate"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="4"/>
+                    <property name="responseTimeout"/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+            <splitter index="5" name="All" type="org.mule.tooling.ui.modules.core.pattern.all" entity-id="All#1">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="bussinessEventsLabel"/>
+                    <property name=";INDEX" value="5"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="auxiliary;index" value="5"/>
+                </properties>
+                <pattern name="All" type="org.mule.tooling.ui.modules.core.pattern.all" entity-id="All#2">
+                    <properties>
+                        <property name="bussinessEventsLabel"/>
+                        <property name=";INDEX" value="5"/>
+                        <property name="tracking:enable-default-events"/>
+                        <property name="auxiliary;index" value="5"/>
+                    </properties>
+                </pattern>
+                <compartment entity-id="compartment#1">
+                    <lane hadOnlyOneElement="true" index="0" isChoiceOtherwiseLane="false" entity-id="efa98e12-8bb7-4da7-a23b-9685e6af7e8a">
+                        <pattern name="crm_ha_product_search" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#1">
+                            <graphicalData x="0" y="0" width="0" height="0"/>
+                            <properties>
+<property name="updated"/>
+<property name="name" value="crm_ha_product_search"/>
+<property name="auxiliary;index" value="6"/>
+                            </properties>
+                            <description></description>
+                        </pattern>
+                    </lane>
+                    <lane hadOnlyOneElement="true" index="0" isChoiceOtherwiseLane="false" entity-id="83b88377-6cd1-47a7-9d89-44692bea60a1">
+                        <pattern name="crm_xinyi_searchCatalog" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#2">
+                            <graphicalData x="0" y="0" width="0" height="0"/>
+                            <properties>
+<property name="updated"/>
+<property name="name" value="crm_xinyi_searchCatalog"/>
+<property name="auxiliary;index" value="7"/>
+                            </properties>
+                            <description></description>
+                        </pattern>
+                    </lane>
+                </compartment>
+            </splitter>
+            <pattern name="Collection Aggregator" type="http://www.mulesoft.org/schema/mule/core/collection-aggregator" entity-id="Collection Aggregator#1">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="businessEventsLabel"/>
+                    <property name="failOnTimeout" value="true"/>
+                    <property name="storePrefix"/>
+                    <property name="timeout"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="auxiliary;index" value="8"/>
+                </properties>
+            </pattern>
+            <endpoint direction="Outbound" message-exchange-pattern="OneWay" name="mistergooddeal_catalogue" type="http://www.mulesoft.org/schema/mule/file/endpoint" entity-id="File#1">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="reverseOrder"/>
+                    <property name="moveToPattern"/>
+                    <property name="pollingFrequency"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="comparator"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="exchange-pattern" value="one-way"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="moveToDirectory"/>
+                    <property name="address"/>
+                    <property name="fileAge"/>
+                    <property name="encoding"/>
+                    <property name="path" value="C:\Users\ThaiHa\git\bug-marmelade\mistergooddeal\src\main\app\_outputs/catalogue"/>
+                    <property name="outputPattern"/>
+                    <property name="responseTimeout" value="10000"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="9"/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+            <endpoint direction="Outbound" message-exchange-pattern="OneWay" name="Catalogue" type="http://www.mulesoft.org/schema/mule/ee/jdbc/endpoint" entity-id="Database#2">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name=""/>
+                    <property name="businessEventsLabel"/>
+                    <property name="pollingFrequency"/>
+                    <property name="queryTimeout" value="-1"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="exchange-pattern" value="one-way"/>
+                    <property name="queryKey" value="updateCat"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="auxiliary;index" value="10"/>
+                    <property name="connector-ref" value="Database"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/ee/jdbc/query;0">
+                        <property name="value" value="SELECT * FROM mistergooddeal.catalogue c;"/>
+                        <property name="isProcessed$$$$" value="true"/>
+                        <property name="auxiliary;wrapIn" value="11"/>
+                        <property name="auxiliary;index" value="11"/>
+                        <property name="key" value="updateCat"/>
+                    </property-collection>
+                </properties>
+            </endpoint>
+        </lane>
+    </flow>
+    <flow SubFlow="true" name="crm_ha_product_search" entity-id="f2e04e77-22a9-497a-b6de-fc281347b1b9">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="12"/>
+        </properties>
+        <description></description>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#2">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <endpoint direction="Outbound" message-exchange-pattern="OneWay" name="client/crm_ha/product/search" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#2">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="exchange-pattern" value="one-way"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
+                    <property name="path" value="/vm/internal/client/crm_ha/product/search"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="13"/>
+                    <property name="responseTimeout"/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+            <pattern name="Object to XML" type="org.mule.tooling.ui.modules.core.pattern.objectToXmlTransformer" entity-id="Object to XML#1">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
+                    <property name="encoding"/>
+                    <property name="driverClass"/>
+                    <property name="acceptMuleMessage"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="14"/>
+                </properties>
+            </pattern>
+            <endpoint direction="Outbound" message-exchange-pattern="OneWay" name="ha_catalogue" type="http://www.mulesoft.org/schema/mule/file/endpoint" entity-id="File#2">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="reverseOrder"/>
+                    <property name="moveToPattern"/>
+                    <property name="pollingFrequency"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="comparator"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="exchange-pattern" value="one-way"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="moveToDirectory"/>
+                    <property name="address"/>
+                    <property name="fileAge"/>
+                    <property name="encoding"/>
+                    <property name="path" value="C:\Users\ThaiHa\git\bug-marmelade\mistergooddeal\src\main\app\_outputs\catalogue"/>
+                    <property name="outputPattern"/>
+                    <property name="responseTimeout" value="10000"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="15"/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+        </lane>
+    </flow>
+    <flow SubFlow="true" name="crm_xinyi_searchCatalog" entity-id="95cb2a9a-2483-49d9-ac0c-4dd3645ced26">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="16"/>
+        </properties>
+        <description></description>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#3">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <endpoint direction="Outbound" message-exchange-pattern="OneWay" name="client/crm_xinyi/searchCatalog" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#3">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="businessEventsLabel"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="exchange-pattern" value="one-way"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="address"/>
+                    <property name="path" value="/vm/internal/client/crm_xinyi/searchCatalog"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="17"/>
+                    <property name="responseTimeout"/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+            <pattern name="Object to XML" type="org.mule.tooling.ui.modules.core.pattern.objectToXmlTransformer" entity-id="Object to XML#2">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
+                    <property name="encoding"/>
+                    <property name="driverClass"/>
+                    <property name="acceptMuleMessage"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="18"/>
+                </properties>
+            </pattern>
+            <endpoint direction="Outbound" message-exchange-pattern="OneWay" name="xinyi_catalogue" type="http://www.mulesoft.org/schema/mule/file/endpoint" entity-id="File#3">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="reverseOrder"/>
+                    <property name="moveToPattern"/>
+                    <property name="pollingFrequency"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="comparator"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="exchange-pattern" value="one-way"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="moveToDirectory"/>
+                    <property name="address"/>
+                    <property name="fileAge"/>
+                    <property name="encoding"/>
+                    <property name="path" value="C:\Users\ThaiHa\git\bug-marmelade\mistergooddeal\src\main\app\_outputs\catalogue"/>
+                    <property name="outputPattern"/>
+                    <property name="responseTimeout" value="10000"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="19"/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>

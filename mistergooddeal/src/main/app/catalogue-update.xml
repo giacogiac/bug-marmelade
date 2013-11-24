@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core" version="EE-3.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+    <flow name="catalogue_update" doc:name="catalogue_update">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8080" path="int/catalogue_update" doc:name="localhost:8080/int/catalogue_update"/>
+        <logger message="call CatalogueUpdate" level="INFO" doc:name="Logger"/>
+        <cxf:jaxws-service serviceClass="internal.HandleCatalogueUpdate" doc:name="HandleCatalogueUpdate"/>
+        <logger message="Message SOAP crée : passage dans le ESB" level="INFO" doc:name="Logger"/>
+        <vm:outbound-endpoint exchange-pattern="request-response" path="/vm/internal/HandleCatalogueUpdate" doc:name="vmCatalogueUpdate"/>
+    </flow>
+</mule>

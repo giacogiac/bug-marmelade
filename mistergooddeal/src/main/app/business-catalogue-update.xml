@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:jdbc-ee="http://www.mulesoft.org/schema/mule/ee/jdbc" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core" version="EE-3.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/ee/jdbc/current/mule-jdbc-ee.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+    <jdbc-ee:mysql-data-source name="MySQL_Data_Source" user="root" password="gooddeal" url="jdbc:mysql://localhost:3306/mistergooddeal" transactionIsolation="UNSPECIFIED" doc:name="MySQL Data Source"/>
+    <jdbc-ee:connector name="Database" dataSource-ref="MySQL_Data_Source" validateConnections="true" queryTimeout="-1" pollingFrequency="0" doc:name="Database"/>
+    <flow name="business-catalogue-update" doc:name="business-catalogue-update">
+        <vm:outbound-endpoint exchange-pattern="one-way" path="/vm/internal/HandleCatalogueUpdate" doc:name="VMCatalogueUpdate"/>
+        <all doc:name="All">
+            <flow-ref name="crm_ha_product_search" doc:name="crm_ha_product_search"/>
+            <flow-ref name="crm_xinyi_searchCatalog" doc:name="crm_xinyi_searchCatalog"/>
+        </all>
+        <collection-aggregator failOnTimeout="true" doc:name="Collection Aggregator"/>
+        <file:outbound-endpoint path="C:\Users\ThaiHa\git\bug-marmelade\mistergooddeal\src\main\app\_outputs/catalogue" responseTimeout="10000" doc:name="mistergooddeal_catalogue"/>
+        <jdbc-ee:outbound-endpoint exchange-pattern="one-way" queryKey="updateCat" queryTimeout="-1" connector-ref="Database" doc:name="Catalogue">
+            <jdbc-ee:query key="updateCat" value="SELECT * FROM mistergooddeal.catalogue c;"/>
+        </jdbc-ee:outbound-endpoint>
+    </flow>
+    <sub-flow name="crm_ha_product_search" doc:name="crm_ha_product_search">
+        <vm:outbound-endpoint exchange-pattern="one-way" path="/vm/internal/client/crm_ha/product/search" doc:name="client/crm_ha/product/search"/>
+        <mulexml:object-to-xml-transformer doc:name="Object to XML"/>
+        <file:outbound-endpoint path="C:\Users\ThaiHa\git\bug-marmelade\mistergooddeal\src\main\app\_outputs\catalogue" responseTimeout="10000" doc:name="ha_catalogue"/>
+    </sub-flow>
+    <sub-flow name="crm_xinyi_searchCatalog" doc:name="crm_xinyi_searchCatalog">
+        <vm:outbound-endpoint exchange-pattern="one-way" path="/vm/internal/client/crm_xinyi/searchCatalog" doc:name="client/crm_xinyi/searchCatalog"/>
+        <mulexml:object-to-xml-transformer doc:name="Object to XML"/>
+        <file:outbound-endpoint path="C:\Users\ThaiHa\git\bug-marmelade\mistergooddeal\src\main\app\_outputs\catalogue" responseTimeout="10000" doc:name="xinyi_catalogue"/>
+    </sub-flow>
+</mule>

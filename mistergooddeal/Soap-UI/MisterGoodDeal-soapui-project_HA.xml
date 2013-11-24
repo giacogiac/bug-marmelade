@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="MisterGoodDeal" soapui-version="4.6.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="HandleCatalogueUpdateServiceSoapBinding" type="wsdl" bindingName="{http://internal/}HandleCatalogueUpdateServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/int/catalogue_update?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/int/catalogue_update?wsdl"><con:part><con:url>http://localhost:8080/int/catalogue_update?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="HandleCatalogueUpdateService" targetNamespace="http://internal/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://internal/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://internal/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="catalogueUpdate" type="tns:catalogueUpdate"/>
+      <xs:element name="catalogueUpdateResponse" type="tns:catalogueUpdateResponse"/>
+      <xs:complexType name="catalogueUpdate">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="catalogueUpdateResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="result" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="catalogueUpdate">
+    <wsdl:part element="tns:catalogueUpdate" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="catalogueUpdateResponse">
+    <wsdl:part element="tns:catalogueUpdateResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CatalogueUpdate">
+    <wsdl:operation name="catalogueUpdate">
+      <wsdl:input message="tns:catalogueUpdate" name="catalogueUpdate"></wsdl:input>
+      <wsdl:output message="tns:catalogueUpdateResponse" name="catalogueUpdateResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HandleCatalogueUpdateServiceSoapBinding" type="tns:CatalogueUpdate">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="catalogueUpdate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="catalogueUpdate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="catalogueUpdateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HandleCatalogueUpdateService">
+    <wsdl:port binding="tns:HandleCatalogueUpdateServiceSoapBinding" name="CatalogueUpdatePort">
+      <soap:address location="http://localhost:8080/int/catalogue_update"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/int/catalogue_update</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="catalogueUpdate" bindingOperationName="catalogueUpdate" type="Request-Response" outputName="catalogueUpdateResponse" inputName="catalogueUpdate" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Updated"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/int/catalogue_update</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:int="http://internal/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <int:catalogueUpdate/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://internal/CatalogueUpdate/catalogueUpdate"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="Update Catalogue"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Call Update" searchProperties="true" id="0ad66693-5775-423b-a376-d296ab95a96f"><con:settings/><con:testStep type="request" name="catalogueUpdate - Updated"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>HandleCatalogueUpdateServiceSoapBinding</con:interface><con:operation>catalogueUpdate</con:operation><con:request name="catalogueUpdate - Updated" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/int/catalogue_update</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:int="http://internal/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <int:catalogueUpdate/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://internal/CatalogueUpdate/catalogueUpdate"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/></con:soapui-project>

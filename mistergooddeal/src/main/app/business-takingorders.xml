@@ -10,7 +10,7 @@ http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mul
 http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/ee/jdbc/current/mule-jdbc-ee.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
     <data-mapper:config name="new_mapping_1_grf" transformationGraphPath="new_mapping_1.grf" doc:name="DataMapper"/>
-    <flow name="business-takingordersFlow1" doc:name="business-takingordersFlow1">
+    <flow name="business-takingorders-fax" doc:name="business-takingorders-fax">
         <file:inbound-endpoint path="./_inputs" moveToDirectory="./src/test/resources" responseTimeout="10000" doc:name="_inputs/orders.csv"/>
         <data-mapper:transform config-ref="new_mapping_1_grf" doc:name="DataMapper"/>
         <set-variable variableName="cpt" value="0" doc:name="cpt = 0"/>
@@ -18,7 +18,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
         <set-variable variableName="cpt" value="#[(int) flowVars['cpt'] + 1]" doc:name="cpt++"/>
         <vm:outbound-endpoint exchange-pattern="request-response" path="/vm/internal/takingOrders" doc:name="takingOrders"/>
     </flow>
-    <flow name="business-takingordersFlow3" doc:name="business-takingordersFlow3">
+    <flow name="business-takingorders-Internet" doc:name="business-takingorders-Internet">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" doc:name="HTTP"/>
         <scripting:component doc:name="http orders">
             <scripting:script engine="Groovy"><![CDATA[def ordH = new internal.data.ParamsCommand();
@@ -37,7 +37,7 @@ return ordH;]]></scripting:script>
         </scripting:component>
         <vm:outbound-endpoint exchange-pattern="request-response" path="/vm/internal/takingOrders" doc:name="takingOrders"/>
     </flow>
-    <flow name="business-takingordersFlow2" doc:name="business-takingordersFlow2">
+    <flow name="business-takingorders" doc:name="business-takingorders">
         <vm:inbound-endpoint exchange-pattern="request-response" path="/vm/internal/takingOrders" doc:name="takingOrders"/>
         <logger message="Handle #[message.payload.idCommand] / #[message.payload.idCustomer] / #[message.payload.deliveryAddress] / #[message.payload.statu] / #[message.payload.expectation] / #[message.payload.name] / #[message.payload.category] / #[message.payload.crmReference] / #[message.payload.price]" level="INFO" doc:name="Logger"/>
         <set-variable variableName="current" value="#[message.payload]" doc:name="current = this"/>

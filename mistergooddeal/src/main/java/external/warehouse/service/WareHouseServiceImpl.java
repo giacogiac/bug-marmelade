@@ -57,8 +57,10 @@ public class WareHouseServiceImpl implements WareHouseService {
 	}
 
 	public DeliveryResponse haveDelivery(DeliveryRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		DeliveryResponse response = new DeliveryResponse();
+		Delivery delivery = new Delivery(request.supplier,request.dateOfDelivery,request.listProduct);
+		response.result = wh.addDelivery(delivery);
+		return response;
 	}
 
 }

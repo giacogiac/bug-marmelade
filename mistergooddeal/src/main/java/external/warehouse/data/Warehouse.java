@@ -7,6 +7,7 @@ public class Warehouse {
 	private HashMap<Integer, String> locationOfProduct;
 	private HashMap<Integer, Product> listOfProduct;
 	private ArrayList<Order> listOrder;
+	private ArrayList<Delivery> listDelivery;
 	
 	public Warehouse() {
 		super();
@@ -17,6 +18,12 @@ public class Warehouse {
 	
 	public boolean addOrder(Order o){
 		return listOrder.add(o);
+	}
+	public boolean addDelivery(Delivery d){
+		return listDelivery.add(d);
+	}
+	public boolean removeDelivery(Delivery d){
+		return listDelivery.remove(d);
 	}
 	public boolean removeOrder(Order o){
 		return listOrder.remove(o);

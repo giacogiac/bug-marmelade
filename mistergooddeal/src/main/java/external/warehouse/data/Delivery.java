@@ -6,10 +6,10 @@ import java.util.List;
 public class Delivery {
 	
 	private String transporter;
-	private Date dateOfDelivery;
+	private String dateOfDelivery;
 	private List<Product> listProduct;
 	
-	public Delivery(String transporter, Date dateOfDelivery,
+	public Delivery(String transporter, String dateOfDelivery,
 			List<Product> listProduct) {
 		super();
 		this.transporter = transporter;
@@ -25,10 +25,10 @@ public class Delivery {
 	public void setTransporter(String transporter) {
 		this.transporter = transporter;
 	}
-	public Date getdateOfDelivery() {
+	public String getdateOfDelivery() {
 		return dateOfDelivery;
 	}
-	public void setdateOfDelivery(Date dateOfDelivery) {
+	public void setdateOfDelivery(String dateOfDelivery) {
 		this.dateOfDelivery = dateOfDelivery;
 	}
 	public List<Product> getListProduct() {

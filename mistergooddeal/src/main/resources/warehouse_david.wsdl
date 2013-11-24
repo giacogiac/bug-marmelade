@@ -1,10 +1,14 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="WareHouse" targetNamespace="http://service.warehouse.external/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://service.warehouse.external/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.warehouse.external/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="WareHouse" targetNamespace="http://service.warehouse.external/">
   <wsdl:types>
-<xs:schema elementFormDefault="unqualified" targetNamespace="http://service.warehouse.external/" version="1.0" xmlns:tns="http://service.warehouse.external/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.warehouse.external/" elementFormDefault="unqualified" targetNamespace="http://service.warehouse.external/" version="1.0">
 <xs:element name="getLocation" type="tns:getLocation"/>
 <xs:element name="getLocationResponse" type="tns:getLocationResponse"/>
+<xs:element name="getPlanning" type="tns:getPlanning"/>
+<xs:element name="getPlanningResponse" type="tns:getPlanningResponse"/>
 <xs:element name="getQuantity" type="tns:getQuantity"/>
 <xs:element name="getQuantityResponse" type="tns:getQuantityResponse"/>
+<xs:element name="haveDelivery" type="tns:haveDelivery"/>
+<xs:element name="haveDeliveryResponse" type="tns:haveDeliveryResponse"/>
 <xs:element name="listNearOutOfStock" type="tns:listNearOutOfStock"/>
 <xs:element name="listNearOutOfStockResponse" type="tns:listNearOutOfStockResponse"/>
 <xs:element name="makeOrder" type="tns:makeOrder"/>
@@ -16,9 +20,9 @@
 </xs:complexType>
 <xs:complexType name="OrderRequest">
 <xs:sequence>
-<xs:element name="supplier" type="xs:string"/>
+<xs:element name="client" type="xs:string"/>
 <xs:element name="date" type="xs:string"/>
-<xs:element maxOccurs="unbounded" name="ref" type="tns:product"/>
+<xs:element maxOccurs="unbounded" name="product" type="tns:product"/>
 </xs:sequence>
 </xs:complexType>
 <xs:complexType name="product">
@@ -59,6 +63,28 @@
 <xs:element name="quantity" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
+<xs:complexType name="haveDelivery">
+<xs:sequence>
+<xs:element minOccurs="0" name="request" type="tns:DeliveryRequest"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeliveryRequest">
+<xs:sequence>
+<xs:element name="supplier" type="xs:string"/>
+<xs:element name="date" type="xs:string"/>
+<xs:element maxOccurs="unbounded" name="product" type="tns:product"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="haveDeliveryResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="deliveryResponse" type="tns:DeliveryResp"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeliveryResp">
+<xs:sequence>
+<xs:element name="result" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
 <xs:complexType name="listNearOutOfStock">
 <xs:sequence/>
 </xs:complexType>
@@ -69,7 +95,20 @@
 </xs:complexType>
 <xs:complexType name="ListNearOutOfStockResp">
 <xs:sequence>
-<xs:element maxOccurs="unbounded" name="listProduct" type="tns:product"/>
+<xs:element maxOccurs="unbounded" name="product" type="tns:product"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlanning">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getPlanningResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="planningResponse" type="tns:PlanningResp"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="PlanningResp">
+<xs:sequence>
+<xs:element name="planning" type="xs:string"/>
 </xs:sequence>
 </xs:complexType>
 <xs:complexType name="getLocation">
@@ -102,12 +141,20 @@
     <wsdl:part element="tns:getQuantity" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="haveDelivery">
+    <wsdl:part element="tns:haveDelivery" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getLocationResponse">
     <wsdl:part element="tns:getLocationResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="makeOrderResponse">
     <wsdl:part element="tns:makeOrderResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="haveDeliveryResponse">
+    <wsdl:part element="tns:haveDeliveryResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="makeOrder">
@@ -122,8 +169,16 @@
     <wsdl:part element="tns:listNearOutOfStock" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getPlanning">
+    <wsdl:part element="tns:getPlanning" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getLocation">
     <wsdl:part element="tns:getLocation" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlanningResponse">
+    <wsdl:part element="tns:getPlanningResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="WareHouseService">
@@ -139,10 +194,22 @@
       <wsdl:output message="tns:getQuantityResponse" name="getQuantityResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="haveDelivery">
+      <wsdl:input message="tns:haveDelivery" name="haveDelivery">
+    </wsdl:input>
+      <wsdl:output message="tns:haveDeliveryResponse" name="haveDeliveryResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="listNearOutOfStock">
       <wsdl:input message="tns:listNearOutOfStock" name="listNearOutOfStock">
     </wsdl:input>
       <wsdl:output message="tns:listNearOutOfStockResponse" name="listNearOutOfStockResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPlanning">
+      <wsdl:input message="tns:getPlanning" name="getPlanning">
+    </wsdl:input>
+      <wsdl:output message="tns:getPlanningResponse" name="getPlanningResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getLocation">
@@ -172,6 +239,15 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="haveDelivery">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="haveDelivery">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="haveDeliveryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="listNearOutOfStock">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="listNearOutOfStock">
@@ -187,6 +263,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getLocationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPlanning">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPlanning">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPlanningResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

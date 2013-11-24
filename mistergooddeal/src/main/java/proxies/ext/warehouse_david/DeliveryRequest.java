@@ -10,16 +10,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for OrderRequest complex type.
+ * <p>Java class for DeliveryRequest complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="OrderRequest">
+ * &lt;complexType name="DeliveryRequest">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="client" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="supplier" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="product" type="{http://service.warehouse.external/}product" maxOccurs="unbounded"/>
  *       &lt;/sequence>
@@ -31,42 +31,42 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "OrderRequest", propOrder = {
-    "client",
+@XmlType(name = "DeliveryRequest", propOrder = {
+    "supplier",
     "date",
     "product"
 })
-public class OrderRequest {
+public class DeliveryRequest {
 
     @XmlElement(required = true)
-    protected String client;
+    protected String supplier;
     @XmlElement(required = true)
     protected String date;
     @XmlElement(required = true)
     protected List<Product> product;
 
     /**
-     * Gets the value of the client property.
+     * Gets the value of the supplier property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getClient() {
-        return client;
+    public String getSupplier() {
+        return supplier;
     }
 
     /**
-     * Sets the value of the client property.
+     * Sets the value of the supplier property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setClient(String value) {
-        this.client = value;
+    public void setSupplier(String value) {
+        this.supplier = value;
     }
 
     /**

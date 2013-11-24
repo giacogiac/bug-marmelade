@@ -26,12 +26,16 @@ public class ObjectFactory {
 
     private final static QName _GetQuantity_QNAME = new QName("http://service.warehouse.external/", "getQuantity");
     private final static QName _GetQuantityResponse_QNAME = new QName("http://service.warehouse.external/", "getQuantityResponse");
+    private final static QName _HaveDelivery_QNAME = new QName("http://service.warehouse.external/", "haveDelivery");
     private final static QName _GetLocationResponse_QNAME = new QName("http://service.warehouse.external/", "getLocationResponse");
     private final static QName _MakeOrderResponse_QNAME = new QName("http://service.warehouse.external/", "makeOrderResponse");
+    private final static QName _HaveDeliveryResponse_QNAME = new QName("http://service.warehouse.external/", "haveDeliveryResponse");
     private final static QName _MakeOrder_QNAME = new QName("http://service.warehouse.external/", "makeOrder");
     private final static QName _ListNearOutOfStock_QNAME = new QName("http://service.warehouse.external/", "listNearOutOfStock");
     private final static QName _ListNearOutOfStockResponse_QNAME = new QName("http://service.warehouse.external/", "listNearOutOfStockResponse");
+    private final static QName _GetPlanning_QNAME = new QName("http://service.warehouse.external/", "getPlanning");
     private final static QName _GetLocation_QNAME = new QName("http://service.warehouse.external/", "getLocation");
+    private final static QName _GetPlanningResponse_QNAME = new QName("http://service.warehouse.external/", "getPlanningResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: proxies.ext.warehouse_david
@@ -49,6 +53,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetPlanning }
+     * 
+     */
+    public GetPlanning createGetPlanning() {
+        return new GetPlanning();
+    }
+
+    /**
      * Create an instance of {@link ListNearOutOfStockResponse }
      * 
      */
@@ -62,6 +74,22 @@ public class ObjectFactory {
      */
     public ListNearOutOfStock createListNearOutOfStock() {
         return new ListNearOutOfStock();
+    }
+
+    /**
+     * Create an instance of {@link GetPlanningResponse }
+     * 
+     */
+    public GetPlanningResponse createGetPlanningResponse() {
+        return new GetPlanningResponse();
+    }
+
+    /**
+     * Create an instance of {@link HaveDelivery }
+     * 
+     */
+    public HaveDelivery createHaveDelivery() {
+        return new HaveDelivery();
     }
 
     /**
@@ -89,6 +117,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link HaveDeliveryResponse }
+     * 
+     */
+    public HaveDeliveryResponse createHaveDeliveryResponse() {
+        return new HaveDeliveryResponse();
+    }
+
+    /**
      * Create an instance of {@link MakeOrderResponse }
      * 
      */
@@ -105,11 +141,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PlanningResp }
+     * 
+     */
+    public PlanningResp createPlanningResp() {
+        return new PlanningResp();
+    }
+
+    /**
      * Create an instance of {@link LocationResp }
      * 
      */
     public LocationResp createLocationResp() {
         return new LocationResp();
+    }
+
+    /**
+     * Create an instance of {@link DeliveryResp }
+     * 
+     */
+    public DeliveryResp createDeliveryResp() {
+        return new DeliveryResp();
     }
 
     /**
@@ -134,6 +186,14 @@ public class ObjectFactory {
      */
     public Product createProduct() {
         return new Product();
+    }
+
+    /**
+     * Create an instance of {@link DeliveryRequest }
+     * 
+     */
+    public DeliveryRequest createDeliveryRequest() {
+        return new DeliveryRequest();
     }
 
     /**
@@ -187,6 +247,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HaveDelivery }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service.warehouse.external/", name = "haveDelivery")
+    public JAXBElement<HaveDelivery> createHaveDelivery(HaveDelivery value) {
+        return new JAXBElement<HaveDelivery>(_HaveDelivery_QNAME, HaveDelivery.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetLocationResponse }{@code >}}
      * 
      */
@@ -202,6 +271,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://service.warehouse.external/", name = "makeOrderResponse")
     public JAXBElement<MakeOrderResponse> createMakeOrderResponse(MakeOrderResponse value) {
         return new JAXBElement<MakeOrderResponse>(_MakeOrderResponse_QNAME, MakeOrderResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HaveDeliveryResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service.warehouse.external/", name = "haveDeliveryResponse")
+    public JAXBElement<HaveDeliveryResponse> createHaveDeliveryResponse(HaveDeliveryResponse value) {
+        return new JAXBElement<HaveDeliveryResponse>(_HaveDeliveryResponse_QNAME, HaveDeliveryResponse.class, null, value);
     }
 
     /**
@@ -232,12 +310,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetPlanning }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service.warehouse.external/", name = "getPlanning")
+    public JAXBElement<GetPlanning> createGetPlanning(GetPlanning value) {
+        return new JAXBElement<GetPlanning>(_GetPlanning_QNAME, GetPlanning.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetLocation }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://service.warehouse.external/", name = "getLocation")
     public JAXBElement<GetLocation> createGetLocation(GetLocation value) {
         return new JAXBElement<GetLocation>(_GetLocation_QNAME, GetLocation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetPlanningResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service.warehouse.external/", name = "getPlanningResponse")
+    public JAXBElement<GetPlanningResponse> createGetPlanningResponse(GetPlanningResponse value) {
+        return new JAXBElement<GetPlanningResponse>(_GetPlanningResponse_QNAME, GetPlanningResponse.class, null, value);
     }
 
 }

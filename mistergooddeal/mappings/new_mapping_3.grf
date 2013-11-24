@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><Graph author="Mizrahi" created="Sun Nov 24 20:27:48 CET 2013" guiVersion="3.4.0.P" id="1385328155916" licenseCode="Unlicensed" licenseType="Unknown" modified="Sun Nov 24 20:27:48 CET 2013" modifiedBy="Mizrahi" name="new_mapping_3_grf" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Input" id="02444969-df35-41d2-84a3-24b3415d76d3">
+<Record fieldDelimiter="|" name="Product" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __sourcePath="{}/object/id" containerType="SINGLE" label="id" name="id" type="integer"/>
+<Field __index="1" __sourcePath="{}/object/name" containerType="SINGLE" label="name" name="name" type="string"/>
+<Field __index="2" __sourcePath="{}/object/quantity" containerType="SINGLE" label="quantity" name="quantity" type="integer"/>
+<Field __index="3" __sourcePath="{}/object/warningLimit" containerType="SINGLE" label="warningLimit" name="warningLimit" type="integer"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Output" id="9f7ad35d-05cd-4cf5-b2fe-016e7c53c55a">
+<Record fieldDelimiter="|" name="Product" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __sourcePath="{}/object/category" containerType="SINGLE" label="category" name="category" type="string"/>
+<Field __index="1" __sourcePath="{}/object/crm" containerType="SINGLE" label="crm" name="crm" type="string"/>
+<Field __index="2" __sourcePath="{}/object/crmReference" containerType="SINGLE" label="crmReference" name="crmReference" type="string"/>
+<Field __index="3" __sourcePath="{}/object/description" containerType="SINGLE" label="description" name="description" type="string"/>
+<Field __index="4" __sourcePath="{}/object/id" containerType="SINGLE" label="id" name="id" type="integer"/>
+<Field __index="5" __sourcePath="{}/object/name" containerType="SINGLE" label="name" name="name" type="string"/>
+<Field __index="6" __sourcePath="{}/object/price" containerType="SINGLE" label="price" name="price" type="number"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:inputPayload" guiName="Pojo READER" guiX="20" guiY="20" id="BEAN_READER0" type="BEAN_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context outPort="0" sequenceField="__id" xpath=".">
+  <Mapping cloverField="id" trim="true" xpath="id"/>
+  <Mapping cloverField="name" trim="true" xpath="name"/>
+  <Mapping cloverField="quantity" trim="true" xpath="quantity"/>
+  <Mapping cloverField="warningLimit" trim="true" xpath="warningLimit"/>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?><schema-object>
+  <typed-object-ref type-ref="proxies.ext.warehouse_david.Product"/>
+  <typed-object type="proxies.ext.warehouse_david.Product">
+    <typed-object-ref name="id" type-ref="int"/>
+    <typed-object-ref name="name" type-ref="java.lang.String"/>
+    <typed-object-ref name="quantity" type-ref="int"/>
+    <typed-object-ref name="warningLimit" type-ref="int"/>
+  </typed-object>
+  <typed-object type="int"/>
+  <typed-object type="java.lang.String"/>
+</schema-object>
+]]></attr>
+</Node>
+<Node enabled="enabled" fileURL="dict:outputPayload" guiName="Pojo WRITER" guiX="900" guiY="20" id="BEAN_WRITER0" type="BEAN_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<object xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <category>$0.category</category>
+  <crm>$0.crm</crm>
+  <crmReference>$0.crmReference</crmReference>
+  <description>$0.description</description>
+  <id>$0.id</id>
+  <name>$0.name</name>
+  <price>$0.price</price>
+</object>]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?><schema-object>
+  <typed-object-ref type-ref="internal.data.Product"/>
+  <typed-object type="internal.data.CRM"/>
+  <typed-object type="int"/>
+  <typed-object type="java.lang.String"/>
+  <typed-object type="internal.data.Product">
+    <typed-object-ref name="category" type-ref="java.lang.String"/>
+    <typed-object-ref name="crm" type-ref="internal.data.CRM"/>
+    <typed-object-ref name="crmReference" type-ref="java.lang.String"/>
+    <typed-object-ref name="description" type-ref="java.lang.String"/>
+    <typed-object-ref name="id" type-ref="int"/>
+    <typed-object-ref name="name" type-ref="java.lang.String"/>
+    <typed-object-ref name="price" type-ref="float"/>
+  </typed-object>
+  <typed-object type="float"/>
+</schema-object>
+]]></attr>
+<attr name="cacheInMemory"><![CDATA[true]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'object' -&gt; 'object'" guiX="460" guiY="20" id="FOREACH_OBJECT_OBJECT" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+output.id = input.id;
+output.name = input.name;
+]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="BEAN_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="02444969-df35-41d2-84a3-24b3415d76d3" outPort="Port 0 (out)" toNode="FOREACH_OBJECT_OBJECT:0"/>
+<Edge debugMode="true" fromNode="FOREACH_OBJECT_OBJECT:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="9f7ad35d-05cd-4cf5-b2fe-016e7c53c55a" outPort="Port 0 (out)" toNode="BEAN_WRITER0:0"/>
+</Phase>
+</Graph>

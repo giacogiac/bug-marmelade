@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><Graph author="Mizrahi" created="Sun Nov 24 20:27:48 CET 2013" guiVersion="3.4.0.P" id="1385329434393" licenseCode="Unlicensed" licenseType="Unknown" modified="Sun Nov 24 20:27:48 CET 2013" modifiedBy="Mizrahi" name="new_mapping_2_grf" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __index="4" __referenceCounter="1" __sourcePath="{}/object/listProd" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="754a0f5e-7481-40b3-b03e-ecdaac5587bd" _parent_id="__parent_id" _type="Output" id="274491ef-53cb-43e8-bad0-f6f5291be3a4">
+<Record fieldDelimiter="|" name="listProd" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="4" __sourcePath="{}/object/listProd/category" containerType="SINGLE" label="category" name="category" type="string"/>
+<Field __index="5" __sourcePath="{}/object/listProd/crm" containerType="SINGLE" label="crm" name="crm" type="string"/>
+<Field __index="6" __sourcePath="{}/object/listProd/crmReference" containerType="SINGLE" label="crmReference" name="crmReference" type="string"/>
+<Field __index="7" __sourcePath="{}/object/listProd/description" containerType="SINGLE" label="description" name="description" type="string"/>
+<Field __index="8" __sourcePath="{}/object/listProd/id" containerType="SINGLE" label="id" name="id" type="integer"/>
+<Field __index="9" __sourcePath="{}/object/listProd/name" containerType="SINGLE" label="name" name="name" type="string"/>
+<Field __index="10" __sourcePath="{}/object/listProd/price" containerType="SINGLE" label="price" name="price" type="number"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Output" id="754a0f5e-7481-40b3-b03e-ecdaac5587bd">
+<Record fieldDelimiter="|" name="ParamsCommand" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __sourcePath="{}/object/deliveryAddress" containerType="SINGLE" label="deliveryAddress" name="deliveryAddress" type="string"/>
+<Field __index="1" __sourcePath="{}/object/expectation" containerType="SINGLE" label="expectation" name="expectation" type="string"/>
+<Field __index="2" __sourcePath="{}/object/idCommand" containerType="SINGLE" label="idCommand" name="idCommand" type="string"/>
+<Field __index="3" __sourcePath="{}/object/idCustomer" containerType="SINGLE" label="idCustomer" name="idCustomer" type="string"/>
+<Field __index="11" __sourcePath="{}/object/statu" containerType="SINGLE" label="statu" name="statu" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="2" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Input" id="0d9682d2-8bd6-4a65-8527-51b82850b6af">
+<Record fieldDelimiter="|" name="Product" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __sourcePath="{}/object/category" containerType="SINGLE" label="category" name="category" type="string"/>
+<Field __index="1" __sourcePath="{}/object/crm" containerType="SINGLE" label="crm" name="crm" type="string"/>
+<Field __index="2" __sourcePath="{}/object/crmReference" containerType="SINGLE" label="crmReference" name="crmReference" type="string"/>
+<Field __index="3" __sourcePath="{}/object/description" containerType="SINGLE" label="description" name="description" type="string"/>
+<Field __index="4" __sourcePath="{}/object/id" containerType="SINGLE" label="id" name="id" type="integer"/>
+<Field __index="5" __sourcePath="{}/object/name" containerType="SINGLE" label="name" name="name" type="string"/>
+<Field __index="6" __sourcePath="{}/object/price" containerType="SINGLE" label="price" name="price" type="number"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:inputPayload" guiName="Pojo READER" guiX="20" guiY="20" id="BEAN_READER0" type="BEAN_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context xpath=".">
+  <Context outPort="0" sequenceField="__id" xpath=".">
+    <Mapping cloverField="category" trim="true" xpath="category"/>
+    <Mapping cloverField="crm" trim="true" xpath="crm"/>
+    <Mapping cloverField="crmReference" trim="true" xpath="crmReference"/>
+    <Mapping cloverField="description" trim="true" xpath="description"/>
+    <Mapping cloverField="id" trim="true" xpath="id"/>
+    <Mapping cloverField="name" trim="true" xpath="name"/>
+    <Mapping cloverField="price" trim="true" xpath="price"/>
+  </Context>
+  <Context outPort="1" sequenceField="__id" xpath=".">
+    <Mapping cloverField="category" trim="true" xpath="category"/>
+    <Mapping cloverField="crm" trim="true" xpath="crm"/>
+    <Mapping cloverField="crmReference" trim="true" xpath="crmReference"/>
+    <Mapping cloverField="description" trim="true" xpath="description"/>
+    <Mapping cloverField="id" trim="true" xpath="id"/>
+    <Mapping cloverField="name" trim="true" xpath="name"/>
+    <Mapping cloverField="price" trim="true" xpath="price"/>
+  </Context>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?><schema-object>
+  <typed-object-ref type-ref="internal.data.Product"/>
+  <typed-object type="internal.data.CRM"/>
+  <typed-object type="int"/>
+  <typed-object type="java.lang.String"/>
+  <typed-object type="internal.data.Product">
+    <typed-object-ref name="category" type-ref="java.lang.String"/>
+    <typed-object-ref name="crm" type-ref="internal.data.CRM"/>
+    <typed-object-ref name="crmReference" type-ref="java.lang.String"/>
+    <typed-object-ref name="description" type-ref="java.lang.String"/>
+    <typed-object-ref name="id" type-ref="int"/>
+    <typed-object-ref name="name" type-ref="java.lang.String"/>
+    <typed-object-ref name="price" type-ref="float"/>
+  </typed-object>
+  <typed-object type="float"/>
+</schema-object>
+]]></attr>
+</Node>
+<Node enabled="enabled" fileURL="dict:outputPayload" guiName="Pojo WRITER" guiX="900" guiY="20" id="BEAN_WRITER0" type="BEAN_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<object xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <deliveryAddress>$0.deliveryAddress</deliveryAddress>
+  <expectation>$0.expectation</expectation>
+  <idCommand>$0.idCommand</idCommand>
+  <idCustomer>$0.idCustomer</idCustomer>
+  <clover:collection clover:name="listProd">
+    <item clover:inPort="1" clover:key="__parent_id" clover:parentKey="__id">
+      <category>$1.category</category>
+      <crm>$1.crm</crm>
+      <crmReference>$1.crmReference</crmReference>
+      <description>$1.description</description>
+      <id>$1.id</id>
+      <name>$1.name</name>
+      <price>$1.price</price>
+    </item>
+  </clover:collection>
+  <statu>$0.statu</statu>
+</object>]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?><schema-object>
+  <typed-object-ref type-ref="internal.data.ParamsCommand"/>
+  <typed-object type="internal.data.CRM"/>
+  <typed-object type="int"/>
+  <typed-object type="java.lang.String"/>
+  <typed-object type="internal.data.Product">
+    <typed-object-ref name="category" type-ref="java.lang.String"/>
+    <typed-object-ref name="crm" type-ref="internal.data.CRM"/>
+    <typed-object-ref name="crmReference" type-ref="java.lang.String"/>
+    <typed-object-ref name="description" type-ref="java.lang.String"/>
+    <typed-object-ref name="id" type-ref="int"/>
+    <typed-object-ref name="name" type-ref="java.lang.String"/>
+    <typed-object-ref name="price" type-ref="float"/>
+  </typed-object>
+  <typed-object type="float"/>
+  <typed-object type="internal.data.ParamsCommand">
+    <typed-object-ref name="deliveryAddress" type-ref="java.lang.String"/>
+    <typed-object-ref name="expectation" type-ref="java.lang.String"/>
+    <typed-object-ref name="idCommand" type-ref="java.lang.String"/>
+    <typed-object-ref name="idCustomer" type-ref="java.lang.String"/>
+    <schema-collection name="listProd" type="java.util.List">
+      <typed-object-ref type-ref="internal.data.Product"/>
+    </schema-collection>
+    <typed-object-ref name="statu" type-ref="java.lang.String"/>
+  </typed-object>
+</schema-object>
+]]></attr>
+<attr name="cacheInMemory"><![CDATA[true]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'object' -&gt; 'listProd'" guiX="460" guiY="120" id="FOREACH_OBJECT_LIST_PROD" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+output.__parent_id = input.__id;
+//END -> DO NOT REMOVE
+output.category = input.category;
+output.crm = input.crm;
+output.crmReference = input.crmReference;
+output.description = input.description;
+output.id = input.id;
+output.name = input.name;
+output.price = input.price;
+]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'object' -&gt; 'object'" guiX="460" guiY="20" id="FOREACH_OBJECT_OBJECT" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="BEAN_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="0d9682d2-8bd6-4a65-8527-51b82850b6af" outPort="Port 0 (out)" toNode="FOREACH_OBJECT_OBJECT:0"/>
+<Edge debugMode="true" fromNode="BEAN_READER0:1" guiBendpoints="" id="Edge2" inPort="Port 0 (in)" metadata="0d9682d2-8bd6-4a65-8527-51b82850b6af" outPort="Port 1 (out)" toNode="FOREACH_OBJECT_LIST_PROD:0"/>
+<Edge debugMode="true" fromNode="FOREACH_OBJECT_LIST_PROD:0" guiBendpoints="" id="Edge3" inPort="Port 1 (in)" metadata="274491ef-53cb-43e8-bad0-f6f5291be3a4" outPort="Port 0 (out)" toNode="BEAN_WRITER0:1"/>
+<Edge debugMode="true" fromNode="FOREACH_OBJECT_OBJECT:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="754a0f5e-7481-40b3-b03e-ecdaac5587bd" outPort="Port 0 (out)" toNode="BEAN_WRITER0:0"/>
+</Phase>
+</Graph>

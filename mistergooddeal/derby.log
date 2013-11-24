@@ -1,10 +1,6 @@
 ----------------------------------------------------------------
-2013-11-16 17:06:20.883 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.6.1.0 - (938214): instance a816c00e-0142-61e0-a250-0000035c5610 
-on database directory memory:C:\Users\Xadi\git\bug-marmelade\mistergooddeal\glue-database   with class loader sun.misc.Launcher$AppClassLoader@b92d342
+2013-11-24 19:04:48.127 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.6.1.0 - (938214): instance a816c00e-0142-8b7f-f482-000004527420 
+on database directory memory:D:\git\bug-marmelade\mistergooddeal\glue-database   with class loader sun.misc.Launcher$AppClassLoader@546b97fd
 
 Database Class Loader started - derby.database.classpath=''
-
-2013-11-16 17:07:01.616 GMT:
-Shutting down instance a816c00e-0142-61e0-a250-0000035c5610 with class loader sun.misc.Launcher$AppClassLoader@b92d342 
-----------------------------------------------------------------

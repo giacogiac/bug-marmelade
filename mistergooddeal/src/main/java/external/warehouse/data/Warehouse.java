@@ -15,6 +15,17 @@ public class Warehouse {
 		this.listOfProduct = new HashMap<Integer, Product>();
 		this.listOrder = new ArrayList<Order>();
 	}
+	public String getPlanning(){
+		StringBuilder sb = new StringBuilder();
+		sb.append("delivery scheduled : \n");
+		for (Delivery d : listDelivery) {
+			sb.append(d.getdateOfDelivery()+"\n");
+		}
+		for (Order o : listOrder) {
+			sb.append(o.getDateOfPickup()+"\n");
+		}
+		return sb.toString();
+	}
 	
 	public boolean addOrder(Order o){
 		return listOrder.add(o);

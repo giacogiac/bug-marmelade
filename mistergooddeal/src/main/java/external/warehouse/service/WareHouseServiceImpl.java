@@ -32,8 +32,9 @@ public class WareHouseServiceImpl implements WareHouseService {
 	}
 
 	public PlanningResponse getPlanning() {
-		// TODO Auto-generated method stub
-		return null;
+		PlanningResponse response = new PlanningResponse();
+		response.planning = wh.getPlanning();
+		return response;
 	}
 
 	public ListNearOutOfStockResponse listNearOutOfStock() {
